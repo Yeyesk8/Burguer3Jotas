@@ -1,11 +1,29 @@
-<!doctype html>
-<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
-<head th:replace="common/header :: common-header">
-  
 
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
+<head th:replace="common/cabecera :: common-cabecera"/>
+
+<head>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!--     Fonts and icons     -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+
+<!-- Nucleo Icons -->
+<link href="static/css/soft-ui/nucleo-icons.css" th:href="@{/css/soft-ui/nucleo-icons.css}" rel="stylesheet" />
+<link href="static/css/soft-ui/nucleo-svg.css" th:href="@{/css/soft-ui/nucleo-svg.css}" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+<!-- CSS Files -->
+<link id="pagestyle" href="static/css/soft-ui/soft-design-system.css?v=1.0.5"
+	th:href="@{/css/soft-ui/soft-design-system.css?v=1.0.5}" rel="stylesheet" />
+  
+</head>
 
 <body class="d-flex flex-column">
-  <div th:replace="common/header :: navbar"> </div>
+  <div th:replace="common/cabecera :: navbar"> </div>
       
    <form id="filter-form" th:action="@{/store}" method="get">
    <div class="container page-content">
@@ -17,15 +35,15 @@
             <div class="card">
               <div class="card-header">
                 <a href="#filter-categories" data-toggle="collapse" aria-expanded="true" aria-controls="filter-categories" role="button" class="h6">
-                  CATEGORIES
+                  CATEGORIAS
                 </a>
               </div>
               <div id="filter-categories" class="collapse show">
                 <div class="card-body">
-                  <div th:each="item : ${allCategories}" class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" th:id="${item}" th:name="category" th:value="${item}"
+                  <div th:each="item : ${allCategories}" class="orm-checkbox">
+                    <input type="checkbox" class="form-control-input" th:id="${item}" th:name="category" th:value="${item}"
                            th:checked="${((param.category != null) and (#lists.contains(param.category, item )))} ? checked">
-                    <label class="custom-control-label" th:for="${item}" th:text="${item}"></label>
+                    <label class="form-control-label" th:for="${item}" th:text="${item}"></label>
                   </div>
                 </div>
               </div>
@@ -33,7 +51,7 @@
             <div class="card">
               <div class="card-header">
                 <a href="#filter-price" data-toggle="collapse" aria-expanded="true" aria-controls="filter-price" role="button" class="h6">
-                  PRICE
+                  PRECIO
                 </a>
               </div>
               <div id="filter-price" class="collapse show">
@@ -46,42 +64,10 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                <a href="#filter-size" data-toggle="collapse" aria-expanded="true" aria-controls="filter-size" role="button" class="h6">
-                  SIZE
-                </a>
-              </div>
-              <div id="filter-size" class="collapse show">
-                <div class="card-body">
-                    <div th:each="item : ${#lists.sort(allSizes)}" class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" th:id="${item}" th:name="size" th:value="${item}"
-                             th:checked="${((param.size != null) and (#lists.contains(param.size, item )))} ? checked">
-                      <label class="custom-control-label" th:for="${item}" th:text="${item}"></label>
-                    </div>
-                </div>
-              </div>
-            </div>            
-            <div class="card">
-              <div class="card-header">
-                <a href="#filter-brands" data-toggle="collapse" aria-expanded="true" aria-controls="filter-brands" role="button" class="h6">
-                  BRANDS
-                </a>
-              </div>
-              <div id="filter-brands" class="collapse show">
-                <div class="card-body">               
-                  <div th:each="item : ${allBrands}" class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" th:id="${item}" th:name="brand" th:value="${item}"
-                           th:checked="${((param.brand != null) and (#lists.contains(param.brand, item )))} ? checked">
-                    <label class="custom-control-label" th:for="${item}" th:text="${item}"></label>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </div>               
             <div class="card">
               <div class="card-header px-5 py-2 text-center">
-                 <button type="submit" form="filter-form" class="btn btn-primary rounded-pill btn-block btn-sm">APPLY</button>              
+                 <button type="submit" form="filter-form" class="btn btn-danger rounded-pill btn-block btn-sm">APLICAR</button>              
               </div>
             </div>
           </div>   <!-- end of accordion sidebar -->         
@@ -91,15 +77,15 @@
 
         <div class="col-lg-9 col-md-8">                
           <!-- /Shop Toolbar -->
-          <div class="card mb-3">
+          <div class="card">
             <div class="row card-body d-flex justify-content-between align-items-start py-2">
             
               <div class="col-8 col-md-7 col-lg-6">
                 <button type="button" class="btn btn-sm btn-outline-primary rounded-pill d-block d-md-none mb-2" data-toggle="modal" data-target="#filterModal">
                   <i data-feather="filter"></i> Filter</button>
-                <div class="input-group input-group-search input-group-sm mb-2">
+                <div class="input-group">
                   
-                  <input type="text" class="form-control border-0 bg-light input-search" placeholder="Search..." 
+                  <input type="text" class="form-control border-0 bg-light input-search" placeholder="Buscar..." 
                          th:name="search" th:value="${filters.search}">
                   <div class="input-group-append">
                     <button class="btn btn-light" type="submit"><i data-feather="search"></i></button>
@@ -107,24 +93,24 @@
                 </div>                                
               </div>    
               
-              <div class="btn-group ml-3">
+              <div class="btn-group">
                 <button type="button" class="btn btn-light btn-sm border rounded-pill" data-toggle="dropdown" 
                         aria-haspopup="true" aria-expanded="false">                        
                   <th:block th:switch="${filters.sort}">                    
-                    <span id="dropdown-sort-text" th:case="'priceasc'">Low - High Price</span>
-                    <span id="dropdown-sort-text" th:case="'pricedesc'">High - Low Price</span>
-                    <span id="dropdown-sort-text" th:case="'alphasc'">A - Z Order</span>
-                    <span id="dropdown-sort-text" th:case="'alphdesc'">Z - A Order</span>
-                    <span id="dropdown-sort-text" th:case="*">Newest</span>
+                    <span id="dropdown-sort-text" th:case="'priceasc'">Precio bajo - alto</span>
+                    <span id="dropdown-sort-text" th:case="'pricedesc'">Precio alto - bajo</span>
+                    <span id="dropdown-sort-text" th:case="'alphasc'">Orden de la A a la Z</span>
+                    <span id="dropdown-sort-text" th:case="'alphdesc'">Orden de la Z a la A</span>
+                    <span id="dropdown-sort-text" th:case="*">Novedad</span>
                   </th:block>      
                   <i data-feather="chevron-down"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right shadow-sm">
-                  <button class="dropdown-item button-sort" type="button" value="newest">Newest</button>
-                  <button class="dropdown-item button-sort" type="button" value="priceasc">Low - High Price</button>
-                  <button class="dropdown-item button-sort" type="button" value="pricedesc">High - Low Price</button>
-                  <button class="dropdown-item button-sort" type="button" value="alphasc">A - Z Order</button>
-                  <button class="dropdown-item button-sort" type="button" value="alphdesc">Z - A Order</button>
+                  <button class="dropdown-item button-sort" type="button" value="newest">Novedad</button>
+                  <button class="dropdown-item button-sort" type="button" value="priceasc">Precio bajo - alto</button>
+                  <button class="dropdown-item button-sort" type="button" value="pricedesc">Precio alto - bajo</button>
+                  <button class="dropdown-item button-sort" type="button" value="alphasc">Orden de la A a la Z</button>
+                  <button class="dropdown-item button-sort" type="button" value="alphdesc">Orden de la Z a la A</button>
                 </div>
               </div> 
               <input id="input-sort" hidden="hidden" type="text" name="sort" th:value="${filters.sort}">                           
@@ -180,8 +166,8 @@
 
     </form>
   
-  <div th:replace="common/header :: footer"> </div>
-  <div th:replace="common/header :: body-scripts"> </div>
+  <div th:replace="common/cabecera :: footer"> </div>
+  <div th:replace="common/cabecera :: body-scripts"> </div>
   
   <script>    
     var sidebarContent = $('.accordion-sidebar').html()

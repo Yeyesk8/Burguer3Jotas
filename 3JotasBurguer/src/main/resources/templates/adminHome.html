@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org./1999/xhtml" xmlns:sec="http://www.w3.org./1999/xhtml">
-<head th:replace="common/header :: common-header"></head>
+<head th:replace="common/cabecera :: common-cabecera"></head>
 
 <body class="d-flex flex-column">
   <div th:fragment="navbarAdmin">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4 fixed-top">
-      <a class="navbar-brand" th:href="@{/admin}">ADMIN PORTAL</a>
+      <a class="navbar-brand" th:href="@{/admin}">ADMINISTRADOR</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse"
         data-target="#navbarCollapse" aria-controls="navbarCollapse"
         aria-expanded="false" aria-label="Toggle navigation">
@@ -16,19 +16,19 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
               role="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false"> PRODUCTS </a>
+              aria-expanded="false"> PRODUCTOS </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" th:href="@{/article/add}">Add new product</a> 
-              <a class="dropdown-item" th:href="@{/article/article-list}">View product list</a> 
+              <a class="dropdown-item" th:href="@{/article/add}">Añadir nuevo producto</a> 
+              <a class="dropdown-item" th:href="@{/article/article-list}">Lista productos</a> 
             </div>
           </li>   
         </ul>
         <ul class="navbar-nav ml-auto">
            <li class="nav-item">
-            <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/}"> BACK TO STORE </a>
+            <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/}"> Volver a la tienda</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}"> LOG OUT </a>
+            <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}"> Cerrar Sesion </a>
           </li>
         </ul>
       </div>
@@ -36,7 +36,7 @@
   </div>
   
   
-  <div th:replace="common/header :: body-scripts"> </div>
+  <div th:replace="common/cabecera :: body-scripts"> </div>
   
   
 

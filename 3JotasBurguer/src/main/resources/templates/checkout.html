@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
-<head th:replace="common/header :: common-header" />
+<head th:replace="common/cabecera :: common-cabecera" />
 
 
 <body class="d-flex flex-column">
-  <div th:replace="common/header :: navbar"> </div>
+  <div th:replace="common/cabecera :: navbar"> </div>
 
   <div class="container page-content">   
     <form th:action="@{/checkout}" method="post">
@@ -34,8 +34,7 @@
                         </div>
                         <div class="col-8">
                           <a th:href="@{/article-detail?id=}+${cartItem.article.id}" class="h6 bold d-inline-block" th:text=${cartItem.article.title}></a>
-                            <div><i data-feather="check-circle" class="text-success"></i> In Stock</div>                  
-                            <div><small><b>Size</b>: <span th:text="${cartItem.size}"></span></small></div>                  
+                            <div><i data-feather="check-circle" class="text-success"></i> In Stock</div>                                                             
                             <small><b>Unit Price</b>: $<span th:text="${#numbers.formatDecimal(cartItem.article.price, 0, 'COMMA', 2, 'POINT')}"></span></small>
                         </div>
                       </div> 
@@ -230,8 +229,8 @@
     
   </div> <!--  end container -->
   
-  <div th:replace="common/header :: footer"> </div>  
-  <div th:replace="common/header :: body-scripts"> </div>
+  <div th:replace="common/cabecera :: footer"> </div>  
+  <div th:replace="common/cabecera :: body-scripts"> </div>
  
   
 </body>
