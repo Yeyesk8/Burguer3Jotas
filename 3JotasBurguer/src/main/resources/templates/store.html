@@ -48,6 +48,23 @@
                 </div>
               </div>
             </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <a href="#filter-ingredientes" data-toggle="collapse" aria-expanded="true" aria-controls="filter-ingredientes" role="button" class="h6">
+                  INGREDIENTES
+                </a>
+              </div>
+              <div id="filter-ingredientes" class="collapse show">
+                <div class="card-body">
+                  <div th:each="item : ${allIngredientes}" class="orm-checkbox">
+                    <input type="checkbox" class="form-control-input" th:id="${item}" th:name="ingrediente" th:value="${item}"
+                           th:checked="${((param.ingrediente != null) and (#lists.contains(param.ingrediente, item )))} ? checked">
+                    <label class="form-control-label" th:for="${item}" th:text="${item}"></label>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="card">
               <div class="card-header">
                 <a href="#filter-price" data-toggle="collapse" aria-expanded="true" aria-controls="filter-price" role="button" class="h6">
