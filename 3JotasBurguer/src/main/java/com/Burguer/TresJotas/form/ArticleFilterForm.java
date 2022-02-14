@@ -4,9 +4,7 @@ import java.util.List;
 
 public class ArticleFilterForm {
 	
-	private List<String> size;
 	private List<String> category;
-	private List<String> brand;
 	private Integer pricelow;
 	private Integer pricehigh;
 	private String sort;
@@ -16,28 +14,12 @@ public class ArticleFilterForm {
 	public ArticleFilterForm() {
 	}
 
-	public List<String> getSize() {
-		return size;
-	}
-
-	public void setSize(List<String> size) {
-		this.size = size;
-	}
-
 	public List<String> getCategory() {
 		return category;
 	}
 
 	public void setCategory(List<String> category) {
 		this.category = category;
-	}
-
-	public List<String> getBrand() {
-		return brand;
-	}
-
-	public void setBrand(List<String> brand) {
-		this.brand = brand;
 	}
 
 	public Integer getPricelow() {

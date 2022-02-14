@@ -37,14 +37,14 @@ public class ShoppingCartController {
 
 	@RequestMapping("/add-item")
 	public String addItem(@ModelAttribute("article") Article article, @RequestParam("qty") String qty,
-						  @RequestParam("size") String size, RedirectAttributes attributes, Model model, Authentication authentication) {
+						  RedirectAttributes attributes, Model model, Authentication authentication) {
 		article = articleService.findArticleById(article.getId());				
 		if (!article.hasStock(Integer.parseInt(qty))) {
 			attributes.addFlashAttribute("notEnoughStock", true);
 			return "redirect:/article-detail?id="+article.getId();
 		}		
 		User user = (User) authentication.getPrincipal();		
-		shoppingCartService.addArticleToShoppingCart(article, user, Integer.parseInt(qty), size);
+		shoppingCartService.addArticleToShoppingCart(article, user, Integer.parseInt(qty));
 		attributes.addFlashAttribute("addArticleSuccess", true);
 		return "redirect:/article-detail?id="+article.getId();
 	}

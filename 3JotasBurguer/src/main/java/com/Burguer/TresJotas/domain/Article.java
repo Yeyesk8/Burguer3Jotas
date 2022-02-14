@@ -20,12 +20,7 @@ public class Article {
 	private double price;
 	private String picture;
 	
-	@OneToMany(mappedBy="article", cascade = CascadeType.ALL, orphanRemoval = true)
-	private Set<Size> sizes;
-	
-	@OneToMany(mappedBy="article", cascade = CascadeType.ALL, orphanRemoval = true)
-	private Set<Brand> brands;
-	
+
 	@OneToMany(mappedBy="article", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Category> categories;
 
@@ -40,16 +35,6 @@ public class Article {
 		this.stock -= amount;
 	}
 	
-
-	public void addSize(Size size) {
-        sizes.add(size);
-        size.setArticle(this);
-    }
- 
-    public void removeSize(Size size) {
-        sizes.remove(size);
-        size.setArticle(null);
-    }
     
 	public void addCategory(Category category) {
         categories.add(category);
@@ -61,17 +46,6 @@ public class Article {
         category.setArticle(null);
     }
     
-	public void addSize(Brand brand) {
-        brands.add(brand);
-        brand.setArticle(this);
-    }
- 
-    public void removeSize(Brand brand) {
-    	brands.remove(brand);
-        brand.setArticle(null);
-    }
-	
-	
 	public Long getId() {
 		return id;
 	}
@@ -95,18 +69,6 @@ public class Article {
 	}
 	public void setStock(int stock) {
 		this.stock = stock;
-	}
-	public Set<Size> getSizes() {
-		return sizes;
-	}
-	public void setSizes(Set<Size> sizes) {
-		this.sizes = sizes;
-	}
-	public Set<Brand> getBrands() {
-		return brands;
-	}
-	public void setBrands(Set<Brand> brands) {
-		this.brands = brands;
 	}
 	public Set<Category> getCategories() {
 		return categories;

@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.Burguer.TresJotas.domain.Article;
 import com.Burguer.TresJotas.domain.ArticleBuilder;
-import com.Burguer.TresJotas.domain.Brand;
 import com.Burguer.TresJotas.domain.Category;
-import com.Burguer.TresJotas.domain.Size;
 import com.Burguer.TresJotas.service.ArticleService;
 
 @Controller
@@ -31,8 +29,6 @@ public class ArticleController {
 	public String addArticle(Model model) {
 		Article article = new Article();
 		model.addAttribute("article", article);
-		model.addAttribute("allSizes", articleService.getAllSizes());
-		model.addAttribute("allBrands", articleService.getAllBrands());
 		model.addAttribute("allCategories", articleService.getAllCategories());
 		return "addArticle";
 	}
@@ -44,9 +40,7 @@ public class ArticleController {
 				.stockAvailable(article.getStock())
 				.withPrice(article.getPrice())
 				.imageLink(article.getPicture())
-				.sizesAvailable(Arrays.asList(request.getParameter("size").split("\\s*,\\s*")))
 				.ofCategories(Arrays.asList(request.getParameter("category").split("\\s*,\\s*")))
-				.ofBrand(Arrays.asList(request.getParameter("brand").split("\\s*,\\s*")))
 				.build();		
 		articleService.saveArticle(newArticle);	
 		return "redirect:article-list";
@@ -62,24 +56,13 @@ public class ArticleController {
 	@RequestMapping("/edit")
 	public String editArticle(@RequestParam("id") Long id, Model model) {
 		Article article = articleService.findArticleById(id);
-		String preselectedSizes = "";
-		for (Size size : article.getSizes()) {
-			preselectedSizes += (size.getValue() + ",");
-		}
-		String preselectedBrands = "";
-		for (Brand brand : article.getBrands()) {
-			preselectedBrands += (brand.getName() + ",");
-		}
+		
 		String preselectedCategories = "";
 		for (Category category : article.getCategories()) {
 			preselectedCategories += (category.getName() + ",");
 		}		
 		model.addAttribute("article", article);
-		model.addAttribute("preselectedSizes", preselectedSizes);
-		model.addAttribute("preselectedBrands", preselectedBrands);
 		model.addAttribute("preselectedCategories", preselectedCategories);
-		model.addAttribute("allSizes", articleService.getAllSizes());
-		model.addAttribute("allBrands", articleService.getAllBrands());
 		model.addAttribute("allCategories", articleService.getAllCategories());
 		return "editArticle";
 	}
@@ -90,10 +73,8 @@ public class ArticleController {
 				.withTitle(article.getTitle())
 				.stockAvailable(article.getStock())
 				.withPrice(article.getPrice())
-				.imageLink(article.getPicture())
-				.sizesAvailable(Arrays.asList(request.getParameter("size").split("\\s*,\\s*")))
-				.ofCategories(Arrays.asList(request.getParameter("category").split("\\s*,\\s*")))
-				.ofBrand(Arrays.asList(request.getParameter("brand").split("\\s*,\\s*")))
+				.imageLink(article.getPicture())				
+				.ofCategories(Arrays.asList(request.getParameter("category").split("\\s*,\\s*")))			
 				.build();
 		newArticle.setId(article.getId());
 		articleService.saveArticle(newArticle);	

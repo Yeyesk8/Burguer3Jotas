@@ -18,7 +18,6 @@ public class CartItem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private int qty;
-	private String size;
 	
 	@OneToOne
 	@JoinColumn(name="article_id")
@@ -47,10 +46,6 @@ public class CartItem {
 		if (qty > 0) {
 			this.qty = this.qty + qty;
 		}
-	}
-	
-	public boolean hasSameSizeThan(String size2) {
-		return this.size.equals(size2);
 	}
 	
 	
@@ -84,14 +79,6 @@ public class CartItem {
 	public void setOrder(Order order) {
 		this.order = order;
 	}
-	public String getSize() {
-		return size;
-	}
-	public void setSize(String size) {
-		this.size = size;
-	}
-
-	
 	
 	
 }
