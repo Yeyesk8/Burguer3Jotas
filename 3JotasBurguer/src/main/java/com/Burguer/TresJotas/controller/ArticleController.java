@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.Burguer.TresJotas.domain.Article;
 import com.Burguer.TresJotas.domain.ArticleBuilder;
 import com.Burguer.TresJotas.domain.Category;
+import com.Burguer.TresJotas.domain.Ingredientes;
 import com.Burguer.TresJotas.service.ArticleService;
 
 @Controller
@@ -30,6 +31,7 @@ public class ArticleController {
 		Article article = new Article();
 		model.addAttribute("article", article);
 		model.addAttribute("allCategories", articleService.getAllCategories());
+		model.addAttribute("allIngredientes", articleService.getAllIngredientes());
 		return "addArticle";
 	}
 	
@@ -41,6 +43,7 @@ public class ArticleController {
 				.withPrice(article.getPrice())
 				.imageLink(article.getPicture())
 				.ofCategories(Arrays.asList(request.getParameter("category").split("\\s*,\\s*")))
+				.ofIngredientes(Arrays.asList(request.getParameter("ingrediente").split("\\s*,\\s*")))
 				.build();		
 		articleService.saveArticle(newArticle);	
 		return "redirect:article-list";
@@ -60,10 +63,16 @@ public class ArticleController {
 		String preselectedCategories = "";
 		for (Category category : article.getCategories()) {
 			preselectedCategories += (category.getName() + ",");
-		}		
+		}
+		String preselectedIngredientes = "";
+		for (Ingredientes ingrediente : article.getIngredientes()) {
+			preselectedIngredientes += (ingrediente.getNombre() + ",");
+		}
 		model.addAttribute("article", article);
 		model.addAttribute("preselectedCategories", preselectedCategories);
+		model.addAttribute("preselectedIngredientes", preselectedIngredientes);
 		model.addAttribute("allCategories", articleService.getAllCategories());
+		model.addAttribute("allIngredientes", articleService.getAllIngredientes());
 		return "editArticle";
 	}
 	
@@ -74,7 +83,8 @@ public class ArticleController {
 				.stockAvailable(article.getStock())
 				.withPrice(article.getPrice())
 				.imageLink(article.getPicture())				
-				.ofCategories(Arrays.asList(request.getParameter("category").split("\\s*,\\s*")))			
+				.ofCategories(Arrays.asList(request.getParameter("category").split("\\s*,\\s*")))
+				.ofIngredientes(Arrays.asList(request.getParameter("ingrediente").split("\\s*,\\s*")))
 				.build();
 		newArticle.setId(article.getId());
 		articleService.saveArticle(newArticle);	

@@ -13,6 +13,7 @@ import org.springframework.data.jpa.domain.Specification;
 
 import com.Burguer.TresJotas.domain.Article;
 import com.Burguer.TresJotas.domain.Category;
+import com.Burguer.TresJotas.domain.Ingredientes;
 
 public class ArticleSpecification {
 
@@ -20,7 +21,7 @@ public class ArticleSpecification {
 	}
 
 	@SuppressWarnings("serial")
-	public static Specification<Article> filterBy(Integer priceLow, Integer priceHigh, List<String> categories,
+	public static Specification<Article> filterBy(Integer priceLow, Integer priceHigh, List<String> categories, List<String> ingredientes,
 			String search) {
 		return new Specification<Article>() {
 			@Override
@@ -31,6 +32,11 @@ public class ArticleSpecification {
 				if (categories != null && !categories.isEmpty()) {
 					Join<Article, Category> joinSize = root.join("categories");
 					predicates.add(criteriaBuilder.and(joinSize.get("name").in(categories)));
+				}
+				
+				if (ingredientes != null && !ingredientes.isEmpty()) {
+					Join<Article, Ingredientes> joinSize = root.join("ingredientes");
+					predicates.add(criteriaBuilder.and(joinSize.get("nombre").in(ingredientes)));
 				}
 
 				if (search != null && !search.isEmpty()) {

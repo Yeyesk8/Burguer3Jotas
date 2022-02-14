@@ -11,6 +11,7 @@ public class ArticleBuilder {
 	private double price;
 	private String picture;
 	private List<String> categories;
+	private List<String> ingredientes;
 	
 	public ArticleBuilder() {
 	}
@@ -40,6 +41,11 @@ public class ArticleBuilder {
 		return this;
 	}
 	
+	public ArticleBuilder ofIngredientes(List<String> ingredientes) {
+		this.ingredientes = ingredientes;
+		return this;
+	}
+	
 	public Article build() {
 		Article article = new Article();
 		article.setTitle(this.title);
@@ -54,7 +60,17 @@ public class ArticleBuilder {
 				catElements.add(new Category(val,article));
 			}
 			article.setCategories(catElements);
-		}		
+		}
+		
+		if (this.ingredientes != null && !this.ingredientes.isEmpty() ) {
+			Set<Ingredientes> catElements = new HashSet<>();
+			for (String val : this.ingredientes) {
+				catElements.add(new Ingredientes(val,article));
+			}
+			article.setIngredientes(catElements);
+		}
+		
+		
 			
 		
 		return article;

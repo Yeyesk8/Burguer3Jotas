@@ -5,6 +5,7 @@ import java.util.List;
 public class ArticleFilterForm {
 	
 	private List<String> category;
+	private List<String> ingrediente;
 	private Integer pricelow;
 	private Integer pricehigh;
 	private String sort;
@@ -20,6 +21,15 @@ public class ArticleFilterForm {
 
 	public void setCategory(List<String> category) {
 		this.category = category;
+	}
+	
+
+	public List<String> getIngrediente() {
+		return ingrediente;
+	}
+
+	public void setIngrediente(List<String> ingrediente) {
+		this.ingrediente = ingrediente;
 	}
 
 	public Integer getPricelow() {

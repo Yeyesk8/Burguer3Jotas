@@ -35,9 +35,9 @@ public class ArticleServiceImpl implements ArticleService {
 
 	@Override
 	public Page<Article> findArticlesByCriteria(Pageable pageable, Integer priceLow, Integer priceHigh,
-			List<String> categories, String search) {
+			List<String> categories,List<String> ingredientes, String search) {
 		Page<Article> page = articleRepository
-				.findAll(ArticleSpecification.filterBy(priceLow, priceHigh, categories, search), pageable);
+				.findAll(ArticleSpecification.filterBy(priceLow, priceHigh, categories,ingredientes, search), pageable);
 		return page;
 	}
 
@@ -53,13 +53,13 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
-	@CacheEvict(value = {"categories" }, allEntries = true)
+	@CacheEvict(value = {"categories","ingredientes" }, allEntries = true)
 	public Article saveArticle(Article article) {
 		return articleRepository.save(article);
 	}
 
 	@Override
-	@CacheEvict(value = {"categories" }, allEntries = true)
+	@CacheEvict(value = {"categories","ingredientes" }, allEntries = true)
 	public void deleteArticleById(Long id) {
 		articleRepository.deleteById(id);
 	}
@@ -69,6 +69,12 @@ public class ArticleServiceImpl implements ArticleService {
 	@Cacheable("categories")
 	public List<String> getAllCategories() {
 		return articleRepository.findAllCategories();
+	}
+	
+	@Override
+	@Cacheable("ingredientes")
+	public List<String> getAllIngredientes() {
+		return articleRepository.findAllIngredientes();
 	}
 
 }

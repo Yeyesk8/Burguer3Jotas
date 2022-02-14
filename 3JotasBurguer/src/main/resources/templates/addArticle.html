@@ -18,6 +18,7 @@
             <input type="text" class="form-control" id="title" name="title">
           </div>
         </div>
+        
         <div class="form-group row">
           <label for="category" class="col-2 col-form-label text-right">Categoria</label>
           <div class="col-6">
@@ -26,6 +27,17 @@
           <div class="col-4">
             <button type=button class="btn btn-primary btn-category badge badge-pill badge-primary mr-1 mb-1" th:each="item : ${allCategories}" 
             th:text="${item}" th:id="item+${category}"></button>           
+          </div>          
+        </div>
+        
+        <div class="form-group row">
+          <label for="ingredientes" class="col-2 col-form-label text-right">Ingredientes</label>
+          <div class="col-6">
+            <input type="text" class="form-control" id="ingredientes" name="ingrediente" data-role="tagsinput">
+          </div>
+          <div class="col-4">
+            <button type=button class="btn btn-primary btn-ingredientes badge badge-pill badge-primary mr-1 mb-1" th:each="item : ${allIngredientes}" 
+            th:text="${item}" th:id="item+${ingredientes}"></button>           
           </div>          
         </div>
                
@@ -59,7 +71,7 @@
         <div class="form-group row">
           <div class="offset-2 col-6">
           	<button type="submit" class="btn btn-success">Añadir Producto</button>
-              <a class="btn btn-danger" th:href="@{/article-list}">Cancelar</a>
+              <a class="btn btn-danger" th:href="@{/article/article-list}">Cancelar</a>
           </div>
         </div>
     </fieldset>

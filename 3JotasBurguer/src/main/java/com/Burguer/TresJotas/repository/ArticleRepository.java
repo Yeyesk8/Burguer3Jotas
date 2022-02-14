@@ -13,14 +13,17 @@ import com.Burguer.TresJotas.domain.Article;
 
 public interface ArticleRepository extends JpaRepository<Article, Long>, JpaSpecificationExecutor<Article> {
 	
-	@EntityGraph(attributePaths = {"categories"})
+	@EntityGraph(attributePaths = {"categories","ingredientes"})
 	List<Article> findAllEagerBy();	
 		
-	@EntityGraph(attributePaths = {"categories"})
+	@EntityGraph(attributePaths = {"categories","ingredientes"})
 	Optional<Article> findById(Long id);
 	
 	@Query("SELECT DISTINCT c.name FROM Category c")
 	List<String> findAllCategories();
+	
+	@Query("SELECT DISTINCT i.nombre FROM Ingredientes i")
+	List<String> findAllIngredientes();
 	
 	
 	

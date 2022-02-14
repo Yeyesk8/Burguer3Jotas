@@ -12,7 +12,7 @@ public interface ArticleService {
 	List<Article> findAllArticles();
 
 	Page<Article> findArticlesByCriteria(Pageable pageable, Integer priceLow, Integer priceHigh,
-			List<String> categories, String search);
+			List<String> categories,List<String> ingredientes, String search);
 
 	List<Article> findFirstArticles();
 
@@ -23,5 +23,7 @@ public interface ArticleService {
 	void deleteArticleById(Long id);
 
 	List<String> getAllCategories();
+	
+	List<String> getAllIngredientes();
 
 }

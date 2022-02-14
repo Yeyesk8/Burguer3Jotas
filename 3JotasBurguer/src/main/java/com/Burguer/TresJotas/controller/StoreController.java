@@ -28,8 +28,10 @@ public class StoreController {
 		SortFilter sortFilter = new SortFilter(filters.getSort());
 		Page<Article> pageresult = articleService.findArticlesByCriteria(
 				PageRequest.of(pagenumber, 9, sortFilter.getSortType()), filters.getPricelow(), filters.getPricehigh(),
-				filters.getCategory(), filters.getSearch());
+				filters.getCategory(),filters.getIngrediente(), filters.getSearch());
+		
 		model.addAttribute("allCategories", articleService.getAllCategories());
+		model.addAttribute("allIngredientes", articleService.getAllIngredientes());
 		model.addAttribute("articles", pageresult.getContent());
 		model.addAttribute("totalitems", pageresult.getTotalElements());
 		model.addAttribute("itemsperpage", 9);
