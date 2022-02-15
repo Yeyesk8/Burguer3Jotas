@@ -3,6 +3,13 @@
 
 <head th:replace="common/cabecera :: common-cabecera" />
 
+<head>
+
+	<!-- Font Awesome Icons -->
+	<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+	<link href="static/css/soft-uid/nucleo-svg.css" th:href="@{/css/soft-uid/nucleo-svg.css}" rel="stylesheet" />
+</head>
+
 <body>
 
 	<div th:replace="adminHome :: navbarAdmin"> </div>
@@ -13,11 +20,11 @@
 				<tr>
 					<th>Id</th>
 					<th>Nombre</th>
-					<th>Apellido</th>					
+					<th>Apellido</th>
 					<th>E-mail</th>
 					<th>Asunto</th>
 					<th>Mensaje</th>
-					<th>Operacion</th>
+					<th>Operación</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -27,8 +34,9 @@
 					<td th:text="${sugerencia.apellido}"></td>
 					<td th:text="${sugerencia.email}"></td>
 					<td th:text="${sugerencia.asunto}"></td>
-					<td th:text="${sugerencia.mensaje}"></td>					
-					<td><a th:href="@{/sugerencia/delete?id=}+${sugerencia.id}" class="badge badge-danger">BORRAR </a>
+					<td th:text="${sugerencia.mensaje}"></td>
+					<td><a th:href="@{/sugerencia/delete?id=}+${sugerencia.id}" class="badge badge-danger"><i
+								class="fas fa-solid fa-trash"></i> </a>
 					</td>
 				</tr>
 			</tbody>
