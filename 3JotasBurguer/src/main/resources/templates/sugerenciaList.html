@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml" xmlns:sec="http://www.w3.org./1999/xhtml">
+
+<head th:replace="common/cabecera :: common-cabecera" />
+
+<body>
+
+	<div th:replace="adminHome :: navbarAdmin"> </div>
+
+	<div class="container page-content">
+		<table id="table-article" class="table table-striped table-bordered table-hover">
+			<thead class="thead-dark">
+				<tr>
+					<th>Id</th>
+					<th>Nombre</th>
+					<th>Apellido</th>					
+					<th>E-mail</th>
+					<th>Asunto</th>
+					<th>Mensaje</th>
+					<th>Operacion</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-th-each="sugerencia : ${sugerencias}">
+					<td th:text="${sugerencia.id}"></td>
+					<td th:text="${sugerencia.nombre}"></td>
+					<td th:text="${sugerencia.apellido}"></td>
+					<td th:text="${sugerencia.email}"></td>
+					<td th:text="${sugerencia.asunto}"></td>
+					<td th:text="${sugerencia.mensaje}"></td>					
+					<td><a th:href="@{/sugerencia/delete?id=}+${sugerencia.id}" class="badge badge-danger">BORRAR </a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+
+	<div th:replace="common/cabecera :: body-scripts"> </div>
+
+	<script>
+		$(document).ready(function () {
+			$('#table-article').DataTable({
+				stateSave: true
+			});
+		});
+	</script>
+
+</body>
+
+</html>

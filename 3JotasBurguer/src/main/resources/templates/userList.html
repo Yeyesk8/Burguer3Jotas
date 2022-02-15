@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml" xmlns:sec="http://www.w3.org./1999/xhtml">
+
+<head th:replace="common/cabecera :: common-cabecera" />
+
+<body>
+
+	<div th:replace="adminHome :: navbarAdmin"> </div>
+
+	<div class="container page-content">
+		<table id="table-article" class="table table-striped table-bordered table-hover">
+			<thead class="thead-dark">
+				<tr>
+					<th>Id</th>
+					<th>E-mail</th>
+					<th>Nombre</th>					
+					<th>Apellido</th>
+					<th>Usuario</th>
+					<th>Contraseña</th>
+					<th>Operacion</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-th-each="user : ${usuarios}">
+					<td th:text="${user.id}"></td>
+					<td th:text="${user.email}"></td>
+					<td th:text="${user.firstName}"></td>
+					<td th:text="${user.lastName}"></td>
+					<td th:text="${user.username}"></td>
+					<td th:text="${user.password}"></td>					
+					<td><a th:href="@{/user/delete?id=}+${user.id}" class="badge badge-danger">BORRAR </a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+
+	<div th:replace="common/cabecera :: body-scripts"> </div>
+
+	<script>
+		$(document).ready(function () {
+			$('#table-article').DataTable({
+				stateSave: true
+			});
+		});
+	</script>
+
+</body>
+
+</html>

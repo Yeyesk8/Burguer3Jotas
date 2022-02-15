@@ -1,6 +1,7 @@
 package com.Burguer.TresJotas.service.impl;
 
 
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.Burguer.TresJotas.domain.Sugerencia;
@@ -44,5 +45,24 @@ public class SugerenciaServiceImpl implements SugerenciaService {
 			return sugerenciaRepository.save(sugerencia);
 		}
 	}
+
+	@Override
+	public Iterable<Sugerencia> getAllSugerencias() {
+		return sugerenciaRepository.findAll();
+	}
+
+	@Override
+	public Sugerencia findSugerenciaById(Long id) {
+		Optional<Sugerencia> opt = sugerenciaRepository.findById(id);
+		return opt.get();
+	}
+
+	@Override
+	public void deleteSugerenciaById(Long id) {
+		sugerenciaRepository.deleteById(id);
+		
+	}
+
+	}
 	
-}
+

@@ -8,7 +8,6 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.Burguer.TresJotas.domain.User;
 import com.Burguer.TresJotas.domain.security.Role;
 import com.Burguer.TresJotas.domain.security.UserRole;
@@ -73,6 +72,23 @@ public class UserServiceImpl implements UserService {
 			user.setUserRoles(userRoles);
 			return userRepository.save(user);
 		}
+	}
+
+	@Override
+	public Iterable<User> getAllUsers() {
+		return userRepository.findAll();
+	}
+
+	@Override
+	public void deleteUserById(Long id) {
+		userRepository.deleteById(id);
+		
+	}
+
+	@Override
+	public User findUserById(Long id) {
+		Optional<User> opt = userRepository.findById(id);
+		return opt.get();
 	}
 	
 }

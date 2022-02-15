@@ -33,6 +33,7 @@ public class AccountController {
 	@Autowired
 	private UserService userService;
 	
+
 	@Autowired
 	private UserSecurityService userSecurityService;
 	
@@ -45,6 +46,7 @@ public class AccountController {
 		model.addAttribute("emailExists", model.asMap().get("emailExists"));
 		return "myAccount";
 	}
+	
 	
 	@RequestMapping("/my-profile")
 	public String myProfile(Model model, Authentication authentication) {				
