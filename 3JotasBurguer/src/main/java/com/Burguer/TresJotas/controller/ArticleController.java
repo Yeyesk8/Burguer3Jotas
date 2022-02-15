@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.Burguer.TresJotas.domain.Article;
 import com.Burguer.TresJotas.domain.ArticleBuilder;
 import com.Burguer.TresJotas.domain.Category;
-import com.Burguer.TresJotas.domain.Ingredientes;
+import com.Burguer.TresJotas.domain.Ingrediente;
 import com.Burguer.TresJotas.service.ArticleService;
 
 @Controller
@@ -43,7 +43,7 @@ public class ArticleController {
 				.withPrice(article.getPrice())
 				.imageLink(article.getPicture())
 				.ofCategories(Arrays.asList(request.getParameter("category").split("\\s*,\\s*")))
-				.ofIngredientes(Arrays.asList(request.getParameter("ingrediente").split("\\s*,\\s*")))
+				.ofIngrediente(Arrays.asList(request.getParameter("ingrediente").split("\\s*,\\s*")))
 				.build();		
 		articleService.saveArticle(newArticle);	
 		return "redirect:article-list";
@@ -63,10 +63,10 @@ public class ArticleController {
 		String preselectedCategories = "";
 		for (Category category : article.getCategories()) {
 			preselectedCategories += (category.getName() + ",");
-		}
+		}		
 		String preselectedIngredientes = "";
-		for (Ingredientes ingrediente : article.getIngredientes()) {
-			preselectedIngredientes += (ingrediente.getNombre() + ",");
+		for (Ingrediente ingrediente : article.getIngredientes()) {
+			preselectedIngredientes += (ingrediente.getName() + ",");
 		}
 		model.addAttribute("article", article);
 		model.addAttribute("preselectedCategories", preselectedCategories);
@@ -84,7 +84,7 @@ public class ArticleController {
 				.withPrice(article.getPrice())
 				.imageLink(article.getPicture())				
 				.ofCategories(Arrays.asList(request.getParameter("category").split("\\s*,\\s*")))
-				.ofIngredientes(Arrays.asList(request.getParameter("ingrediente").split("\\s*,\\s*")))
+				.ofIngrediente(Arrays.asList(request.getParameter("ingrediente").split("\\s*,\\s*")))
 				.build();
 		newArticle.setId(article.getId());
 		articleService.saveArticle(newArticle);	

@@ -29,16 +29,16 @@
             th:text="${item}" th:id="item+${category}"></button>           
           </div>          
         </div>
-        
+          
         <div class="form-group row">
-          <label for="ingredientes" class="col-2 col-form-label text-right">Ingredientes</label>
+          <label for="ingrediente" class="col-2 col-form-label text-right">Ingrediente</label>
           <div class="col-6">
             <input type="text" class="form-control" id="ingredientes" name="ingrediente" data-role="tagsinput">
           </div>
           <div class="col-4">
-            <button type=button class="btn btn-primary btn-ingredientes badge badge-pill badge-primary mr-1 mb-1" th:each="item : ${allIngredientes}" 
-            th:text="${item}" th:id="item+${ingredientes}"></button>           
-          </div>          
+            <button type=button class="btn btn-primary btn-ingrediente badge badge-pill badge-primary mr-1 mb-1" th:each="item : ${allIngredientes}" 
+            th:text="${#strings.capitalize(item)}" th:id="ingrediente+${item}"></button>           
+          </div>
         </div>
                
         <div class="form-group row">

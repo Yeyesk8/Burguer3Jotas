@@ -40,8 +40,8 @@ public class ArticleBuilder {
 		this.categories = categories;
 		return this;
 	}
-	
-	public ArticleBuilder ofIngredientes(List<String> ingredientes) {
+
+	public ArticleBuilder ofIngrediente(List<String> ingredientes) {
 		this.ingredientes = ingredientes;
 		return this;
 	}
@@ -63,16 +63,13 @@ public class ArticleBuilder {
 		}
 		
 		if (this.ingredientes != null && !this.ingredientes.isEmpty() ) {
-			Set<Ingredientes> catElements = new HashSet<>();
+			Set<Ingrediente> ingelements = new HashSet<>();
 			for (String val : this.ingredientes) {
-				catElements.add(new Ingredientes(val,article));
+				ingelements.add(new Ingrediente(val,article));
 			}
-			article.setIngredientes(catElements);
-		}
-		
-		
-			
-		
+			article.setIngredientes(ingelements);
+		}	
+							
 		return article;
 	}
 	

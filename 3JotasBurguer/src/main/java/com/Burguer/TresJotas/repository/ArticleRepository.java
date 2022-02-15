@@ -21,10 +21,8 @@ public interface ArticleRepository extends JpaRepository<Article, Long>, JpaSpec
 	
 	@Query("SELECT DISTINCT c.name FROM Category c")
 	List<String> findAllCategories();
-	
-	@Query("SELECT DISTINCT i.nombre FROM Ingredientes i")
+		
+	@Query("SELECT DISTINCT i.name FROM Ingrediente i")
 	List<String> findAllIngredientes();
-	
-	
 	
 }

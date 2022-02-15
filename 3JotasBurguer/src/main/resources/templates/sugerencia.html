@@ -1,0 +1,131 @@
+
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="apple-touch-icon" sizes="76x76" href="static/img/apple-icon.png">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+	<title>
+		Sugerencias
+	</title>
+	<!--     Fonts and icons     -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+	<!-- Nucleo Icons -->
+	<link href="static/css/soft-ui/nucleo-icons.css" th:href="@{/css/soft-ui/nucleo-icons.css}" rel="stylesheet" />
+	<link href="static/css/soft-ui/nucleo-svg.css" th:href="@{/css/soft-ui/nucleo-svg.css}" rel="stylesheet" />
+	<!-- Font Awesome Icons -->
+	<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+	<!-- CSS Files -->
+	<link id="pagestyle" href="static/css/soft-ui/soft-design-system.css?v=1.0.5"
+		th:href="@{/css/soft-ui/soft-design-system.css?v=1.0.5}" rel="stylesheet" />
+</head>
+
+<body>
+	</p>
+	
+	<div class="card card-profile card-plain">
+		<div class="row">
+			<div class="col-lg-5">
+				<a href="javascript:;">
+					<div class="position-relative">
+						<div class="blur-shadow-image">
+							<img class="w-100 rounded-2 shadow-lg" src="static/image/Bar-fuera.jpg"
+								th:src="@{/image/Bar-fuera.jpg}">
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-lg-7 ps-0 my-auto">
+				<div class="card-body text-left">
+					<div class="p-md-0 pt-3">
+						<div class="card-header pb-0 text-center">
+							<h3 class="font-weight-bolder text-danger text-gradient">
+								Contacta con Nosotros</h3>
+							<p class="mb-0">Si Tienes algun Problema o Sugerencia
+								,envíe un correo electrónico a
+								Restaurante3J@gmail.com
+								o contacta mediante nuestro formulario de
+								contacto.
+							</p>
+						</div>
+						<form class="form" role="form" th:action="@{/new-sugerencia}" method="post">
+																			
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="col-lg-6 col-form-label form-control-label">Nombre</label>
+										<div class="form-group col-md-8">
+											<input class="form-control" type="text" name="nombre"
+												placeholder="Introduce tu nombre" required="required">										
+										</div>
+									</div>
+								</div>
+
+
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="col-lg-8 col-form-label form-control-label">Apellido</label>
+										<div class="form-group col-md-8">
+											<input class="form-control" type="text" name="apellido"
+												placeholder="Introduce tu Apellido" required="required">											
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="col-lg-6 col-form-label form-control-label">Email</label>
+										<div class="form-group col-md-8">
+											<input class="form-control" type="text" name="email"
+												placeholder="Introduce tu Email" required="required">										
+										</div>
+									</div>
+								</div>
+							</div>
+
+								<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="col-lg-6 col-form-label form-control-label">Asunto</label>
+										<div class="form-group col-md-8">
+											<input class="form-control" type="text" th:classappend="${asuntoExists} ? is-invalid" name="asunto"
+												placeholder="Introduce el Concepto" th:value="${asunto}" required="required">	
+												<div class="invalid-feedback">El Asunto ya está en uso</div>										
+										</div>
+									</div>
+								</div>
+								
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="col-lg-6 col-form-label form-control-label">Mensaje</label>
+										<div class="form-group col-md-8">
+											<textarea class="form-control" type="text" name="mensaje"
+												placeholder="Introduce tu usuario" rows="3" required="required">
+											</textarea>											
+										</div>
+									</div>
+								</div>		
+							</div>
+							
+							</p>
+							</p>
+							</p>
+																				
+								<div class="text-center">
+									<a th:href="@{'/sugerencia/cancelar/'}" class="btn bg-gradient-danger btn-sm btn-rounded w-15" style="float: center;">Cancelar</a>
+									<input type="submit" class="btn bg-gradient-warning btn-sm btn-rounded w-15" style="float: center;" value="Enviar">
+								</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body >
+
+</html>

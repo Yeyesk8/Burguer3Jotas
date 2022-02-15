@@ -8,8 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Ingredientes {
-	
+public class Ingrediente {
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
@@ -18,13 +18,13 @@ public class Ingredientes {
 	@JoinColumn(name="article_id")
 	private Article article;
 	
-	private String nombre;
+	private String name;
 	
-	public Ingredientes() {
+	public Ingrediente() {
 	}
 	
-	public Ingredientes(String nombre, Article article) {
-		this.nombre = nombre;
+	public Ingrediente(String name, Article article) {
+		this.name = name;
 		this.article = article;
 	}
 
@@ -44,15 +44,13 @@ public class Ingredientes {
 		this.article = article;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getName() {
+		return name;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setName(String name) {
+		this.name = name;
 	}
-
 	
 	
-
 }

@@ -13,7 +13,7 @@ import org.springframework.data.jpa.domain.Specification;
 
 import com.Burguer.TresJotas.domain.Article;
 import com.Burguer.TresJotas.domain.Category;
-import com.Burguer.TresJotas.domain.Ingredientes;
+import com.Burguer.TresJotas.domain.Ingrediente;
 
 public class ArticleSpecification {
 
@@ -33,11 +33,11 @@ public class ArticleSpecification {
 					Join<Article, Category> joinSize = root.join("categories");
 					predicates.add(criteriaBuilder.and(joinSize.get("name").in(categories)));
 				}
-				
-				if (ingredientes != null && !ingredientes.isEmpty()) {
-					Join<Article, Ingredientes> joinSize = root.join("ingredientes");
-					predicates.add(criteriaBuilder.and(joinSize.get("nombre").in(ingredientes)));
-				}
+												
+				 if (ingredientes!=null && !ingredientes.isEmpty()) {
+	                	Join<Article, Ingrediente> joinSize = root.join("ingredientes");
+	                	predicates.add(criteriaBuilder.and(joinSize.get("name").in(ingredientes)));
+	                }  
 
 				if (search != null && !search.isEmpty()) {
 					predicates.add(criteriaBuilder.and(criteriaBuilder.like(root.get("title"), "%" + search + "%")));

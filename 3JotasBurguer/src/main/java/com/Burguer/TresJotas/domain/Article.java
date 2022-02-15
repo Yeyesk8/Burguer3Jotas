@@ -25,7 +25,7 @@ public class Article {
 	private Set<Category> categories;
 	
 	@OneToMany(mappedBy="article", cascade = CascadeType.ALL, orphanRemoval = true)
-	private Set<Ingredientes> ingredientes;
+	private Set<Ingrediente> ingredientes;
 
 	public Article() {
 	}
@@ -49,12 +49,12 @@ public class Article {
         category.setArticle(null);
     }
     
-    public void addIngrediente(Ingredientes ingrediente) {
+    public void addIngrediente(Ingrediente ingrediente) {
     	ingredientes.add(ingrediente);
     	ingrediente.setArticle(this);
     }
  
-    public void removeIngrediente(Ingredientes ingrediente) {
+    public void removeIngrediente(Ingrediente ingrediente) {
     	ingredientes.remove(ingrediente);
     	ingrediente.setArticle(null);
     }
@@ -91,12 +91,12 @@ public class Article {
 	public void setCategories(Set<Category> categories) {
 		this.categories = categories;
 	}
-	
-	public Set<Ingredientes> getIngredientes() {
+
+	public Set<Ingrediente> getIngredientes() {
 		return ingredientes;
 	}
 
-	public void setIngredientes(Set<Ingredientes> ingredientes) {
+	public void setIngredientes(Set<Ingrediente> ingredientes) {
 		this.ingredientes = ingredientes;
 	}
 
