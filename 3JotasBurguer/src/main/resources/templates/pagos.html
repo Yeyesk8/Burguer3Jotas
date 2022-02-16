@@ -1,0 +1,77 @@
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
+
+<head th:replace="common/cabecera :: common-cabecera" />
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="apple-touch-icon" sizes="76x76" href="static/img/apple-icon.png">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+	<title>
+		Sugerencias
+	</title>
+	<!--     Fonts and icons     -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+	<!-- Nucleo Icons -->
+	<link href="static/css/soft-ui/nucleo-icons.css" th:href="@{/css/soft-ui/nucleo-icons.css}" rel="stylesheet" />
+	<link href="static/css/soft-ui/nucleo-svg.css" th:href="@{/css/soft-ui/nucleo-svg.css}" rel="stylesheet" />
+	<!-- Font Awesome Icons -->
+	<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+	<!-- CSS Files -->
+	<link id="pagestyle" href="static/css/soft-ui/soft-design-system.css?v=1.0.5"
+		th:href="@{/css/soft-ui/soft-design-system.css?v=1.0.5}" rel="stylesheet" />
+</head>
+
+<body>
+	</p>
+<div th:replace="common/cabecera :: navbar"> </div>
+	<div class="card card-profile card-plain">
+		<div class="row">
+			<div class="col-lg-5">
+				<a href="javascript:;">
+					<div class="position-relative">
+						<div class="blur-shadow-image">
+							<img class="w-100 rounded-2 shadow-lg" src="static/image/metodos-pago.jpg"
+								th:src="@{/image/metodos-pago.jpg}">
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-lg-7 ps-0 my-auto">
+				<div class="card-body text-left">
+					<div class="p-md-0 pt-3">
+						<div class="card-header pb-0 text-center">
+							<h3 class="font-weight-bolder text-danger text-gradient">
+								Métodos de Pago</h3>
+							<ul>
+							<li class="mb-0 font-weight-bold">Si Realiza el pedido a traves de la web puede bien:</li>
+							<ol>
+							
+							<li class="mb-0">Realizar el pago mediante las tarjetas admitidas en el sistema </li>
+							<li class="mb-0">Realizar el pago mediante Bizum al telefono movil +34 639 940 662 </li>
+							
+							</ol>
+							</p>
+							<img src="/image/creditcard.png" class="img-fluid mb-2" /><br />
+							</p>						
+							<li class="mb-0 font-weight-bold">Si Realiza el pedido en el Bar puede bien:</li>
+							<ol>
+							<li class="mb-0">Realizar el pago mediante efectivo </li>
+							<li class="mb-0">Realizar el pago mediante las tarjetas admitidas en el sistema </li>
+							<li class="mb-0">Realizar el pago mediante Bizum al teléfono móvil +34 639 940 662 </li>
+							</ol>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+		<div th:replace="common/cabecera :: footer"> </div>
+</body>
+
+</html>

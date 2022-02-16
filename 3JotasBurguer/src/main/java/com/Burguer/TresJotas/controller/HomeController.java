@@ -40,6 +40,23 @@ public class HomeController {
 
 		return "sugerencia";
 	}
+	
+	@GetMapping("/historia")
+	public String historia() {
+		
+		return "historia";
+	}
+	@GetMapping("/metodopago")
+	public String metodopago() {
+		
+		return "pagos";
+	}
+	
+	@GetMapping("/ubicacion")
+	public String ubicacion() {
+		
+		return "ubicacion";
+	}
 
 	@GetMapping("/sugerencia/cancelar")
 	public String cancelarSugerencia(Model model) {

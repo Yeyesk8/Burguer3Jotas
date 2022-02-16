@@ -1,0 +1,88 @@
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
+
+<head th:replace="common/cabecera :: common-cabecera" />
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="apple-touch-icon" sizes="76x76" href="static/img/apple-icon.png">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+	<title>
+		Sugerencias
+	</title>
+	<!--     Fonts and icons     -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+	<!-- Nucleo Icons -->
+	<link href="static/css/soft-ui/nucleo-icons.css" th:href="@{/css/soft-ui/nucleo-icons.css}" rel="stylesheet" />
+	<link href="static/css/soft-ui/nucleo-svg.css" th:href="@{/css/soft-ui/nucleo-svg.css}" rel="stylesheet" />
+	<!-- Font Awesome Icons -->
+	<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+	<!-- CSS Files -->
+	<link id="pagestyle" href="static/css/soft-ui/soft-design-system.css?v=1.0.5"
+		th:href="@{/css/soft-ui/soft-design-system.css?v=1.0.5}" rel="stylesheet" />
+</head>
+
+<body>
+	</p>
+	<div th:replace="common/cabecera :: navbar"> </div>
+	<div class="card card-profile card-plain">
+		<div class="row">
+			<div class="col-lg-5">
+				<a href="javascript:;">
+					<div class="position-relative">
+						<div class="blur-shadow-image">
+							<img class="w-100 rounded-2 shadow-lg" src="static/image/Bar3J.jpg"
+								th:src="@{/image/Bar3J.jpg}">
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-lg-7 ps-0 my-auto">
+				<div class="card-body text-left">
+					<div class="p-md-0 pt-3">
+						<div class="card-header pb-0 text-center">
+							<h3 class="font-weight-bolder text-danger text-gradient">
+								Encuentranos</h3>
+							<p class="mb-0">Nuestro Restaurante esta situado en Navarrevisca, un
+								fantastico pueblo situado en lo alto del Alberche,perteneciente a la provincia de Ávila.
+							</p>
+							<p class="mb-0">Tiene como localización en la Calle Leganes nº51, junto a
+								el esta la Discoteca 3 Jotas.</p>
+							</p>
+							<li class="mb-0">Para poder llegar a el puedes acceder desde 4 diferentes
+								ubicaciones:</li>
+							<ol>
+
+								<li class="mb-0">Si Viene de Madrid por la AV-913 Carretera de
+									Burgohondo.</li>
+								<li class="mb-0">Si Viene del Puerto de Serranillos por la AV-913
+									Dirección Serranillos-Navarrevisca.</li>
+								<li class="mb-0">Si Viene del Puerto de Mijares por la AV-901 Dirección
+									Villanueva-Navarrevisca.</li>
+								<li class="mb-0">Si Viene de Gredos por la AV-905 Dirección
+									Navalosa-Navarrevisca.</li>
+
+							</ol>
+							</p>
+							</p>
+							<form>
+								<a
+									href="https://www.google.es/maps/place/Bar+3j/@40.3655594,-4.891453,17z/data=!4m13!1m7!3m6!1s0xd407001f1626ed3:0x15eb95b1d23b96fb!2s05115+Navarrevisca,+%C3%81vila!3b1!8m2!3d40.3648478!4d-4.8948601!3m4!1s0xd406ff029f6650d:0x36a5d30fb9047df0!8m2!3d40.3656497!4d-4.8915289?hl=es" target="_blank">
+									<button type="button" class="btn btn-round bg-gradient-warning">Abrir Maps</button>
+								</a>
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div th:replace="common/cabecera :: footer"> </div>
+</body>
+
+</html>

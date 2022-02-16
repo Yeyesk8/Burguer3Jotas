@@ -48,8 +48,7 @@
 							<p class="mb-0">Si Tienes algun Problema o Sugerencia
 								,envíe un correo electrónico a
 								Restaurante3J@gmail.com
-								o contacta mediante nuestro formulario de
-								contacto.
+								o contacta mediante este formulario								
 							</p>
 						</div>
 						<form class="form" role="form" th:action="@{/new-sugerencia}" method="post">
@@ -104,7 +103,7 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<label class="col-lg-6 col-form-label form-control-label">Mensaje</label>
-										<div class="form-group col-md-8">
+										<div class="form-group col-md-14">
 											<textarea class="form-control" type="text" name="mensaje"
 												placeholder="Introduce tu usuario" rows="3" required="required">
 											</textarea>
@@ -118,7 +117,7 @@
 							</p>
 
 							<div class="text-center">
-								<a th:href="@{'/sugerencia/cancelar/'}"
+								<a th:href="@{'/sugerencia/cancelar'}"
 									class="btn bg-gradient-danger btn-sm btn-rounded w-15"
 									style="float: center;">Cancelar</a>
 								<input type="submit" class="btn bg-gradient-warning btn-sm btn-rounded w-15"
