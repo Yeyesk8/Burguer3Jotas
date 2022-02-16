@@ -73,4 +73,15 @@ public class OrderServiceImpl implements OrderService {
 		return orderRepository.findByUser(user);
 	}
 
+	@Override
+	public Iterable<Order> getAllPedidos() {
+		return orderRepository.findAll();
+	}
+
+	@Override
+	public void deletePedidoById(Long id) {
+		orderRepository.deleteById(id);
+		
+	}
+
 }

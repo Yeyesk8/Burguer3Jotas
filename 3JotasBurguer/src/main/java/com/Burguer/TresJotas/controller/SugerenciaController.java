@@ -23,7 +23,7 @@ public class SugerenciaController {
 	}
 	
 	@RequestMapping("/delete")
-	public String deleteArticle(@RequestParam("id") Long id) {
+	public String deleteSugerencia(@RequestParam("id") Long id) {
 		sugerenciaService.deleteSugerenciaById(id);
 		
 		return "redirect:sugerencia-list";

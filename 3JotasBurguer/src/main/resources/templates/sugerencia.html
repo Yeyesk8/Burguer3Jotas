@@ -1,6 +1,6 @@
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
 
-
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/cabecera :: common-cabecera" />
 
 <head>
 	<meta charset="utf-8">
@@ -26,7 +26,7 @@
 
 <body>
 	</p>
-	
+<div th:replace="common/cabecera :: navbar"> </div>
 	<div class="card card-profile card-plain">
 		<div class="row">
 			<div class="col-lg-5">
@@ -53,14 +53,14 @@
 							</p>
 						</div>
 						<form class="form" role="form" th:action="@{/new-sugerencia}" method="post">
-																			
+
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-group">
 										<label class="col-lg-6 col-form-label form-control-label">Nombre</label>
 										<div class="form-group col-md-8">
 											<input class="form-control" type="text" name="nombre"
-												placeholder="Introduce tu nombre" required="required">										
+												placeholder="Introduce tu nombre" required="required">
 										</div>
 									</div>
 								</div>
@@ -71,7 +71,7 @@
 										<label class="col-lg-8 col-form-label form-control-label">Apellido</label>
 										<div class="form-group col-md-8">
 											<input class="form-control" type="text" name="apellido"
-												placeholder="Introduce tu Apellido" required="required">											
+												placeholder="Introduce tu Apellido" required="required">
 										</div>
 									</div>
 								</div>
@@ -81,44 +81,49 @@
 										<label class="col-lg-6 col-form-label form-control-label">Email</label>
 										<div class="form-group col-md-8">
 											<input class="form-control" type="text" name="email"
-												placeholder="Introduce tu Email" required="required">										
+												placeholder="Introduce tu Email" required="required">
 										</div>
 									</div>
 								</div>
 							</div>
 
-								<div class="row">
+							<div class="row">
 								<div class="col-md-4">
 									<div class="form-group">
 										<label class="col-lg-6 col-form-label form-control-label">Asunto</label>
 										<div class="form-group col-md-8">
-											<input class="form-control" type="text" th:classappend="${asuntoExists} ? is-invalid" name="asunto"
-												placeholder="Introduce el Concepto" th:value="${asunto}" required="required">	
-												<div class="invalid-feedback">El Asunto ya está en uso</div>										
+											<input class="form-control" type="text"
+												th:classappend="${asuntoExists} ? is-invalid" name="asunto"
+												placeholder="Introduce el Concepto" th:value="${asunto}"
+												required="required">
+											<div class="invalid-feedback">El Asunto ya está en uso</div>
 										</div>
 									</div>
 								</div>
-								
+
 								<div class="col-md-4">
 									<div class="form-group">
 										<label class="col-lg-6 col-form-label form-control-label">Mensaje</label>
 										<div class="form-group col-md-8">
 											<textarea class="form-control" type="text" name="mensaje"
 												placeholder="Introduce tu usuario" rows="3" required="required">
-											</textarea>											
+											</textarea>
 										</div>
 									</div>
-								</div>		
-							</div>
-							
-							</p>
-							</p>
-							</p>
-																				
-								<div class="text-center">
-									<a th:href="@{'/sugerencia/cancelar/'}" class="btn bg-gradient-danger btn-sm btn-rounded w-15" style="float: center;">Cancelar</a>
-									<input type="submit" class="btn bg-gradient-warning btn-sm btn-rounded w-15" style="float: center;" value="Enviar">
 								</div>
+							</div>
+
+							</p>
+							</p>
+							</p>
+
+							<div class="text-center">
+								<a th:href="@{'/sugerencia/cancelar/'}"
+									class="btn bg-gradient-danger btn-sm btn-rounded w-15"
+									style="float: center;">Cancelar</a>
+								<input type="submit" class="btn bg-gradient-warning btn-sm btn-rounded w-15"
+									style="float: center;" value="Enviar">
+							</div>
 
 						</form>
 					</div>
@@ -126,6 +131,9 @@
 			</div>
 		</div>
 	</div>
-</body >
+	
+	
+		<div th:replace="common/cabecera :: footer"> </div>
+</body>
 
 </html>

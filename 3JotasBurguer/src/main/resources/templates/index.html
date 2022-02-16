@@ -67,7 +67,7 @@
 	<section class="section py-5 ">
 		<div class="container text-center">
 			<h4 class="font-weight-bold ">Nuestros Productos</h4>
-			<div class="featured-items mt-4">
+			<div class="productos mt-4">
 				<div class="card card-product card-featured" th:each="article : ${articles}">
 					<div class="card-body">
 						<a th:href="@{/article-detail?id=}+${article.id}"><img class="card-img-top"
@@ -85,30 +85,21 @@
 
 	<!-- start section -->
 	<section class="section py-5 bg-white">
-		<div class="container">
+		<div class="container mx-auto">
 			<div class="row">
 				<div class="col-sm-6 col-md-4 mb-2">
 					<div class="text-center features-card">
-						<i data-feather="truck" class="text-info"></i>
-						<h5>Free Shipping</h5>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-							elit. Dolorum, eius, quae, aliquam.</p>
+						<i data-feather="shopping-cart" class="text-info"></i>
+						<h5>Ahora Online</h5>
+						<p>Nos hemos renovado y ahora puede realizar su pedido a traves de la web.</p>
 					</div>
 				</div>
+				<div class="col-sm-6 col-md-4 mb-2"></div>
 				<div class="col-sm-6 col-md-4 mb-2">
 					<div class="text-center features-card">
 						<i data-feather="user" class="text-info"></i>
-						<h5>Support 24/7</h5>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-							elit. Dolorum, eius, quae, aliquam.</p>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 mb-2">
-					<div class="text-center features-card">
-						<i data-feather="gift" class="text-info"></i>
-						<h5>Gift cards</h5>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-							elit. Dolorum, eius, quae, aliquam.</p>
+						<h5>Contacto</h5>
+						<p>Si tiene alguna duda o sugerencia haznoslo saber a traves de nuestro formulario de contacto</p>
 					</div>
 				</div>
 			</div>
@@ -120,7 +111,7 @@
 	<section class="section pt-5">
 		<div class="container text-center">
 			<h4 class="font-weight-bold">Mas Vendidos</h4>
-			<div class="featured-brands mt-3">
+			<div class="mas-vendidos mt-3">
 				<img class="img-fluid py-5 px-5" src="/image/masventas/completa.jpg">
 				<img class="img-fluid py-5 px-5" src="/image/masventas/completo.jpg">
 				<img class="img-fluid py-5 px-5" src="/image/masventas/pequeñas.jpg">
@@ -604,7 +595,7 @@
 
 	<script type="text/javascript">
 		$(document).ready(function () {
-			$('.featured-items').slick({
+			$('.productos').slick({
 				infinite: true,
 				slidesToShow: 4,
 				slidesToScroll: 4,
@@ -635,7 +626,7 @@
 				.on('setPosition', function (event, slick) {
 					slick.$slides.css('height', slick.$slideTrack.height() + 'px');
 				});
-			$('.featured-brands').slick({
+			$('.mas-vendidos').slick({
 				slidesToShow: 6,
 				slidesToScroll: 1,
 				responsive: [
