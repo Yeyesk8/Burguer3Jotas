@@ -4,6 +4,7 @@ public class ArticleDTO {
 
 	private Long id;
 	private String title;
+	private String descripcion;
 	private double price;
 	private String picture;
 	
@@ -24,6 +25,15 @@ public class ArticleDTO {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	public double getPrice() {

@@ -20,6 +20,7 @@
 				<tr>
 					<th>Id</th>
 					<th>Nombre</th>
+					<th>Descripción</th>
 					<th>Categoria</th>
 					<th>Ingredientes</th>
 					<th>Precio</th>
@@ -31,6 +32,7 @@
 				<tr data-th-each="article : ${articles}">
 					<td th:text="${article.id}"></td>
 					<td th:text="${article.title}"></td>
+					<td th:text="${article.descripcion}"></td>
 					<td>
 						<div style="display:flex;"><span th:each="item : ${article.categories}"
 								th:text="${item.getName()}" class="badge badge-secondary mt-1 mr-1"></span></div>

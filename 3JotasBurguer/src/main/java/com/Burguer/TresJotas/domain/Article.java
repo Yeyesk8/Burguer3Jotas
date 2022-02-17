@@ -16,6 +16,7 @@ public class Article {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String title;
+	private String descripcion;
 	private int stock;	
 	private double price;
 	private String picture;
@@ -73,6 +74,15 @@ public class Article {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
 	public double getPrice() {
 		return price;
 	}

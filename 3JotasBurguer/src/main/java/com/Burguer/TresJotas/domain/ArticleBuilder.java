@@ -7,6 +7,7 @@ import java.util.Set;
 public class ArticleBuilder {
 		
 	private String title;
+	private String descripcion;
 	private int stock;	
 	private double price;
 	private String picture;
@@ -18,6 +19,11 @@ public class ArticleBuilder {
 	
 	public ArticleBuilder withTitle(String title) {
 		this.title = title;
+		return this;
+	}
+	
+	public ArticleBuilder withDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 		return this;
 	}
 	
@@ -49,6 +55,7 @@ public class ArticleBuilder {
 	public Article build() {
 		Article article = new Article();
 		article.setTitle(this.title);
+		article.setDescripcion(this.descripcion);
 		article.setPrice(this.price);
 		article.setStock(this.stock);
 		article.setPicture(this.picture);		

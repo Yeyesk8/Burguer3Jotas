@@ -39,6 +39,7 @@ public class ArticleController {
 	public String addArticlePost(@ModelAttribute("article") Article article, HttpServletRequest request) {
 		Article newArticle = new ArticleBuilder()
 				.withTitle(article.getTitle())
+				.withDescripcion(article.getDescripcion())
 				.stockAvailable(article.getStock())
 				.withPrice(article.getPrice())
 				.imageLink(article.getPicture())
@@ -80,6 +81,7 @@ public class ArticleController {
 	public String editArticlePost(@ModelAttribute("article") Article article, HttpServletRequest request) {		
 		Article newArticle = new ArticleBuilder()
 				.withTitle(article.getTitle())
+				.withDescripcion(article.getDescripcion())
 				.stockAvailable(article.getStock())
 				.withPrice(article.getPrice())
 				.imageLink(article.getPicture())				
