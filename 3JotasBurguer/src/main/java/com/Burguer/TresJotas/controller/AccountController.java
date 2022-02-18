@@ -12,15 +12,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.Burguer.TresJotas.domain.Address;
-import com.Burguer.TresJotas.domain.Order;
-import com.Burguer.TresJotas.domain.User;
+import com.Burguer.TresJotas.entity.Address;
+import com.Burguer.TresJotas.entity.Order;
+import com.Burguer.TresJotas.entity.User;
 import com.Burguer.TresJotas.service.OrderService;
 import com.Burguer.TresJotas.service.UserService;
 import com.Burguer.TresJotas.service.impl.UserSecurityService;
@@ -40,7 +40,7 @@ public class AccountController {
 	@Autowired
 	private OrderService orderService;
 
-	@RequestMapping("/login")
+	@GetMapping("/login")
 	public String log(Model model) {
 		model.addAttribute("usernameExists", model.asMap().get("usernameExists"));
 		model.addAttribute("emailExists", model.asMap().get("emailExists"));
@@ -48,14 +48,14 @@ public class AccountController {
 	}
 	
 	
-	@RequestMapping("/my-profile")
+	@GetMapping("/my-profile")
 	public String myProfile(Model model, Authentication authentication) {				
 		User user = (User) authentication.getPrincipal();
 		model.addAttribute("user", user);
 		return "myProfile";
 	}
 	
-	@RequestMapping("/my-orders")
+	@GetMapping("/my-orders")
 	public String myOrders(Model model, Authentication authentication) {
 		User user = (User) authentication.getPrincipal();
 		model.addAttribute("user", user);
@@ -64,14 +64,14 @@ public class AccountController {
 		return "myOrders";
 	}
 	
-	@RequestMapping("/my-address")
+	@GetMapping("/my-address")
 	public String myAddress(Model model, Principal principal) {
 		User user = userService.findByUsername(principal.getName());
 		model.addAttribute("user", user);
 		return "myAddress";
 	}
 	
-	@RequestMapping(value="/update-user-address", method=RequestMethod.POST)
+	@PostMapping("/update-user-address")
 	public String updateUserAddress(@ModelAttribute("address") Address address, 
 			Model model, Principal principal) throws Exception {
 		User currentUser = userService.findByUsername(principal.getName());
@@ -83,7 +83,7 @@ public class AccountController {
 		return "redirect:/my-address";
 	}
 	
-	@RequestMapping(value="/new-user", method=RequestMethod.POST)
+	@PostMapping("/new-user")
 	public String newUserPost(@Valid @ModelAttribute("user") User user, BindingResult bindingResults,
 							  @ModelAttribute("new-password") String password, 
 							  RedirectAttributes redirectAttributes, Model model) {
@@ -109,7 +109,7 @@ public class AccountController {
 		return "redirect:/my-profile";  
 	}
 		
-	@RequestMapping(value="/update-user-info", method=RequestMethod.POST)
+	@PostMapping("/update-user-info")
 	public String updateUserInfo( @ModelAttribute("user") User user,
 								  @RequestParam("newPassword") String newPassword,
 								  Model model, Principal principal) throws Exception {
@@ -151,7 +151,7 @@ public class AccountController {
 		return "myProfile";
 	}
 	
-	@RequestMapping("/order-detail")
+	@GetMapping("/order-detail")
 	public String orderDetail(@RequestParam("order") Long id, Model model) {
 		Order order = orderService.findOrderWithDetails(id);
 		model.addAttribute("order", order);

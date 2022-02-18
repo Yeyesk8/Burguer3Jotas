@@ -2,7 +2,7 @@ package com.Burguer.TresJotas.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.Burguer.TresJotas.domain.security.Role;
+import com.Burguer.TresJotas.entity.security.Role;
 
 public interface RoleRepository extends CrudRepository<Role, Long> {
 	

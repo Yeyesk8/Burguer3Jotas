@@ -10,13 +10,13 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.Burguer.TresJotas.domain.Article;
-import com.Burguer.TresJotas.domain.CartItem;
-import com.Burguer.TresJotas.domain.Order;
-import com.Burguer.TresJotas.domain.Payment;
-import com.Burguer.TresJotas.domain.Shipping;
-import com.Burguer.TresJotas.domain.ShoppingCart;
-import com.Burguer.TresJotas.domain.User;
+import com.Burguer.TresJotas.entity.Article;
+import com.Burguer.TresJotas.entity.CartItem;
+import com.Burguer.TresJotas.entity.Order;
+import com.Burguer.TresJotas.entity.Payment;
+import com.Burguer.TresJotas.entity.Shipping;
+import com.Burguer.TresJotas.entity.ShoppingCart;
+import com.Burguer.TresJotas.entity.User;
 import com.Burguer.TresJotas.repository.ArticleRepository;
 import com.Burguer.TresJotas.repository.CartItemRepository;
 import com.Burguer.TresJotas.repository.OrderRepository;
@@ -45,11 +45,10 @@ public class OrderServiceImpl implements OrderService {
 		order.setOrderTotal(shoppingCart.getGrandTotal());
 		shipping.setOrder(order);
 		payment.setOrder(order);			
-		LocalDate today = LocalDate.now();
-		LocalDate estimatedDeliveryDate = today.plusDays(5);				
+		LocalDate today = LocalDate.now();					
 		order.setOrderDate(Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-		order.setShippingDate(Date.from(estimatedDeliveryDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-		order.setOrderStatus("In Progress");
+		order.setShippingDate(Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+		order.setOrderStatus("Preparando");
 		
 		order = orderRepository.save(order);
 		

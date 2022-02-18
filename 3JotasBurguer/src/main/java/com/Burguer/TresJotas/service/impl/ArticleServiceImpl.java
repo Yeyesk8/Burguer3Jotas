@@ -13,7 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.Burguer.TresJotas.domain.Article;
+import com.Burguer.TresJotas.entity.Article;
 import com.Burguer.TresJotas.repository.ArticleRepository;
 import com.Burguer.TresJotas.repository.ArticleSpecification;
 import com.Burguer.TresJotas.service.ArticleService;

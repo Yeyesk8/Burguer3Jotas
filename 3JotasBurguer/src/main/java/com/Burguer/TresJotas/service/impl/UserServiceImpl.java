@@ -8,9 +8,10 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.Burguer.TresJotas.domain.User;
-import com.Burguer.TresJotas.domain.security.Role;
-import com.Burguer.TresJotas.domain.security.UserRole;
+
+import com.Burguer.TresJotas.entity.User;
+import com.Burguer.TresJotas.entity.security.Role;
+import com.Burguer.TresJotas.entity.security.UserRole;
 import com.Burguer.TresJotas.repository.RoleRepository;
 import com.Burguer.TresJotas.repository.UserRepository;
 import com.Burguer.TresJotas.service.UserService;

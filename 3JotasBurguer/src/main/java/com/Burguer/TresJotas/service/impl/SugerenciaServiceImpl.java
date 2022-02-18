@@ -4,7 +4,8 @@ package com.Burguer.TresJotas.service.impl;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.Burguer.TresJotas.domain.Sugerencia;
+
+import com.Burguer.TresJotas.entity.Sugerencia;
 import com.Burguer.TresJotas.repository.SugerenciaRepository;
 import com.Burguer.TresJotas.service.SugerenciaService;
 

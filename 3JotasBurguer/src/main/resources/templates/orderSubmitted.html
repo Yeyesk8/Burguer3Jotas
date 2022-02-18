@@ -1,6 +1,28 @@
-<!doctype html>
+
 <html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
 <head th:replace="common/cabecera :: common-cabecera" />
+
+<head th:replace="common/cabecera :: common-cabecera" />
+
+<head>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!--     Fonts and icons     -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+
+<!-- Nucleo Icons -->
+<link href="static/css/soft-ui/nucleo-icons.css" th:href="@{/css/soft-ui/nucleo-icons.css}" rel="stylesheet" />
+<link href="static/css/soft-ui/nucleo-svg.css" th:href="@{/css/soft-ui/nucleo-svg.css}" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+<!-- CSS Files -->
+<link id="pagestyle" href="static/css/soft-ui/soft-design-system.css?v=1.0.5"
+	th:href="@{/css/soft-ui/soft-design-system.css?v=1.0.5}" rel="stylesheet" />
+  
+</head>
 
 
 <body class="d-flex flex-column">
@@ -11,19 +33,19 @@
       <div class="card-body">
         <div class="text-center py-3">
           <i data-feather="check-circle" class="text-success" width="48" height="48"></i>
-          <h1>Thank you.</h1>
-          <p>Your order has been placed and will be processed as soon as possible.</p>
+          <h1>Gracias.</h1>
+          <p>Su pedido ha sido realizado y será preparado lo antes posible.</p>
           <p class="mb-0">
-            <span class="text-muted">Order ID: </span>
-            <span class="text-info">#ORD<span th:text="${order.id}"></span></span>
+            <span class="text-muted">Id Pedido: </span>
+            <span class="text-info">#PED<span th:text="${order.id}"></span></span>
           </p>
           <p>
-            <span class="text-muted">Amount: </span>
-            <span class="text-info">$ <span th:text="${order.orderTotal}"></span></span>
+            <span class="text-muted">Cantidad: </span>
+            <span class="text-info">€ <span th:text="${order.orderTotal}"></span></span>
           </p>
-          <p>The estimated delivery date is <span th:text="${#dates.format(order.shippingDate, 'dd-MMM-yyyy')}"></span></p>
-          <a th:href="@{/store}" class="btn btn-info rounded mb-3">CONTINUE SHOPPING</a>
-          <a th:href="@{/order-detail?order=}+${order.id}" class="btn btn-primary rounded mb-3">VIEW ORDER</a>
+          <p>La fecha estimada de entrega es <span th:text="${#dates.format(order.shippingDate, 'dd-MMM-yyyy')}"></span></p>
+          <a th:href="@{/store}" class="btn btn-info rounded mb-3">SEGUIR PIDIENDO</a>
+          <a th:href="@{/order-detail?order=}+${order.id}" class="btn btn-danger rounded mb-3">VER PEDIDO</a>
         </div>
       </div>
     </div>  

@@ -1,4 +1,4 @@
-package com.Burguer.TresJotas.domain.security;
+package com.Burguer.TresJotas.entity.security;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.Burguer.TresJotas.domain.User;
+import com.Burguer.TresJotas.entity.User;
 
 @Entity
 @Table(name="user_role")

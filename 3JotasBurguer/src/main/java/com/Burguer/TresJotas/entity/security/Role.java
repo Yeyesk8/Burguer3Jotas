@@ -1,4 +1,4 @@
-package com.Burguer.TresJotas.domain.security;
+package com.Burguer.TresJotas.entity.security;
 
 import java.util.HashSet;
 import java.util.Set;

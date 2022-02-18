@@ -11,9 +11,9 @@ import javax.persistence.criteria.Root;
 
 import org.springframework.data.jpa.domain.Specification;
 
-import com.Burguer.TresJotas.domain.Article;
-import com.Burguer.TresJotas.domain.Category;
-import com.Burguer.TresJotas.domain.Ingrediente;
+import com.Burguer.TresJotas.entity.Article;
+import com.Burguer.TresJotas.entity.Category;
+import com.Burguer.TresJotas.entity.Ingrediente;
 
 public class ArticleSpecification {
 

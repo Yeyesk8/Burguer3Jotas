@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.EntityGraph.EntityGraphType;
 import org.springframework.data.repository.CrudRepository;
 
-import com.Burguer.TresJotas.domain.User;
+import com.Burguer.TresJotas.entity.User;
 
 public interface UserRepository extends CrudRepository<User, Long>{
 		

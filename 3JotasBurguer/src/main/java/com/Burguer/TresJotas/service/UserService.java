@@ -2,7 +2,8 @@ package com.Burguer.TresJotas.service;
 
 
 import java.util.List;
-import com.Burguer.TresJotas.domain.User;
+
+import com.Burguer.TresJotas.entity.User;
 
 public interface UserService {
 	

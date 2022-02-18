@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.Burguer.TresJotas.domain.Article;
+import com.Burguer.TresJotas.entity.Article;
 
 public interface ArticleService {
 

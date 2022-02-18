@@ -7,10 +7,10 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import com.Burguer.TresJotas.domain.Article;
-import com.Burguer.TresJotas.domain.CartItem;
-import com.Burguer.TresJotas.domain.ShoppingCart;
-import com.Burguer.TresJotas.domain.User;
+import com.Burguer.TresJotas.entity.Article;
+import com.Burguer.TresJotas.entity.CartItem;
+import com.Burguer.TresJotas.entity.ShoppingCart;
+import com.Burguer.TresJotas.entity.User;
 import com.Burguer.TresJotas.repository.CartItemRepository;
 import com.Burguer.TresJotas.service.ShoppingCartService;
 

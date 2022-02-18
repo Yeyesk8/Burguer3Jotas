@@ -1,4 +1,4 @@
-package com.Burguer.TresJotas.domain;
+package com.Burguer.TresJotas.entity;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -23,8 +23,8 @@ import javax.validation.constraints.NotNull;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.Burguer.TresJotas.domain.security.Authority;
-import com.Burguer.TresJotas.domain.security.UserRole;
+import com.Burguer.TresJotas.entity.security.Authority;
+import com.Burguer.TresJotas.entity.security.UserRole;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @NamedEntityGraph(

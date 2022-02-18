@@ -4,15 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.Burguer.TresJotas.domain.Article;
-import com.Burguer.TresJotas.domain.CartItem;
-import com.Burguer.TresJotas.domain.ShoppingCart;
-import com.Burguer.TresJotas.domain.User;
+import com.Burguer.TresJotas.entity.Article;
+import com.Burguer.TresJotas.entity.CartItem;
+import com.Burguer.TresJotas.entity.ShoppingCart;
+import com.Burguer.TresJotas.entity.User;
 import com.Burguer.TresJotas.service.ArticleService;
 import com.Burguer.TresJotas.service.ShoppingCartService;
 
@@ -26,7 +28,7 @@ public class ShoppingCartController {
 	@Autowired
 	private ShoppingCartService shoppingCartService;
 	
-	@RequestMapping("/cart")
+	@GetMapping("/cart")
 	public String shoppingCart(Model model, Authentication authentication) {		
 		User user = (User) authentication.getPrincipal();		
 		ShoppingCart shoppingCart = shoppingCartService.getShoppingCart(user);		
@@ -35,7 +37,7 @@ public class ShoppingCartController {
 		return "shoppingCart";
 	}
 
-	@RequestMapping("/add-item")
+	@PostMapping("/add-item")
 	public String addItem(@ModelAttribute("article") Article article, @RequestParam("qty") String qty,
 						  RedirectAttributes attributes, Model model, Authentication authentication) {
 		article = articleService.findArticleById(article.getId());				
@@ -49,7 +51,7 @@ public class ShoppingCartController {
 		return "redirect:/article-detail?id="+article.getId();
 	}
 	
-	@RequestMapping("/update-item")
+	@PostMapping("/update-item")
 	public String updateItemQuantity(@RequestParam("id") Long cartItemId,
 									 @RequestParam("qty") Integer qty, Model model) {		
 		CartItem cartItem = shoppingCartService.findCartItemById(cartItemId);
@@ -59,7 +61,7 @@ public class ShoppingCartController {
 		return "redirect:/shopping-cart/cart";
 	}
 	
-	@RequestMapping("/remove-item")
+	@GetMapping("/remove-item")
 	public String removeItem(@RequestParam("id") Long id) {		
 		shoppingCartService.removeCartItem(shoppingCartService.findCartItemById(id));		
 		return "redirect:/shopping-cart/cart";

@@ -4,18 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.Burguer.TresJotas.domain.Address;
-import com.Burguer.TresJotas.domain.Order;
-import com.Burguer.TresJotas.domain.Payment;
-import com.Burguer.TresJotas.domain.Shipping;
-import com.Burguer.TresJotas.domain.ShoppingCart;
-import com.Burguer.TresJotas.domain.User;
+import com.Burguer.TresJotas.entity.Address;
+import com.Burguer.TresJotas.entity.Order;
+import com.Burguer.TresJotas.entity.Payment;
+import com.Burguer.TresJotas.entity.Shipping;
+import com.Burguer.TresJotas.entity.ShoppingCart;
+import com.Burguer.TresJotas.entity.User;
 import com.Burguer.TresJotas.service.OrderService;
 import com.Burguer.TresJotas.service.ShoppingCartService;
 
@@ -28,7 +28,7 @@ public class CheckoutControler {
 	@Autowired
 	private OrderService orderService;
 
-	@RequestMapping("/checkout")
+	@GetMapping("/checkout")
 	public String checkout( @RequestParam(value="missingRequiredField", required=false) boolean missingRequiredField,
 							Model model, Authentication authentication) {		
 		User user = (User) authentication.getPrincipal();	
@@ -45,7 +45,7 @@ public class CheckoutControler {
 		return "checkout";		
 	}
 	
-	@RequestMapping(value = "/checkout", method = RequestMethod.POST)
+	@PostMapping(value = "/checkout")
 	public String placeOrder(@ModelAttribute("shipping") Shipping shipping,
 							@ModelAttribute("address") Address address,
 							@ModelAttribute("payment") Payment payment,
@@ -60,7 +60,7 @@ public class CheckoutControler {
 		return "redirect:/order-submitted";
 	}
 	
-	@RequestMapping(value = "/order-submitted", method = RequestMethod.GET)
+	@GetMapping("/order-submitted")
 	public String orderSubmitted(Model model) {
 		Order order = (Order) model.asMap().get("order");
 		if (order == null) {

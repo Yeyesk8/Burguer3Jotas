@@ -2,7 +2,7 @@ package com.Burguer.TresJotas.service;
 
 
 
-import com.Burguer.TresJotas.domain.Sugerencia;
+import com.Burguer.TresJotas.entity.Sugerencia;
 
 public interface SugerenciaService {
 	

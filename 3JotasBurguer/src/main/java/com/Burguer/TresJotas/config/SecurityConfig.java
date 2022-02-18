@@ -36,10 +36,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/store",
 			"/article-detail",
 			"/sugerencia",
+			"/new-sugerencia",
 			"/historia",
 			"/metodopago",
-			"/ubicacion",
-			"/shopping-cart/ubicacion"
+			"/ubicacion"
+			
 	};
 	
 	@Override

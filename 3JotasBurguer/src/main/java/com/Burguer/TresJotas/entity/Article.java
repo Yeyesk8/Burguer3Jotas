@@ -1,4 +1,4 @@
-package com.Burguer.TresJotas.domain;
+package com.Burguer.TresJotas.entity;
 
 import java.util.Set;
 

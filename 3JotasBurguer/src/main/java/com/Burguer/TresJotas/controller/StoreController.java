@@ -7,10 +7,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.Burguer.TresJotas.domain.Article;
+import com.Burguer.TresJotas.entity.Article;
 import com.Burguer.TresJotas.form.ArticleFilterForm;
 import com.Burguer.TresJotas.service.ArticleService;
 import com.Burguer.TresJotas.type.SortFilter;
@@ -21,7 +21,7 @@ public class StoreController {
 	@Autowired
 	private ArticleService articleService;
 
-	@RequestMapping("/store")
+	@GetMapping("/store")
 	public String store(@ModelAttribute("filters") ArticleFilterForm filters, Model model) {
 		Integer page = filters.getPage();
 		int pagenumber = (page == null || page <= 0) ? 0 : page - 1;
@@ -38,7 +38,7 @@ public class StoreController {
 		return "store";
 	}
 
-	@RequestMapping("/article-detail")
+	@GetMapping("/article-detail")
 	public String articleDetail(@PathParam("id") Long id, Model model) {
 		Article article = articleService.findArticleById(id);
 		model.addAttribute("article", article);

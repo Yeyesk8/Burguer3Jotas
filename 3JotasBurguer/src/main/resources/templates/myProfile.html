@@ -3,23 +3,25 @@
 <head th:replace="common/cabecera :: common-cabecera" />
 
 <head>
-	<!-- Fonts and icons -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-	<!-- Nucleo Icons -->
-	<link href="static/css/soft-ui/nucleo-icons.css" th:href="@{/css/soft-ui/nucleo-icons.css}" rel="stylesheet" />
-	<link href="static/css/soft-ui/nucleo-svg.css" th:href="@{/css/soft-ui/nucleo-svg.css}" rel="stylesheet" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<!--     Fonts and icons     -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+
+<!-- Nucleo Icons -->
+<link href="static/css/soft-ui/nucleo-icons.css" th:href="@{/css/soft-ui/nucleo-icons.css}" rel="stylesheet" />
+<link href="static/css/soft-ui/nucleo-svg.css" th:href="@{/css/soft-ui/nucleo-svg.css}" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 
-	<!-- Font Awesome Icons -->
-	<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-	<!-- CSS Files -->
-	<link id="pagestyle" href="static/css/soft-ui/soft-design-system.css?v=1.0.5"
-		th:href="@{/css/soft-ui/soft-design-system.css?v=1.0.5}" rel="stylesheet" />
-
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+<!-- CSS Files -->
+<link id="pagestyle" href="static/css/soft-ui/soft-design-system.css?v=1.0.5"
+	th:href="@{/css/soft-ui/soft-design-system.css?v=1.0.5}" rel="stylesheet" />
+  
 </head>
+
 
 
 <body class="d-flex flex-column">
@@ -36,12 +38,12 @@
 							th:text="'Ultima vez visto '+${#dates.format(#dates.createNow(), 'MMM dd, yyyy')}"></small>
 					</div>
 					<div class="list-group list-group-flush">
-						<a th:href="@{/my-profile}" class="list-group-item list-group-item-action active"><i
+						<a th:href="@{/my-profile}" class="list-group-item danger list-group-item-danger"><i
 								data-feather="user" class="mr-3"></i> Perfil</a>
 						<a th:href="@{/my-orders}" class="list-group-item list-group-item-action"><i
 								data-feather="shopping-bag" class="mr-3"></i> Pedidos</a>
 						<a th:href="@{/my-address}" class="list-group-item list-group-item-action"><i data-feather="map"
-								class="mr-3"></i> dirección</a>
+								class="mr-3"></i> Dirección</a>
 						<a th:href="@{/logout}" class="list-group-item list-group-item-action text-danger"><i
 								data-feather="log-out" class="mr-3"></i> Salir</a>
 					</div>
@@ -92,7 +94,7 @@
 									<input required="required" type="text" class="form-control"
 										th:classappend="${emailExists} ? is-invalid" id="email" name="email"
 										th:value="${user.email}">
-									<div class="invalid-feedback">Email already used by an existing account.</div>
+									<div class="invalid-feedback">E-mail ya utilizado por una cuenta existente.</div>
 								</div>
 								<div class="form-group col-sm-6">
 									<label for="txtNewPassword">Contraseña Nueva</label>
@@ -105,7 +107,7 @@
 									<div class="invalid-feedback">Las Contraseñas no coinciden</div>
 								</div>
 								<div class="form-group col-12">
-									<button id="updateUserInfoButton" type="button" class="btn btn-primary">Actualizar
+									<button id="updateUserInfoButton" type="button" class="btn btn-danger">Actualizar
 										Perfil</button>
 								</div>
 							</div>
@@ -128,7 +130,7 @@
 										<div class="modal-footer">
 											<button type="button" class="btn btn-secondary"
 												data-dismiss="modal">Cerrar</button>
-											<button type="submit" class="btn btn-primary">Actualizar</button>
+											<button type="submit" class="btn btn-danger">Actualizar</button>
 										</div>
 									</div>
 								</div>

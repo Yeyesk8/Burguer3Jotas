@@ -2,11 +2,11 @@ package com.Burguer.TresJotas.service;
 
 import java.util.List;
 
-import com.Burguer.TresJotas.domain.Order;
-import com.Burguer.TresJotas.domain.Payment;
-import com.Burguer.TresJotas.domain.Shipping;
-import com.Burguer.TresJotas.domain.ShoppingCart;
-import com.Burguer.TresJotas.domain.User;
+import com.Burguer.TresJotas.entity.Order;
+import com.Burguer.TresJotas.entity.Payment;
+import com.Burguer.TresJotas.entity.Shipping;
+import com.Burguer.TresJotas.entity.ShoppingCart;
+import com.Burguer.TresJotas.entity.User;
 
 public interface OrderService {
 
