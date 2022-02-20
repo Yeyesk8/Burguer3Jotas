@@ -31,12 +31,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/js/**",
 			"/image/**",
 			"/",
-			"/new-user",
+			"/nuevo-usuario",
 			"/login",
-			"/store",
-			"/article-detail",
+			"/tienda",
+			"/detalle-producto",
 			"/sugerencia",
-			"/new-sugerencia",
+			"/sugerencia/cancelar",
+			"/nueva-sugerencia",
 			"/historia",
 			"/metodopago",
 			"/ubicacion"
@@ -48,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 			.antMatchers(PUBLIC_MATCHERS).permitAll()
-			.antMatchers("/article/**").hasRole("ADMIN")
+			.antMatchers("/producto/**").hasRole("ADMIN")
 			.anyRequest().authenticated();
 		
 		http

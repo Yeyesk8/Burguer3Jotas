@@ -1,0 +1,84 @@
+
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
+<head th:replace="common/cabecera :: common-cabecera" />
+
+<head>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!--     Fonts and icons     -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+
+<!-- Nucleo Icons -->
+<link href="static/css/soft-ui/nucleo-icons.css" th:href="@{/css/soft-ui/nucleo-icons.css}" rel="stylesheet" />
+<link href="static/css/soft-ui/nucleo-svg.css" th:href="@{/css/soft-ui/nucleo-svg.css}" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+<!-- CSS Files -->
+<link id="pagestyle" href="static/css/soft-ui/soft-design-system.css?v=1.0.5"
+	th:href="@{/css/soft-ui/soft-design-system.css?v=1.0.5}" rel="stylesheet" />
+  
+</head>
+
+
+<body class="d-flex flex-column">
+  <div th:replace="common/cabecera :: navbar"> </div>
+
+  <div class="container page-content">
+    <div class="row">
+      
+       <div class="col-md-4 col-lg-3">
+        <div class="card">
+          <div class="card-body text-center">
+            <img src="/image/user/user.png" width="100" height="100" alt="User" class="rounded-circle mb-3">
+            <h5 class="bold mb-0" th:text="${#strings.capitalize(user.username)}"></h5>
+            <small class="text-secondary" th:text="'Ultima vez visto '+${#dates.format(#dates.createNow(), 'MMM dd, yyyy')}"></small>       
+          </div>
+          <div class="list-group list-group-flush">
+            <a th:href="@{/mi-perfil}" class="list-group-item list-group-item-action"><i data-feather="user" class="mr-3"></i> Perfil</a>
+            <a th:href="@{/mis-pedidos}" class="list-group-item list-group-item-danger"><i data-feather="shopping-bag" class="mr-3"></i> Pedidos</a>
+            <a th:href="@{/mi-direccion}" class="list-group-item list-group-item-action"><i data-feather="map" class="mr-3"></i> Dirección</a>
+            <a th:href="@{/logout}" class="list-group-item list-group-item-action text-danger"><i data-feather="log-out" class="mr-3"></i> Salir</a>
+          </div>
+        </div>
+      </div>
+      
+       <div class="col mt-3 mt-md-0">
+          <div class="card">
+            <div class="card-body">
+              <h3>Mis Pedidos</h3><hr>
+              <div class="table-responsive">
+                <table class="table table-hover" data-addclass-on-xs="table-sm">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">Id Pedido</th>
+                      <th scope="col">Fecha</th>
+                      <th scope="col" class="text-right">Total</th>
+                      <th scope="col" class="text-center">Estado</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="order : ${orders}">
+                      <th scope="row" ><a th:href="@{/detalle-pedido?order=}+${order.id}" class="text-danger">PED<span th:text="${order.id}"></span></a></th>                      
+                      <td th:text="${#dates.format(order.orderDate, 'dd-MMM-yyyy')}"></td>
+                      <td class="text-right">€<span th:text="${order.orderTotal}"></span></td>
+                      <td class="text-center"><span class="badge badge-info rounded" th:text="${order.orderStatus}"></span></td>
+                    </tr>                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+    </div>
+  </div> <!--  end container -->
+  
+  <div th:replace="common/cabecera :: footer"> </div>
+  
+  
+  <div th:replace="common/cabecera :: body-scripts"> </div>
+</body>
+</html>

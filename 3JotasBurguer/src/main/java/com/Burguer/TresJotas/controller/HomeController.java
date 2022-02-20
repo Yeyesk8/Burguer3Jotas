@@ -63,8 +63,8 @@ public class HomeController {
 		return "redirect:/";
 	}
 
-	@PostMapping("/new-sugerencia")
-	public String newSugerenciaPost(@Valid @ModelAttribute("sugerencia") Sugerencia sugerencia,
+	@PostMapping("/nueva-sugerencia")
+	public String nuevaSugerenciaPost(@Valid @ModelAttribute("sugerencia") Sugerencia sugerencia,
 			BindingResult bindingResults,RedirectAttributes redirectAttributes, Model model) {
 		model.addAttribute("nombre", sugerencia.getNombre());
 		model.addAttribute("apellido", sugerencia.getApellido());

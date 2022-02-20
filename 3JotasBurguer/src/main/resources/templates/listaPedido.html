@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml" xmlns:sec="http://www.w3.org./1999/xhtml">
+
+<head th:replace="common/cabecera :: common-cabecera" />
+
+<head>
+
+	<!-- Font Awesome Icons -->
+	<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+	<link href="static/css/soft-uid/nucleo-svg.css" th:href="@{/css/soft-uid/nucleo-svg.css}" rel="stylesheet" />
+</head>
+
+<body>
+
+	<div th:replace="adminHome :: navbarAdmin"> </div>
+
+	<div class="container page-content">
+		<table id="table-article" class="table table-striped table-bordered table-hover">
+			<thead class="thead-dark">
+				<tr>
+					<th>Id</th>
+					<th>Fecha Pedido</th>
+					<th>Estado Pedido</th>
+					<th>Total Pedido</th>
+					<th>Operacion</th>		
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-th-each="user_order : ${pedidos}">
+					<td th:text="${user_order.id}"></td>
+					<td th:text="${user_order.orderDate}"></td>
+					<td th:text="${user_order.orderStatus}"></td>
+					<td th:text="${user_order.orderTotal}"></td>					
+					<td><a th:href="@{/pedido/eliminar?id=}+${user_order.id}" class="badge badge-danger"><i
+								class="fas fa-solid fa-trash"></i> </a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+
+	<div th:replace="common/cabecera :: body-scripts"> </div>
+
+	<script>
+		$(document).ready(function () {
+			$('#table-article').DataTable({
+				stateSave: true
+			});
+		});
+	</script>
+
+</body>
+
+</html>

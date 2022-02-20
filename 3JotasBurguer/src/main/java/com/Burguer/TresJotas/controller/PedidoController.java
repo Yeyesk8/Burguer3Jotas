@@ -12,24 +12,24 @@ import com.Burguer.TresJotas.service.OrderService;
 
 
 @Controller
-@RequestMapping("/order")
+@RequestMapping("/pedido")
 public class PedidoController {
 	
 	@Autowired
 	private OrderService orderService;
 	
 	
-	@GetMapping("/pedido-list")
+	@GetMapping("/lista-pedidos")
 	public String pedidoList(Model model) {
 		model.addAttribute("pedidos", orderService.getAllPedidos());
-		return "pedidoList";
+		return "listaPedido";
 	}
 	
-	@GetMapping("/delete")
-	public String deletePedido(@RequestParam("id") Long id) {
+	@GetMapping("/eliminar")
+	public String BorrarPedido(@RequestParam("id") Long id) {
 		orderService.deletePedidoById(id);
 		
-		return "redirect:pedido-list";
+		return "redirect:lista-pedidos";
 	}
 
 }

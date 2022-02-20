@@ -1,0 +1,92 @@
+
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
+
+<head th:replace="common/cabecera :: common-cabecera" />
+
+
+<head>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!--     Fonts and icons     -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+
+<!-- Nucleo Icons -->
+<link href="static/css/soft-ui/nucleo-icons.css" th:href="@{/css/soft-ui/nucleo-icons.css}" rel="stylesheet" />
+<link href="static/css/soft-ui/nucleo-svg.css" th:href="@{/css/soft-ui/nucleo-svg.css}" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+<!-- CSS Files -->
+<link id="pagestyle" href="static/css/soft-ui/soft-design-system.css?v=1.0.5"
+	th:href="@{/css/soft-ui/soft-design-system.css?v=1.0.5}" rel="stylesheet" />
+
+</head>
+
+
+<body class="d-flex flex-column">
+	 <div th:replace="common/cabecera :: navbar"> </div>
+
+	<div class="container page-content mt-3 mb-3">
+		<div th:if="${addArticleSuccess}" class="alert alert-light alert-dismissible fade show" role="alert">
+			<strong>¡Producto agregado al carrito de compras!</strong>
+			<div class="d-flex mt-2">
+				<a th:href="@{/tienda}" class="btn btn-info rounded-pill mx-2"><i data-feather="arrow-left"></i> Seguir
+					pidiendo</a>
+				<a th:href="@{/carrito/carrito}" class="btn btn-warning rounded-pill mx-2">Ir al Carrito <i
+						data-feather="arrow-right"></i></a>
+			</div>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div th:if="${notEnoughStock}" class="alert alert-danger alert-dismissible fade show" role="alert">
+			<strong>No se pudo agregar al carrito, nos quedan <span
+					th:text="${article.stock}"></span>disponibles</strong>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-md-6">
+						<img class="img-fluid" th:src="'/image/article/pictures/'+${article.picture}+'.jpg'">
+					</div>
+					<div class="col-md-6 mt-3 mt-md-0">
+						<h2 class="card-title" th:text="${article.title}"></h2>
+						<div class="d-flex align-items-center">
+							<h2 class="price font-weight-bold mr-3">
+								<span
+									th:text="'€'+${#numbers.formatDecimal(article.price, 0, T(Math).round(article.price) == article.price ? 0 : 2)}"></span>
+							</h2>
+							<h6>(<span th:text="${article.stock}"></span> Existencias)</h6>
+						</div>
+						<p class="d-none d-lg-block"><span th:text="${article.descripcion}"></span></p>
+						<form th:action="@{/carrito/añadir-carrito}" method="post">
+							<input hidden="hidden" th:field="*{article.id}">
+							<div class="form-row">
+								<div class="form-group col-sm-3">
+									<label class="font-weight-bold" for="quantity">Cantidad</label>
+									<input type="number" class="form-control" id="quantity" th:name="qty"
+										autocomplete="off" min="1" max="20" value="1">
+								</div>
+								<div class="form-group col-sm-6 offset-sm-3 d-flex align-items-end">
+									<button type="submit" class="btn btn-danger btn-block rounded-pill atc-demo">Añadir
+										al Carrito</button>
+								</div>
+							</div>
+						</form>
+						<hr>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div th:replace="common/cabecera :: footer"> </div>
+	<div th:replace="common/cabecera :: body-scripts"> </div>
+</body>
+
+</html>

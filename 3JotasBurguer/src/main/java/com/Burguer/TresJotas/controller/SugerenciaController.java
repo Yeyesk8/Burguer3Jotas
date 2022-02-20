@@ -16,17 +16,17 @@ public class SugerenciaController {
 	@Autowired
 	private SugerenciaService sugerenciaService;
 	
-	@GetMapping("/sugerencia-list")
+	@GetMapping("/lista-sugerencias")
 	public String sugerenciaList(Model model) {
 		model.addAttribute("sugerencias", sugerenciaService.getAllSugerencias());
-		return "sugerenciaList";
+		return "listaSugerencia";
 	}
 	
-	@GetMapping("/delete")
-	public String deleteSugerencia(@RequestParam("id") Long id) {
+	@GetMapping("/eliminar")
+	public String BorrarSugerencia(@RequestParam("id") Long id) {
 		sugerenciaService.deleteSugerenciaById(id);
 		
-		return "redirect:sugerencia-list";
+		return "redirect:lista-sugerencias";
 	}
 
 }

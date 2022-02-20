@@ -1,0 +1,185 @@
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
+
+<head th:replace="common/cabecera :: common-cabecera" />
+
+<head>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!--     Fonts and icons     -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+
+<!-- Nucleo Icons -->
+<link href="static/css/soft-ui/nucleo-icons.css" th:href="@{/css/soft-ui/nucleo-icons.css}" rel="stylesheet" />
+<link href="static/css/soft-ui/nucleo-svg.css" th:href="@{/css/soft-ui/nucleo-svg.css}" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+<!-- CSS Files -->
+<link id="pagestyle" href="static/css/soft-ui/soft-design-system.css?v=1.0.5"
+	th:href="@{/css/soft-ui/soft-design-system.css?v=1.0.5}" rel="stylesheet" />
+  
+</head>
+
+
+
+<body class="d-flex flex-column">
+	<div th:replace="common/cabecera :: navbar"> </div>
+
+	<div class="container page-content">
+		<div class="row">
+			<div class="col-md-4 col-lg-3">
+				<div class="card">
+					<div class="card-body text-center">
+						<img src="/image/user/user.png" width="100" height="100" alt="User" class="rounded-circle mb-3">
+						<h5 class="bold mb-0" th:text="${#strings.capitalize(user.username)}"></h5>
+						<small class="text-secondary"
+							th:text="'Ultima vez visto '+${#dates.format(#dates.createNow(), 'MMM dd, yyyy')}"></small>
+					</div>
+					<div class="list-group list-group-flush">
+						<a th:href="@{/mi-perfil}" class="list-group-item danger list-group-item-danger"><i
+								data-feather="user" class="mr-3"></i> Perfil</a>
+						<a th:href="@{/mis-pedidos}" class="list-group-item list-group-item-action"><i
+								data-feather="shopping-bag" class="mr-3"></i> Pedidos</a>
+						<a th:href="@{/mi-direccion}" class="list-group-item list-group-item-action"><i data-feather="map"
+								class="mr-3"></i> Dirección</a>
+						<a th:href="@{/logout}" class="list-group-item list-group-item-action text-danger"><i
+								data-feather="log-out" class="mr-3"></i> Salir</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="col mt-3 mt-md-0">
+				<div th:if="${updateSuccess}" class="alert alert-success alert-dismissible fade show" role="alert">
+					<strong>¡Perfil actualizado!</strong>
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div th:if="${incorrectPassword}" class="alert alert-danger alert-dismissible fade show" role="alert">
+					<strong>Contraseña incorrecta
+
+					</strong>
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="card">
+					<div class="card-body">
+						<h3>Mi Perfil</h3>
+						<hr>
+						<form id="profileForm" th:action="@{/editar-info-usuario}" novalidate method="post">
+							<div class="form-row">
+								<div class="form-group col-sm-6">
+									<label for="firstName">Nombre</label>
+									<input type="text" class="form-control" id="firstName" name="firstName"
+										th:value="${user.firstName}">
+								</div>
+								<div class="form-group col-sm-6">
+									<label for="lastName">Apellido</label>
+									<input type="text" class="form-control" id="lastName" name="lastName"
+										th:value="${user.lastName}">
+								</div>
+								<div class="form-group col-sm-6">
+									<label for="userName">Usuario</label>
+									<input required="required" type="text" class="form-control"
+										th:classappend="${usernameExists} ? is-invalid" id="userName" name="username"
+										th:value="${user.username}">
+									<div class="invalid-feedback">Username already in use. Choose another one.</div>
+								</div>
+								<div class="form-group col-sm-6">
+									<label for="email">Email</label>
+									<input required="required" type="text" class="form-control"
+										th:classappend="${emailExists} ? is-invalid" id="email" name="email"
+										th:value="${user.email}">
+									<div class="invalid-feedback">E-mail ya utilizado por una cuenta existente.</div>
+								</div>
+								<div class="form-group col-sm-6">
+									<label for="txtNewPassword">Contraseña Nueva</label>
+									<input type="password" class="form-control" id="txtNewPassword" name="newPassword"
+										autocomplete="new-password">
+								</div>
+								<div class="form-group col-sm-6">
+									<label for="txtConfirmPassword">Confirmar Contraseña</label>
+									<input type="password" class="form-control" id="txtConfirmPassword">
+									<div class="invalid-feedback">Las Contraseñas no coinciden</div>
+								</div>
+								<div class="form-group col-12">
+									<button id="updateUserInfoButton" type="button" class="btn btn-danger">Actualizar
+										Perfil</button>
+								</div>
+							</div>
+
+							<!--  password check modal -->
+							<div class="modal fade" id="passwordModal" tabindex="-1" role="dialog"
+								aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLongTitle">Escriba su contraseña
+												actual</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<input type="password" class="form-control" id="password" name="password">
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"
+												data-dismiss="modal">Cerrar</button>
+											<button type="submit" class="btn btn-danger">Actualizar</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--  /password check modal -->
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div> <!--  end container -->
+
+	<div th:replace="common/cabecera :: footer"> </div>
+	<div th:replace="common/cabecera :: body-scripts"> </div>
+
+	<script>
+		function checkPasswordMatch() {
+			var password = $("#txtNewPassword").val();
+			var confirmPassword = $("#txtConfirmPassword").val();
+			if (password == "" && confirmPassword == "") {
+				$("#updateUserInfoButton").attr("disabled", false);
+			} else {
+				if (password != confirmPassword) {
+					$("#updateUserInfoButton").attr("disabled", true);
+					$("#txtConfirmPassword").addClass("is-invalid");
+				} else {
+					$("#updateUserInfoButton").attr("disabled", false);
+					$("#txtConfirmPassword").removeClass("is-invalid");
+				}
+			}
+		}
+
+		$(document).ready(function () {
+			$("#txtConfirmPassword").keyup(checkPasswordMatch);
+			$("#txtNewPassword").keyup(checkPasswordMatch);
+			$('#updateUserInfoButton').click(function () {
+				console.log("clickeo")
+				if ($('#txtNewPassword').val() == '') {
+					$('#profileForm').submit()
+				} else {
+					$('#passwordModal').modal('show');
+				}
+			});
+		});
+
+
+
+	</script>
+</body>
+
+</html>

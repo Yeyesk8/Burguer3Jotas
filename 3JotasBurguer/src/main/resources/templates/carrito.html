@@ -1,0 +1,101 @@
+
+
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
+<head th:replace="common/cabecera :: common-cabecera" />
+
+<head>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!--     Fonts and icons     -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+
+<!-- Nucleo Icons -->
+<link href="static/css/soft-ui/nucleo-icons.css" th:href="@{/css/soft-ui/nucleo-icons.css}" rel="stylesheet" />
+<link href="static/css/soft-ui/nucleo-svg.css" th:href="@{/css/soft-ui/nucleo-svg.css}" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+
+<!-- Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+<!-- CSS Files -->
+<link id="pagestyle" href="static/css/soft-ui/soft-design-system.css?v=1.0.5"
+	th:href="@{/css/soft-ui/soft-design-system.css?v=1.0.5}" rel="stylesheet" />
+  
+</head>
+
+
+<body class="d-flex flex-column">
+  <div th:replace="common/cabecera :: navbar"> </div>
+
+  <div class="container page-content">       
+    <form th:action="@{/carrito/editar-carrito}" method="post">   
+    <input hidden="hidden" id="newqty" th:name="qty">    
+    <input hidden="hidden" id="newid" th:name="id">     
+    <div class="card">
+      <div class="card-body">
+         <div class="row border-bottom  pb-2 pt-2" th:each="cartItem : ${cartItemList}">        
+           <div class="col-12 col-md-6">
+              <div class="row align-items-center">              
+                <div class="col-4">
+                  <a th:href="@{/detalle-producto?id=}+${cartItem.article.id}"><img class="img-fluid" 
+                  th:src="'/image/article/pictures/'+${cartItem.article.picture}+'.jpg'" alt="${cartItem.article.title}"></a>
+                </div>
+                <div class="col-8">
+                  <a th:href="@{/detalle-producto?id=}+${cartItem.article.id}" class="h6 bold d-inline-block" th:text=${cartItem.article.title}></a>
+                  <div><i data-feather="check-circle" class="text-success"></i> Disponible</div>                                                   
+                  <small><b>Precio/Ud.</b>: €<span th:text="${#numbers.formatDecimal(cartItem.article.price, 0, 'COMMA', 2, 'POINT')}"></span></small>
+                </div>                
+              </div>  
+           </div>                 
+           <div class="col-12 col-md-6">
+              <div class="row align-items-center mt-3">           
+                <div class="col-5">
+                  <div class="row ">
+                    <label th:for="${cartItem.id}" class="col-sm-6 col-form-label text-sm-right">Cantidad</label>
+                    <div class="col-sm-6">
+                      <input th:id="${cartItem.id}" th:disabled="${cartItem.article.stock==0}" 
+                         type="number" min="0" max="${cartItem.article.stock}"
+                         class="form-control cartItemQty" th:value="${cartItem.qty}">
+                      <button style="display: none;"
+                          th:id="'update-item-'+${cartItem.id}" type="submit"
+                          class="btn btn-warning btn-xs">Actualizar</button>                                     
+                    </div>
+                  </div>            
+                </div>
+                <div class="col-5 text-right">
+                  <span class="font-weight-bold">€ <span th:id="'price'+${cartItem.id}" th:text="${#numbers.formatDecimal(cartItem.subtotal, 0, 'COMMA', 2, 'POINT')}"></span></span>
+                </div>
+                <div class="col-2 ">
+                  <a th:href="@{/carrito/eliminar-producto-carrito?id=}+${cartItem.id}"><i class="mb-1" data-feather="trash-2"></i></a>                              
+                </div>
+             </div>   
+           </div> 
+         </div>
+         <div class="text-center mt-3">
+            <div th:if="${#lists.isEmpty(cartItemList)}">El Carrito esta Vacío! </div>
+            <small class="counter">TOTAL</small>
+            <h3 class="font-weight-bold">€ <span th:text="${#numbers.formatDecimal(shoppingCart.getGrandTotal(), 0, 'COMMA', 2, 'POINT')}"></span></h3>
+            <a th:href="@{/tienda}" class="btn btn-info rounded-pill "><i data-feather="arrow-left"></i> Volver a los Productos</a>            
+            <a th:href="@{/verificar}" class="btn btn-danger rounded-pill">Verificar <i data-feather="arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+    </form> 
+  </div> 
+  
+  <div th:replace="common/cabecera :: footer"> </div>
+  <div th:replace="common/cabecera :: body-scripts"> </div>
+  <script>
+    $(document).ready(function(){
+  		$(".cartItemQty").on('change', function(){
+  			var id=this.id;	
+  			var qty=this.value;
+  			$('#newqty').val(qty)
+  			$('#newid').val(id)
+  			$('#update-item-'+id).css('display', 'inline-block');
+  		});
+    });
+  </script>
+  
+</body>
+</html>

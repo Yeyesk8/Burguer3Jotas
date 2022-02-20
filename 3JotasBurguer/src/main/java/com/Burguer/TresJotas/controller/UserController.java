@@ -10,25 +10,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.Burguer.TresJotas.service.UserService;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/usuario")
 public class UserController {
 
 	@Autowired
 	private UserService userService;
 	
 	
-	@GetMapping("/user-list")
-	public String userList(Model model) {
+	@GetMapping("/lista-usuarios")
+	public String listaUsuario(Model model) {
 		model.addAttribute("usuarios", userService.getAllUsers());
-		return "userList";
+		return "listaUsuario";
 
 	}
 	
-	@GetMapping("/delete")
-	public String deleteUser(@RequestParam("id") Long id) {
+	@GetMapping("/eliminar")
+	public String BorrarUsuario(@RequestParam("id") Long id) {
 		userService.deleteUserById(id);
 		
-		return "redirect:user-list";
+		return "redirect:lista-usuarios";
 	}
 	
 }
