@@ -12,7 +12,7 @@ public interface OrderRepository extends CrudRepository<Order, Long> {
 
 	List<Order> findByUser(User user); 
 	
-	@EntityGraph(attributePaths = { "cartItems", "payment", "shipping" })
+	@EntityGraph(attributePaths = { "cartItems", "pago", "envio" })
 	Order findEagerById(Long id);
 
 }

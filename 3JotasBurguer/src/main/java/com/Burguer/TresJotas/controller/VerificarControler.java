@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.Burguer.TresJotas.entity.Address;
+import com.Burguer.TresJotas.entity.Direccion;
 import com.Burguer.TresJotas.entity.Order;
-import com.Burguer.TresJotas.entity.Payment;
-import com.Burguer.TresJotas.entity.Shipping;
+import com.Burguer.TresJotas.entity.Pago;
+import com.Burguer.TresJotas.entity.Envio;
 import com.Burguer.TresJotas.entity.ShoppingCart;
 import com.Burguer.TresJotas.entity.User;
 import com.Burguer.TresJotas.service.OrderService;
@@ -46,15 +46,15 @@ public class VerificarControler {
 	}
 	
 	@PostMapping("/verificar")
-	public String realizarPedido(@ModelAttribute("shipping") Shipping shipping,
-							@ModelAttribute("address") Address address,
-							@ModelAttribute("payment") Payment payment,
+	public String realizarPedido(@ModelAttribute("envio") Envio envio,
+							@ModelAttribute("direccion") Direccion direccion,
+							@ModelAttribute("pago") Pago pago,
 							RedirectAttributes redirectAttributes, Authentication authentication) {		
 		User user = (User) authentication.getPrincipal();		
 		ShoppingCart shoppingCart = shoppingCartService.getShoppingCart(user);	
 		if (!shoppingCart.isEmpty()) {
-			shipping.setAddress(address);
-			Order order = orderService.createOrder(shoppingCart, shipping, payment, user);		
+			envio.setDireccion(direccion);
+			Order order = orderService.createOrder(shoppingCart, envio, pago, user);		
 			redirectAttributes.addFlashAttribute("order", order);
 		}
 		return "redirect:/pedido-validado";

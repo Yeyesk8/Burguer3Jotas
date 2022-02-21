@@ -30,7 +30,7 @@
 					<div class="col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-3 col-xl-6 offset-xl-6 my-auto">
 						<h1 class="bg-warning rounded-pill text-dark d-inline-block p-1">Tres Jotas</h1>
 						<h2 class="bg-warning rounded-pill text-dark text-center">Prueba nuestras hamburguesas</h2>
-						<a th:href="@{/store}" class="btn btn-danger rounded-pill" data-addclass-on-xs="btn-sm">PIDELAS
+						<a th:href="@{/tienda}" class="btn btn-danger rounded-pill" data-addclass-on-xs="btn-sm">PIDELAS
 							AQUI</a>
 					</div>
 
@@ -70,10 +70,10 @@
 			<div class="productos mt-4">
 				<div class="card card-product card-featured" th:each="article : ${articles}">
 					<div class="card-body">
-						<a th:href="@{/article-detail?id=}+${article.id}"><img class="card-img-top"
+						<a th:href="@{/detalle-producto?id=}+${article.id}"><img class="card-img-top"
 								th:src="${article.picture} ? '/image/article/pictures/'+${article.picture}+'.jpg' : '/image/article/default.jpg'"
 								alt="Card image cap"></a>
-						<a th:href="@{/article-detail?id=}+${article.id}" class="card-title"
+						<a th:href="@{/detalle-producto?id=}+${article.id}" class="card-title"
 							th:text="${article.title}"></a>
 						<div class="price"><span th:text="'€'+${article.price}"></span></div>
 					</div>

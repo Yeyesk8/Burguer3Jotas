@@ -2,10 +2,6 @@
 <html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
 <head th:replace="common/cabecera :: common-cabecera" />
 
-<head th:replace="common/cabecera :: common-cabecera" />
-
-<head th:replace="common/cabecera :: common-cabecera" />
-
 <head>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -35,7 +31,7 @@
         <h5 class="font-weight-bold">Detalle Pedido</h5>
         <div class="list-group list-group-flush list-group-no-border list-group-sm">
           <div><strong>Fecha: </strong><span th:text="${#dates.format(order.orderDate, 'dd-MMM-yyyy')}"></span></div>
-          <div><strong>Fecha de entrega: </strong><span th:text="${#dates.format(order.shippingDate, 'dd-MMM-yyyy')}"></span></div>
+          <div><strong>Fecha de entrega: </strong><span th:text="${#dates.format(order.fechaEnvio, 'dd-MMM-yyyy')}"></span></div>
           <div><strong>Estado actual: </strong><span th:text="${order.orderStatus}"></span></div>
         </div>        
         <hr class="d-block d-sm-none">
@@ -43,20 +39,20 @@
       <div class="col-12 col-sm-6 col-lg-4 mb-2 text-center">
         <h5 class="font-weight-bold">Transporte</h5>
         <div class="list-group list-group-flush list-group-no-border list-group-sm">
-          <div><strong>Destinatario: </strong><span th:text="${order.shipping.receiver}"></span></div>
-          <div><strong>Calle: </strong><span th:text="${order.shipping.address.streetAddress}"></span></div>
-          <div><strong>Pueblo: </strong><span th:text="${order.shipping.address.city}"></span></div>
-          <div><strong>Ciudad: </strong><span th:text="${order.shipping.address.country}"></span></div>
-          <div><strong>Código postal: </strong><span th:text="${order.shipping.address.zipCode}"></span></div>
+          <div><strong>Destinatario: </strong><span th:text="${order.envio.destinatario}"></span></div>
+          <div><strong>Calle: </strong><span th:text="${order.envio.direccion.calle}"></span></div>
+          <div><strong>Pueblo: </strong><span th:text="${order.envio.direccion.pueblo}"></span></div>
+          <div><strong>Ciudad: </strong><span th:text="${order.envio.direccion.ciudad}"></span></div>
+          <div><strong>Código postal: </strong><span th:text="${order.envio.direccion.codigoPostal}"></span></div>
         </div>
         <hr class="d-block d-sm-none">        
       </div>
       <div class="col-12 col-sm-6 col-lg-4 mb-2 text-center">
         <h5 class="font-weight-bold">Pago</h5>
         <div class="list-group list-group-flush list-group-no-border list-group-sm">
-          <div><strong>Tarjeta de crédito: </strong><span th:text="${order.payment.type}"></span></div>    
-          <div><strong>Titular Tarjeta: </strong><span th:text="${order.payment.holderName}"></span></div>
-          <div><strong>Número de tarjeta: </strong><span th:text="${order.payment.cardNumber}"></span></div>
+          <div><strong>Tarjeta de crédito: </strong><span th:text="${order.pago.tipoTarjeta}"></span></div>    
+          <div><strong>Titular Tarjeta: </strong><span th:text="${order.pago.titular}"></span></div>
+          <div><strong>Número de tarjeta: </strong><span th:text="${order.pago.numeroTarjeta}"></span></div>
         </div>
       </div>
     </div>

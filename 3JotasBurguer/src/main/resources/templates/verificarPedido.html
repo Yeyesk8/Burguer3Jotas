@@ -88,27 +88,27 @@
                 <div class="card-body border-bottom">
                   <div class="form-row">
                     <div class="form-group col-12">
-                      <label for="receiver">Nombre del destinatario</label> 
-                      <input type="text" class="form-control" id="receiver" name="receiver" required="required"/>
+                      <label for="destinatario">Nombre del destinatario</label> 
+                      <input type="text" class="form-control" id="destinatario" name="destinatario" required="required"/>
                     </div>  
                     <div class="form-group col-12">
-                      <label for="streetAddress">Dirección</label> 
-                      <input type="text" class="form-control" id="streetAddress" name="streetAddress" required="required" />
+                      <label for="calle">Dirección</label> 
+                      <input type="text" class="form-control" id="calle" name="calle" required="required" />
                     </div>
                     <div class="form-group col-4">
-                      <label for="city">Pueblo</label> <input type="text"
-                        class="form-control" id="city" th:name="city"
+                      <label for="pueblo">Pueblo</label> <input type="text"
+                        class="form-control" id="pueblo" th:name="pueblo"
                         required="required"/>
                     </div>
                     <div class="form-group col-4">
-                      <label for="country">País</label> <input type="text"
-                        class="form-control" id="country" th:name="country"
+                      <label for="ciudad">Ciudad</label> <input type="text"
+                        class="form-control" id="ciudad" th:name="ciudad"
                         required="required"/>
                     </div>
                     <div class="form-group col-4">
-                      <label for="zipCode">Código postal</label> <input
-                        type="text" class="form-control" id="zipCode"
-                        th:name="zipCode" required="required" />
+                      <label for="codigoPostal">Código postal</label> <input
+                        type="text" class="form-control" id="codigoPostal"
+                        th:name="codigoPostal" required="required" />
                     </div>                                       
                   </div>
                   <div class="mt-2 text-right">
@@ -132,8 +132,8 @@
                     <div class="col-12">
                       <img src="/image/creditcard.png" class="img-fluid mb-2" /><br />
                       <div class="form-group">
-                        <label for="cardType">Seleccionar tipo de tarjeta: </label> <select
-                          class="form-control" id="cardType" name="type">
+                        <label for="tipoTarjeta">Seleccionar tipo de tarjeta: </label> <select
+                          class="form-control" id="tipoTarjeta" name="tipoTarjeta">
                           <option value="visa">Visa</option>
                           <option value="mastercard">Mastercard</option>
                           <option value="discover">Discover</option>
@@ -142,15 +142,15 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="cardHolder">Nombre del titular de la tarjeta:</label> <input
-                          type="text" class="form-control" id="cardHolder"
-                          required="required" th:name="holderName">
+                        <label for="titular">Nombre del titular de la tarjeta:</label> <input
+                          type="text" class="form-control" id="titular"
+                          required="required" th:name="titular">
                       </div>
                       <div class="form-group">
-                        <label for="cardNumber">Número de tarjeta:</label>
+                        <label for="numeroTarjeta">Número de tarjeta:</label>
                         <div class="input-group">
-                          <input type="tel" class="form-control" id="cardNumber"
-                            required="required" th:name="cardNumber">
+                          <input type="tel" class="form-control" id="numeroTarjeta"
+                            required="required" th:name="numeroTarjeta">
                         </div>
                       </div>
                     </div>
@@ -162,7 +162,7 @@
                         <label>Fecha de caducidad</label>
                         <div class="row">
                           <div class="col-6">
-                            <select class="form-control" name="expiryMonth"
+                            <select class="form-control" name="mesVencimiento"
                               required="required">
                               <option disabled="disabled">-- Mes --</option>
                               <option value="1">EN  (01)</option>
@@ -180,7 +180,7 @@
                             </select>
                           </div>
                           <div class="col-6">
-                            <select class="form-control" name="expiryYear">
+                            <select class="form-control" name="anioVencimiento">
                               <option disabled="disabled">-- Año --</option>
                               <option value="2020">2020</option>
                               <option value="2021">2021</option>
@@ -199,7 +199,7 @@
                     </div>
                     <div class="col-5">
                       <div class="form-group">
-                        <label for="cardCVC">Código CV</label> <input id="cardCVC"
+                        <label for="cardCVC">Código CV</label> <input id="cvc"
                           type="tel" class="form-control" name="cvc"/>
                       </div>
                     </div>

@@ -39,7 +39,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
 	@Override
 	@CacheEvict(value = "itemcount", allEntries = true)
-	public CartItem addArticleToShoppingCart(Article article, User user, int qty/*, String size*/) {
+	public CartItem addArticleToShoppingCart(Article article, User user, int qty) {
 		ShoppingCart shoppingCart = this.getShoppingCart(user);
 		CartItem cartItem = shoppingCart.findCartItemByArticle(article.getId());
 		if (cartItem != null) {

@@ -16,25 +16,25 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user_order")
+@Table(name = "user_order")
 public class Order {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private Date orderDate;
-	private Date shippingDate;
+	private Date fechaEnvio;
 	private String orderStatus;
 	private BigDecimal orderTotal;
-	
-	@OneToMany(mappedBy="order", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CartItem> cartItems;
-	
-	@OneToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	private Shipping shipping;
-	
-	@OneToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-	private Payment payment;
+
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Envio envio;
+
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Pago pago;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	private User user;
@@ -42,7 +42,7 @@ public class Order {
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -55,12 +55,20 @@ public class Order {
 		this.orderDate = orderDate;
 	}
 
-	public Date getShippingDate() {
-		return shippingDate;
+	public Date getFechaEnvio() {
+		return fechaEnvio;
 	}
 
-	public void setShippingDate(Date shippingDate) {
-		this.shippingDate = shippingDate;
+	public void setFechaEnvio(Date fechaEnvio) {
+		this.fechaEnvio = fechaEnvio;
+	}
+
+	public Envio getEnvio() {
+		return envio;
+	}
+
+	public void setEnvio(Envio envio) {
+		this.envio = envio;
 	}
 
 	public String getOrderStatus() {
@@ -87,20 +95,12 @@ public class Order {
 		this.cartItems = cartItems;
 	}
 
-	public Shipping getShipping() {
-		return shipping;
+	public Pago getPago() {
+		return pago;
 	}
 
-	public void setShipping(Shipping shipping) {
-		this.shipping = shipping;
-	}
-
-	public Payment getPayment() {
-		return payment;
-	}
-
-	public void setPayment(Payment payment) {
-		this.payment = payment;
+	public void setPago(Pago pago) {
+		this.pago = pago;
 	}
 
 	public User getUser() {
@@ -110,6 +110,5 @@ public class Order {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	
+
 }

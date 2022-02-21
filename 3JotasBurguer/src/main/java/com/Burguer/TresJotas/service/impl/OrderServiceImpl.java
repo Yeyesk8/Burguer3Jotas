@@ -13,8 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.Burguer.TresJotas.entity.Article;
 import com.Burguer.TresJotas.entity.CartItem;
 import com.Burguer.TresJotas.entity.Order;
-import com.Burguer.TresJotas.entity.Payment;
-import com.Burguer.TresJotas.entity.Shipping;
+import com.Burguer.TresJotas.entity.Pago;
+import com.Burguer.TresJotas.entity.Envio;
 import com.Burguer.TresJotas.entity.ShoppingCart;
 import com.Burguer.TresJotas.entity.User;
 import com.Burguer.TresJotas.repository.ArticleRepository;
@@ -37,17 +37,17 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	@Transactional
 	@CacheEvict(value = "itemcount", allEntries = true)
-	public synchronized Order createOrder(ShoppingCart shoppingCart, Shipping shipping, Payment payment, User user) {
+	public synchronized Order createOrder(ShoppingCart shoppingCart, Envio envio, Pago pago, User user) {
 		Order order = new Order();
 		order.setUser(user);
-		order.setPayment(payment);
-		order.setShipping(shipping);
+		order.setPago(pago);
+		order.setEnvio(envio);
 		order.setOrderTotal(shoppingCart.getGrandTotal());
-		shipping.setOrder(order);
-		payment.setOrder(order);			
+		envio.setOrder(order);
+		pago.setOrder(order);			
 		LocalDate today = LocalDate.now();					
 		order.setOrderDate(Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-		order.setShippingDate(Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+		order.setFechaEnvio(Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant()));
 		order.setOrderStatus("Preparando");
 		
 		order = orderRepository.save(order);

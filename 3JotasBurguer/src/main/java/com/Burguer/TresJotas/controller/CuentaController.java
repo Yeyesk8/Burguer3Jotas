@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.Burguer.TresJotas.entity.Address;
+import com.Burguer.TresJotas.entity.Direccion;
 import com.Burguer.TresJotas.entity.Order;
 import com.Burguer.TresJotas.entity.User;
 import com.Burguer.TresJotas.service.OrderService;
@@ -72,13 +72,13 @@ public class CuentaController {
 	}
 	
 	@PostMapping("/actualizar-direccion")
-	public String actualizardireccion(@ModelAttribute("address") Address address, 
+	public String actualizardireccion(@ModelAttribute("direccion") Direccion direccion, 
 			Model model, Principal principal) throws Exception {
 		User currentUser = userService.findByUsername(principal.getName());
 		if(currentUser == null) {
 			throw new Exception ("User not found");
 		}
-		currentUser.setAddress(address);
+		currentUser.setDireccion(direccion);
 		userService.save(currentUser);
 		return "redirect:/mi-direccion";
 	}
@@ -140,8 +140,8 @@ public class CuentaController {
 				return "miPerfil";
 			}
 		}		
-		currentUser.setFirstName(user.getFirstName());
-		currentUser.setLastName(user.getLastName());
+		currentUser.setNombre(user.getNombre());
+		currentUser.setApellido(user.getApellido());
 		currentUser.setUsername(user.getUsername());
 		currentUser.setEmail(user.getEmail());		
 		userService.save(currentUser);

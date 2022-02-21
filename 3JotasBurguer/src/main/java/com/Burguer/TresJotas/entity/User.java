@@ -45,14 +45,14 @@ public class User implements UserDetails {
 	@NotNull
 	private String username;
 	private String password;
-	private String firstName;
-	private String lastName;
+	private String nombre;
+	private String apellido;
 	@NotNull
 	@Email
 	private String email;
 	@OneToOne(cascade= CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name="address_id")
-	private Address address;	
+	@JoinColumn(name="direccion_id")
+	private Direccion direccion;	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JsonIgnore
 	private Set<UserRole> userRoles = new HashSet<>();
@@ -110,29 +110,37 @@ public class User implements UserDetails {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getFirstName() {
-		return firstName;
+	
+	public String getNombre() {
+		return nombre;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
-	public String getLastName() {
-		return lastName;
+
+	public String getApellido() {
+		return apellido;
 	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
+
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Address getAddress() {
-		return address;
+	
+
+	public Direccion getDireccion() {
+		return direccion;
 	}
-	public void setAddress(Address address) {
-		this.address = address;
+
+	public void setDireccion(Direccion direccion) {
+		this.direccion = direccion;
 	}
 
 	public Set<UserRole> getUserRoles() {

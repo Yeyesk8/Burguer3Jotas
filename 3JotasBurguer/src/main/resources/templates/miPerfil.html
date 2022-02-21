@@ -3,23 +3,23 @@
 <head th:replace="common/cabecera :: common-cabecera" />
 
 <head>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<!--     Fonts and icons     -->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+	<!--     Fonts and icons     -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 
-<!-- Nucleo Icons -->
-<link href="static/css/soft-ui/nucleo-icons.css" th:href="@{/css/soft-ui/nucleo-icons.css}" rel="stylesheet" />
-<link href="static/css/soft-ui/nucleo-svg.css" th:href="@{/css/soft-ui/nucleo-svg.css}" rel="stylesheet" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<!-- Nucleo Icons -->
+	<link href="static/css/soft-ui/nucleo-icons.css" th:href="@{/css/soft-ui/nucleo-icons.css}" rel="stylesheet" />
+	<link href="static/css/soft-ui/nucleo-svg.css" th:href="@{/css/soft-ui/nucleo-svg.css}" rel="stylesheet" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 
-<!-- Font Awesome Icons -->
-<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-<!-- CSS Files -->
-<link id="pagestyle" href="static/css/soft-ui/soft-design-system.css?v=1.0.5"
-	th:href="@{/css/soft-ui/soft-design-system.css?v=1.0.5}" rel="stylesheet" />
-  
+	<!-- Font Awesome Icons -->
+	<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+	<!-- CSS Files -->
+	<link id="pagestyle" href="static/css/soft-ui/soft-design-system.css?v=1.0.5"
+		th:href="@{/css/soft-ui/soft-design-system.css?v=1.0.5}" rel="stylesheet" />
+
 </head>
 
 
@@ -42,8 +42,8 @@
 								data-feather="user" class="mr-3"></i> Perfil</a>
 						<a th:href="@{/mis-pedidos}" class="list-group-item list-group-item-action"><i
 								data-feather="shopping-bag" class="mr-3"></i> Pedidos</a>
-						<a th:href="@{/mi-direccion}" class="list-group-item list-group-item-action"><i data-feather="map"
-								class="mr-3"></i> Dirección</a>
+						<a th:href="@{/mi-direccion}" class="list-group-item list-group-item-action"><i
+								data-feather="map" class="mr-3"></i> Dirección</a>
 						<a th:href="@{/logout}" class="list-group-item list-group-item-action text-danger"><i
 								data-feather="log-out" class="mr-3"></i> Salir</a>
 					</div>
@@ -73,21 +73,22 @@
 						<form id="profileForm" th:action="@{/editar-info-usuario}" novalidate method="post">
 							<div class="form-row">
 								<div class="form-group col-sm-6">
-									<label for="firstName">Nombre</label>
-									<input type="text" class="form-control" id="firstName" name="firstName"
-										th:value="${user.firstName}">
+									<label for="nombre">Nombre</label>
+									<input type="text" class="form-control" id="nombre" name="nombre"
+										th:value="${user.nombre}">
 								</div>
 								<div class="form-group col-sm-6">
-									<label for="lastName">Apellido</label>
-									<input type="text" class="form-control" id="lastName" name="lastName"
-										th:value="${user.lastName}">
+									<label for="apellido">Apellido</label>
+									<input type="text" class="form-control" id="apellido" name="apellido"
+										th:value="${user.apellido}">
 								</div>
 								<div class="form-group col-sm-6">
 									<label for="userName">Usuario</label>
 									<input required="required" type="text" class="form-control"
 										th:classappend="${usernameExists} ? is-invalid" id="userName" name="username"
 										th:value="${user.username}">
-									<div class="invalid-feedback">Username already in use. Choose another one.</div>
+									<div class="invalid-feedback">Nombre de usuario ya está en uso. Elige otro.
+									</div>
 								</div>
 								<div class="form-group col-sm-6">
 									<label for="email">Email</label>

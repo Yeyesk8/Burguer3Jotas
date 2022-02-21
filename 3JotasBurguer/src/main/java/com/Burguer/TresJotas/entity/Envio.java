@@ -9,15 +9,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Shipping {
+public class Envio {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String receiver;
+	private String destinatario;
 	@OneToOne(cascade= CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "address_id")
-	private Address address;	
+	@JoinColumn(name = "direccion_id")
+	private Direccion direccion;	
 	@OneToOne
 	private Order order;
 
@@ -29,20 +29,22 @@ public class Shipping {
 		this.id = id;
 	}
 
-	public Address getAddress() {
-		return address;
+	
+
+	public String getDestinatario() {
+		return destinatario;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setDestinatario(String destinatario) {
+		this.destinatario = destinatario;
 	}
 
-	public String getReceiver() {
-		return receiver;
+	public Direccion getDireccion() {
+		return direccion;
 	}
 
-	public void setReceiver(String receiver) {
-		this.receiver = receiver;
+	public void setDireccion(Direccion direccion) {
+		this.direccion = direccion;
 	}
 
 	public Order getOrder() {

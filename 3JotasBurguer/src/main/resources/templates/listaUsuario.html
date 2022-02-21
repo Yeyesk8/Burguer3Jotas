@@ -31,8 +31,8 @@
 				<tr data-th-each="user : ${usuarios}">
 					<td th:text="${user.id}"></td>
 					<td th:text="${user.email}"></td>
-					<td th:text="${user.firstName}"></td>
-					<td th:text="${user.lastName}"></td>
+					<td th:text="${user.nombre}"></td>
+					<td th:text="${user.apellido}"></td>
 					<td th:text="${user.username}"></td>
 					<td th:text="${user.password}"></td>
 					<td> <a th:href="@{/usuario/eliminar?id=}+${user.id}" class="badge badge-danger"><i
