@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.Burguer.TresJotas.entity.Article;
 import com.Burguer.TresJotas.entity.ArticleBuilder;
-import com.Burguer.TresJotas.entity.Category;
+import com.Burguer.TresJotas.entity.Categoria;
 import com.Burguer.TresJotas.entity.Ingrediente;
 import com.Burguer.TresJotas.service.ArticleService;
 
@@ -31,7 +31,7 @@ public class ProductoController {
 	public String aniadirProducto(Model model) {
 		Article article = new Article();
 		model.addAttribute("article", article);
-		model.addAttribute("allCategories", articleService.getAllCategories());
+		model.addAttribute("allCategorias", articleService.getAllCategorias());
 		model.addAttribute("allIngredientes", articleService.getAllIngredientes());
 		return "aniadirProducto";
 	}
@@ -44,7 +44,7 @@ public class ProductoController {
 				.stockAvailable(article.getStock())
 				.withPrice(article.getPrice())
 				.imageLink(article.getPicture())
-				.ofCategories(Arrays.asList(request.getParameter("category").split("\\s*,\\s*")))
+				.ofCategories(Arrays.asList(request.getParameter("categoria").split("\\s*,\\s*")))
 				.ofIngrediente(Arrays.asList(request.getParameter("ingrediente").split("\\s*,\\s*")))
 				.build();		
 		articleService.saveArticle(newArticle);	
@@ -62,18 +62,18 @@ public class ProductoController {
 	public String editarProducto(@RequestParam("id") Long id, Model model) {
 		Article article = articleService.findArticleById(id);
 		
-		String preselectedCategories = "";
-		for (Category category : article.getCategories()) {
-			preselectedCategories += (category.getName() + ",");
+		String preselectedCategorias = "";
+		for (Categoria categoria : article.getCategorias()) {
+			preselectedCategorias += (categoria.getNombre() + ",");
 		}		
 		String preselectedIngredientes = "";
 		for (Ingrediente ingrediente : article.getIngredientes()) {
-			preselectedIngredientes += (ingrediente.getName() + ",");
+			preselectedIngredientes += (ingrediente.getNombre() + ",");
 		}
 		model.addAttribute("article", article);
-		model.addAttribute("preselectedCategories", preselectedCategories);
+		model.addAttribute("preselectedCategorias", preselectedCategorias);
 		model.addAttribute("preselectedIngredientes", preselectedIngredientes);
-		model.addAttribute("allCategories", articleService.getAllCategories());
+		model.addAttribute("allCategorias", articleService.getAllCategorias());
 		model.addAttribute("allIngredientes", articleService.getAllIngredientes());
 		return "editarProducto";
 	}
@@ -86,7 +86,7 @@ public class ProductoController {
 				.stockAvailable(article.getStock())
 				.withPrice(article.getPrice())
 				.imageLink(article.getPicture())				
-				.ofCategories(Arrays.asList(request.getParameter("category").split("\\s*,\\s*")))
+				.ofCategories(Arrays.asList(request.getParameter("categoria").split("\\s*,\\s*")))
 				.ofIngrediente(Arrays.asList(request.getParameter("ingrediente").split("\\s*,\\s*")))
 				.build();
 		newArticle.setId(article.getId());

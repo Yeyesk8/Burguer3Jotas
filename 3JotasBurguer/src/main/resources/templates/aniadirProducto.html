@@ -27,13 +27,13 @@
         </div>
         
         <div class="form-group row">
-          <label for="category" class="col-2 col-form-label text-right">Categoria</label>
+          <label for="categoria" class="col-2 col-form-label text-right">Categoria</label>
           <div class="col-6">
-            <input type="text" class="form-control" id="categories" name="category" data-role="tagsinput">
+            <input type="text" class="form-control" id="categorias" name="categoria" data-role="tagsinput">
           </div>
           <div class="col-4">
-            <button type=button class="btn btn-primary btn-category badge badge-pill badge-primary mr-1 mb-1" th:each="item : ${allCategories}" 
-            th:text="${item}" th:id="item+${category}"></button>           
+            <button type=button class="btn btn-primary btn-category badge badge-pill badge-primary mr-1 mb-1" th:each="item : ${allCategorias}" 
+            th:text="${item}" th:id="item+${categoria}"></button>           
           </div>          
         </div>
           

@@ -18,13 +18,13 @@ public class Ingrediente {
 	@JoinColumn(name="article_id")
 	private Article article;
 	
-	private String name;
+	private String nombre;
 	
 	public Ingrediente() {
 	}
 	
-	public Ingrediente(String name, Article article) {
-		this.name = name;
+	public Ingrediente(String nombre, Article article) {
+		this.nombre = nombre;
 		this.article = article;
 	}
 
@@ -44,13 +44,15 @@ public class Ingrediente {
 		this.article = article;
 	}
 
-	public String getName() {
-		return name;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
+
+	
 	
 	
 }

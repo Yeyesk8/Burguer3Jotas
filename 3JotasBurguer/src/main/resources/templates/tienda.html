@@ -40,9 +40,9 @@
               </div>
               <div id="filter-categories" class="collapse show">
                 <div class="card-body">
-                  <div th:each="item : ${allCategories}" class="orm-checkbox">
-                    <input type="checkbox" class="form-control-input" th:id="${item}" th:name="category" th:value="${item}"
-                           th:checked="${((param.category != null) and (#lists.contains(param.category, item )))} ? checked">
+                  <div th:each="item : ${allCategorias}" class="orm-checkbox">
+                    <input type="checkbox" class="form-control-input" th:id="${item}" th:name="categoria" th:value="${item}"
+                           th:checked="${((param.categoria != null) and (#lists.contains(param.categoria, item )))} ? checked">
                     <label class="form-control-label" th:for="${item}" th:text="${item}"></label>
                   </div>
                 </div>

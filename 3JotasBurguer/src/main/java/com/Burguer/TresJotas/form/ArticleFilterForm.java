@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ArticleFilterForm {
 	
-	private List<String> category;
+	private List<String> categoria;
 	private List<String> ingrediente;
 	private Integer pricelow;
 	private Integer pricehigh;
@@ -15,14 +15,13 @@ public class ArticleFilterForm {
 	public ArticleFilterForm() {
 	}
 
-	public List<String> getCategory() {
-		return category;
+	public List<String> getCategoria() {
+		return categoria;
 	}
 
-	public void setCategory(List<String> category) {
-		this.category = category;
+	public void setCategoria(List<String> categoria) {
+		this.categoria = categoria;
 	}
-	
 
 	public List<String> getIngrediente() {
 		return ingrediente;

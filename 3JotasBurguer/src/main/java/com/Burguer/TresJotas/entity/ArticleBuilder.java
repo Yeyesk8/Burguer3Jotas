@@ -11,7 +11,7 @@ public class ArticleBuilder {
 	private int stock;	
 	private double price;
 	private String picture;
-	private List<String> categories;
+	private List<String> categorias;
 	private List<String> ingredientes;
 	
 	public ArticleBuilder() {
@@ -43,7 +43,7 @@ public class ArticleBuilder {
 	}
 	
 	public ArticleBuilder ofCategories(List<String> categories) {
-		this.categories = categories;
+		this.categorias = categories;
 		return this;
 	}
 
@@ -61,10 +61,10 @@ public class ArticleBuilder {
 		article.setPicture(this.picture);		
 		
 		
-		if (this.categories != null && !this.categories.isEmpty() ) {
-			Set<Category> catElements = new HashSet<>();
-			for (String val : this.categories) {
-				catElements.add(new Category(val,article));
+		if (this.categorias != null && !this.categorias.isEmpty() ) {
+			Set<Categoria> catElements = new HashSet<>();
+			for (String val : this.categorias) {
+				catElements.add(new Categoria(val,article));
 			}
 			article.setCategories(catElements);
 		}

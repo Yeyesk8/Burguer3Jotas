@@ -71,7 +71,7 @@
 				<div class="card card-product card-featured" th:each="article : ${articles}">
 					<div class="card-body">
 						<a th:href="@{/detalle-producto?id=}+${article.id}"><img class="card-img-top"
-								th:src="${article.picture} ? '/image/article/pictures/'+${article.picture}+'.jpg' : '/image/article/default.jpg'"
+								th:src="${article.picture} ? '/image/article/pictures/'+${article.picture}+'.jpg' : '/image/article/defecto.jpg'"
 								alt="Card image cap"></a>
 						<a th:href="@{/detalle-producto?id=}+${article.id}" class="card-title"
 							th:text="${article.title}"></a>

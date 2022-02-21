@@ -28,9 +28,9 @@ public class TiendaController {
 		SortFilter sortFilter = new SortFilter(filters.getSort());
 		Page<Article> pageresult = articleService.findArticlesByCriteria(
 				PageRequest.of(pagenumber, 9, sortFilter.getSortType()), filters.getPricelow(), filters.getPricehigh(),
-				filters.getCategory(),filters.getIngrediente(), filters.getSearch());
+				filters.getCategoria(),filters.getIngrediente(), filters.getSearch());
 		
-		model.addAttribute("allCategories", articleService.getAllCategories());
+		model.addAttribute("allCategorias", articleService.getAllCategorias());
 		model.addAttribute("allIngredientes", articleService.getAllIngredientes());
 		model.addAttribute("articles", pageresult.getContent());
 		model.addAttribute("totalitems", pageresult.getTotalElements());
