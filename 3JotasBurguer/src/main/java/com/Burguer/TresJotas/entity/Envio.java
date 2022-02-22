@@ -19,7 +19,7 @@ public class Envio {
 	@JoinColumn(name = "direccion_id")
 	private Direccion direccion;	
 	@OneToOne
-	private Order order;
+	private Pedido order;
 
 	public Long getId() {
 		return id;
@@ -47,11 +47,11 @@ public class Envio {
 		this.direccion = direccion;
 	}
 
-	public Order getOrder() {
+	public Pedido getOrder() {
 		return order;
 	}
 
-	public void setOrder(Order order) {
+	public void setOrder(Pedido order) {
 		this.order = order;
 	}	
 

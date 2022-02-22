@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.Burguer.TresJotas.entity.Direccion;
-import com.Burguer.TresJotas.entity.Order;
+import com.Burguer.TresJotas.entity.Pedido;
 import com.Burguer.TresJotas.entity.User;
 import com.Burguer.TresJotas.service.OrderService;
 import com.Burguer.TresJotas.service.UserService;
@@ -59,7 +59,7 @@ public class CuentaController {
 	public String misPedidos(Model model, Authentication authentication) {
 		User user = (User) authentication.getPrincipal();
 		model.addAttribute("user", user);
-		List<Order> orders = orderService.findByUser(user);
+		List<Pedido> orders = orderService.findByUser(user);
 		model.addAttribute("orders", orders);
 		return "misPedidos";
 	}
@@ -153,7 +153,7 @@ public class CuentaController {
 	
 	@GetMapping("/detalle-pedido")
 	public String detallePedido(@RequestParam("order") Long id, Model model) {
-		Order order = orderService.findOrderWithDetails(id);
+		Pedido order = orderService.findOrderWithDetails(id);
 		model.addAttribute("order", order);
 		return "detallePedido";
 	}

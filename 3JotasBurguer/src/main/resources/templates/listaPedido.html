@@ -28,9 +28,9 @@
 			<tbody>
 				<tr data-th-each="user_order : ${pedidos}">
 					<td th:text="${user_order.id}"></td>
-					<td th:text="${user_order.orderDate}"></td>
-					<td th:text="${user_order.orderStatus}"></td>
-					<td th:text="${user_order.orderTotal}"></td>					
+					<td th:text="${user_order.fechaPedido}"></td>
+					<td th:text="${user_order.estadoPedido}"></td>
+					<td th:text="${user_order.totalPedido}"></td>					
 					<td><a th:href="@{/pedido/eliminar?id=}+${user_order.id}" class="badge badge-danger"><i
 								class="fas fa-solid fa-trash"></i> </a>
 					</td>

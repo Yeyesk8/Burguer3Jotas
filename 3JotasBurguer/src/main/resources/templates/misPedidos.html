@@ -62,9 +62,9 @@
                   <tbody>
                     <tr th:each="order : ${orders}">
                       <th scope="row" ><a th:href="@{/detalle-pedido?order=}+${order.id}" class="text-danger">PED<span th:text="${order.id}"></span></a></th>                      
-                      <td th:text="${#dates.format(order.orderDate, 'dd-MMM-yyyy')}"></td>
-                      <td class="text-right">€<span th:text="${order.orderTotal}"></span></td>
-                      <td class="text-center"><span class="badge badge-info rounded" th:text="${order.orderStatus}"></span></td>
+                      <td th:text="${#dates.format(order.fechaPedido, 'dd-MMM-yyyy')}"></td>
+                      <td class="text-right">€<span th:text="${order.totalPedido}"></span></td>
+                      <td class="text-center"><span class="badge badge-info rounded" th:text="${order.estadoPedido}"></span></td>
                     </tr>                    
                   </tbody>
                 </table>

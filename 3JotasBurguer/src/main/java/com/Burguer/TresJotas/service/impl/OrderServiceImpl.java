@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.Burguer.TresJotas.entity.Article;
 import com.Burguer.TresJotas.entity.CartItem;
-import com.Burguer.TresJotas.entity.Order;
+import com.Burguer.TresJotas.entity.Pedido;
 import com.Burguer.TresJotas.entity.Pago;
 import com.Burguer.TresJotas.entity.Envio;
 import com.Burguer.TresJotas.entity.ShoppingCart;
@@ -37,18 +37,18 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	@Transactional
 	@CacheEvict(value = "itemcount", allEntries = true)
-	public synchronized Order createOrder(ShoppingCart shoppingCart, Envio envio, Pago pago, User user) {
-		Order order = new Order();
+	public synchronized Pedido createOrder(ShoppingCart shoppingCart, Envio envio, Pago pago, User user) {
+		Pedido order = new Pedido();
 		order.setUser(user);
 		order.setPago(pago);
 		order.setEnvio(envio);
-		order.setOrderTotal(shoppingCart.getGrandTotal());
+		order.setTotalPedido(shoppingCart.getGrandTotal());
 		envio.setOrder(order);
 		pago.setOrder(order);			
 		LocalDate today = LocalDate.now();					
-		order.setOrderDate(Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+		order.setFechaPedido(Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant()));
 		order.setFechaEnvio(Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-		order.setOrderStatus("Preparando");
+		order.setEstadoPedido("Preparando");
 		
 		order = orderRepository.save(order);
 		
@@ -64,16 +64,16 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 	@Override
-	public Order findOrderWithDetails(Long id) {
+	public Pedido findOrderWithDetails(Long id) {
 		return orderRepository.findEagerById(id);
 	}	
 
-	public List<Order> findByUser(User user) {
+	public List<Pedido> findByUser(User user) {
 		return orderRepository.findByUser(user);
 	}
 
 	@Override
-	public Iterable<Order> getAllPedidos() {
+	public Iterable<Pedido> getAllPedidos() {
 		return orderRepository.findAll();
 	}
 

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.Burguer.TresJotas.entity.Direccion;
-import com.Burguer.TresJotas.entity.Order;
+import com.Burguer.TresJotas.entity.Pedido;
 import com.Burguer.TresJotas.entity.Pago;
 import com.Burguer.TresJotas.entity.Envio;
 import com.Burguer.TresJotas.entity.ShoppingCart;
@@ -54,7 +54,7 @@ public class VerificarControler {
 		ShoppingCart shoppingCart = shoppingCartService.getShoppingCart(user);	
 		if (!shoppingCart.isEmpty()) {
 			envio.setDireccion(direccion);
-			Order order = orderService.createOrder(shoppingCart, envio, pago, user);		
+			Pedido order = orderService.createOrder(shoppingCart, envio, pago, user);		
 			redirectAttributes.addFlashAttribute("order", order);
 		}
 		return "redirect:/pedido-validado";
@@ -62,7 +62,7 @@ public class VerificarControler {
 	
 	@GetMapping("/pedido-validado")
 	public String pedidoValidado(Model model) {
-		Order order = (Order) model.asMap().get("order");
+		Pedido order = (Pedido) model.asMap().get("order");
 		if (order == null) {
 			return "redirect:/";
 		}

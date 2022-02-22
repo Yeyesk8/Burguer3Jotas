@@ -22,7 +22,7 @@ public class Pago {
 	private String titular;
 	
 	@OneToOne
-	private Order order;
+	private Pedido order;
 	
 	public Long getId() {
 		return id;
@@ -31,10 +31,10 @@ public class Pago {
 		this.id = id;
 	}
 	
-	public Order getOrder() {
+	public Pedido getOrder() {
 		return order;
 	}
-	public void setOrder(Order order) {
+	public void setOrder(Pedido order) {
 		this.order = order;
 	}
 	public String getTipoTarjeta() {

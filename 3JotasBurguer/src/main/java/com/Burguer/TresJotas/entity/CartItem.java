@@ -29,7 +29,7 @@ public class CartItem {
 	
 	@ManyToOne
 	@JoinColumn(name="order_id")
-	private Order order;
+	private Pedido order;
 	
 	public CartItem() {		
 	}
@@ -73,10 +73,10 @@ public class CartItem {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public Order getOrder() {
+	public Pedido getOrder() {
 		return order;
 	}
-	public void setOrder(Order order) {
+	public void setOrder(Pedido order) {
 		this.order = order;
 	}
 	

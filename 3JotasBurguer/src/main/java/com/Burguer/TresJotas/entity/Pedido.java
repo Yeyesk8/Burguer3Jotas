@@ -17,15 +17,15 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "user_order")
-public class Order {
+public class Pedido {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private Date orderDate;
+	private Date fechaPedido;
 	private Date fechaEnvio;
-	private String orderStatus;
-	private BigDecimal orderTotal;
+	private String estadoPedido;
+	private BigDecimal totalPedido;
 
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CartItem> cartItems;
@@ -47,12 +47,22 @@ public class Order {
 		this.id = id;
 	}
 
-	public Date getOrderDate() {
-		return orderDate;
+	
+
+	public Date getFechaPedido() {
+		return fechaPedido;
 	}
 
-	public void setOrderDate(Date orderDate) {
-		this.orderDate = orderDate;
+	public void setFechaPedido(Date fechaPedido) {
+		this.fechaPedido = fechaPedido;
+	}
+
+	public String getEstadoPedido() {
+		return estadoPedido;
+	}
+
+	public void setEstadoPedido(String estadoPedido) {
+		this.estadoPedido = estadoPedido;
 	}
 
 	public Date getFechaEnvio() {
@@ -71,20 +81,12 @@ public class Order {
 		this.envio = envio;
 	}
 
-	public String getOrderStatus() {
-		return orderStatus;
+	public BigDecimal getTotalPedido() {
+		return totalPedido;
 	}
 
-	public void setOrderStatus(String orderStatus) {
-		this.orderStatus = orderStatus;
-	}
-
-	public BigDecimal getOrderTotal() {
-		return orderTotal;
-	}
-
-	public void setOrderTotal(BigDecimal orderTotal) {
-		this.orderTotal = orderTotal;
+	public void setTotalPedido(BigDecimal totalPedido) {
+		this.totalPedido = totalPedido;
 	}
 
 	public List<CartItem> getCartItems() {

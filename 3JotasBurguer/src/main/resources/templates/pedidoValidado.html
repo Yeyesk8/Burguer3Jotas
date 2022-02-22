@@ -41,7 +41,7 @@
           </p>
           <p>
             <span class="text-muted">Cantidad: </span>
-            <span class="text-info">€ <span th:text="${order.orderTotal}"></span></span>
+            <span class="text-info">€ <span th:text="${order.totalPedido}"></span></span>
           </p>
           <p>La fecha estimada de entrega es <span th:text="${#dates.format(order.fechaEnvio, 'dd-MMM-yyyy')}"></span></p>
           <a th:href="@{/tienda}" class="btn btn-info rounded mb-3">SEGUIR PIDIENDO</a>

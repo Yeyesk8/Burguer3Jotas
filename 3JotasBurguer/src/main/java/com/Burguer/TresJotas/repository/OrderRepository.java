@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.repository.CrudRepository;
 
-import com.Burguer.TresJotas.entity.Order;
+import com.Burguer.TresJotas.entity.Pedido;
 import com.Burguer.TresJotas.entity.User;
 
-public interface OrderRepository extends CrudRepository<Order, Long> {
+public interface OrderRepository extends CrudRepository<Pedido, Long> {
 
-	List<Order> findByUser(User user); 
+	List<Pedido> findByUser(User user); 
 	
 	@EntityGraph(attributePaths = { "cartItems", "pago", "envio" })
-	Order findEagerById(Long id);
+	Pedido findEagerById(Long id);
 
 }

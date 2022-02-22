@@ -30,9 +30,9 @@
       <div class="col-12 col-sm-6 col-lg-4 mb-2 text-center text-left-lg">
         <h5 class="font-weight-bold">Detalle Pedido</h5>
         <div class="list-group list-group-flush list-group-no-border list-group-sm">
-          <div><strong>Fecha: </strong><span th:text="${#dates.format(order.orderDate, 'dd-MMM-yyyy')}"></span></div>
+          <div><strong>Fecha: </strong><span th:text="${#dates.format(order.fechaPedido, 'dd-MMM-yyyy')}"></span></div>
           <div><strong>Fecha de entrega: </strong><span th:text="${#dates.format(order.fechaEnvio, 'dd-MMM-yyyy')}"></span></div>
-          <div><strong>Estado actual: </strong><span th:text="${order.orderStatus}"></span></div>
+          <div><strong>Estado actual: </strong><span th:text="${order.estadoPedido}"></span></div>
         </div>        
         <hr class="d-block d-sm-none">
       </div>
@@ -66,10 +66,10 @@
             <div class="row align-items-center">
         
               <div class="col-4">
-                <a th:href="@{/article-detail?id=}+${cartItem.article.id}"><img class="img-fluid" th:src="'/image/article/pictures/'+${cartItem.article.picture}+'.jpg'" alt="${cartItem.article.title}"></a>
+                <a th:href="@{/detalle-producto?id=}+${cartItem.article.id}"><img class="img-fluid" th:src="'/image/article/pictures/'+${cartItem.article.picture}+'.jpg'" alt="${cartItem.article.title}"></a>
               </div>
               <div class="col-8">
-                <a th:href="@{/article-detail?id=}+${cartItem.article.id}" class="h6 bold d-inline-block" th:text=${cartItem.article.title}></a>
+                <a th:href="@{/detalle-producto?id=}+${cartItem.article.id}" class="h6 bold d-inline-block" th:text=${cartItem.article.title}></a>
                   <br>               
                   <small><b>Precio/Ud.</b>: €<span th:text="${#numbers.formatDecimal(cartItem.article.price, 0, 'COMMA', 2, 'POINT')}"></span></small>
               </div>
@@ -88,7 +88,7 @@
        <div class="d-flex justify-content-center align-items-center mt-3">
          <div class="text-center">           
            <small class="counter">TOTAL</small>
-           <h3 class="font-weight-bold">€ <span th:text="${#numbers.formatDecimal(order.orderTotal, 0, 'COMMA', 2, 'POINT')}"></span></h3>
+           <h3 class="font-weight-bold">€ <span th:text="${#numbers.formatDecimal(order.totalPedido, 0, 'COMMA', 2, 'POINT')}"></span></h3>
           </div>         
        </div>
        </div>
