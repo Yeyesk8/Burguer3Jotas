@@ -28,7 +28,7 @@ public class Pedido {
 	private BigDecimal totalPedido;
 
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<CartItem> cartItems;
+	private List<ProductoCarrito> productosCarrito;
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Envio envio;
@@ -47,7 +47,6 @@ public class Pedido {
 		this.id = id;
 	}
 
-	
 
 	public Date getFechaPedido() {
 		return fechaPedido;
@@ -89,12 +88,13 @@ public class Pedido {
 		this.totalPedido = totalPedido;
 	}
 
-	public List<CartItem> getCartItems() {
-		return cartItems;
+
+	public List<ProductoCarrito> getProductosCarrito() {
+		return productosCarrito;
 	}
 
-	public void setCartItems(List<CartItem> cartItems) {
-		this.cartItems = cartItems;
+	public void setProductosCarrito(List<ProductoCarrito> productosCarrito) {
+		this.productosCarrito = productosCarrito;
 	}
 
 	public Pago getPago() {

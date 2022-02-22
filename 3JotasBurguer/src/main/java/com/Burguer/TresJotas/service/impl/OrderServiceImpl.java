@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.Burguer.TresJotas.entity.Article;
-import com.Burguer.TresJotas.entity.CartItem;
+import com.Burguer.TresJotas.entity.ProductoCarrito;
 import com.Burguer.TresJotas.entity.Pedido;
 import com.Burguer.TresJotas.entity.Pago;
 import com.Burguer.TresJotas.entity.Envio;
-import com.Burguer.TresJotas.entity.ShoppingCart;
+import com.Burguer.TresJotas.entity.carritoCompra;
 import com.Burguer.TresJotas.entity.User;
 import com.Burguer.TresJotas.repository.ArticleRepository;
 import com.Burguer.TresJotas.repository.CartItemRepository;
@@ -37,12 +37,12 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	@Transactional
 	@CacheEvict(value = "itemcount", allEntries = true)
-	public synchronized Pedido createOrder(ShoppingCart shoppingCart, Envio envio, Pago pago, User user) {
+	public synchronized Pedido createOrder(carritoCompra carritoCompra, Envio envio, Pago pago, User user) {
 		Pedido order = new Pedido();
 		order.setUser(user);
 		order.setPago(pago);
 		order.setEnvio(envio);
-		order.setTotalPedido(shoppingCart.getGrandTotal());
+		order.setTotalPedido(carritoCompra.getGrandTotal());
 		envio.setOrder(order);
 		pago.setOrder(order);			
 		LocalDate today = LocalDate.now();					
@@ -52,10 +52,10 @@ public class OrderServiceImpl implements OrderService {
 		
 		order = orderRepository.save(order);
 		
-		List<CartItem> cartItems = shoppingCart.getCartItems();
-		for (CartItem item : cartItems) {
+		List<ProductoCarrito> productosCarrito = carritoCompra.getProductosCarrito();
+		for (ProductoCarrito item : productosCarrito) {
 			Article article = item.getArticle();
-			article.decreaseStock(item.getQty());
+			article.decreaseStock(item.getCantidad());
 			articleRepository.save(article);
 			item.setOrder(order);
 			cartItemRepository.save(item);

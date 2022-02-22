@@ -1,25 +1,25 @@
 package com.Burguer.TresJotas.service;
 
 import com.Burguer.TresJotas.entity.Article;
-import com.Burguer.TresJotas.entity.CartItem;
-import com.Burguer.TresJotas.entity.ShoppingCart;
+import com.Burguer.TresJotas.entity.ProductoCarrito;
+import com.Burguer.TresJotas.entity.carritoCompra;
 import com.Burguer.TresJotas.entity.User;
 
 
 public interface ShoppingCartService {
 
-	ShoppingCart getShoppingCart(User user);
+	carritoCompra getShoppingCart(User user);
 	
 	int getItemsNumber(User user);
 	
-	CartItem findCartItemById(Long cartItemId);
+	ProductoCarrito findCartItemById(Long cartItemId);
 	
-	CartItem addArticleToShoppingCart(Article article, User user, int qty);
+	ProductoCarrito addArticleToShoppingCart(Article article, User user, int cantidad);
 		
 	void clearShoppingCart(User user);
 	
-	void updateCartItem(CartItem cartItem, Integer qty);
+	void updateCartItem(ProductoCarrito productoCarrito, Integer cantidad);
 
-	void removeCartItem(CartItem cartItem);
+	void removeCartItem(ProductoCarrito productoCarrito);
 	
 }

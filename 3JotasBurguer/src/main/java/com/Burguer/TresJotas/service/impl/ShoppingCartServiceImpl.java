@@ -8,8 +8,8 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.Burguer.TresJotas.entity.Article;
-import com.Burguer.TresJotas.entity.CartItem;
-import com.Burguer.TresJotas.entity.ShoppingCart;
+import com.Burguer.TresJotas.entity.ProductoCarrito;
+import com.Burguer.TresJotas.entity.carritoCompra;
 import com.Burguer.TresJotas.entity.User;
 import com.Burguer.TresJotas.repository.CartItemRepository;
 import com.Burguer.TresJotas.service.ShoppingCartService;
@@ -21,8 +21,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 	private CartItemRepository cartItemRepository;
 	
 	@Override
-	public ShoppingCart getShoppingCart(User user) {
-		return new ShoppingCart(cartItemRepository.findAllByUserAndOrderIsNull(user));
+	public carritoCompra getShoppingCart(User user) {
+		return new carritoCompra(cartItemRepository.findAllByUserAndOrderIsNull(user));
 	}
 	
 	@Override
@@ -32,43 +32,43 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 	}
 
 	@Override
-	public CartItem findCartItemById(Long cartItemId) {
-		Optional<CartItem> opt = cartItemRepository.findById(cartItemId);
+	public ProductoCarrito findCartItemById(Long cartItemId) {
+		Optional<ProductoCarrito> opt = cartItemRepository.findById(cartItemId);
 		return opt.get();
 	}
 
 	@Override
 	@CacheEvict(value = "itemcount", allEntries = true)
-	public CartItem addArticleToShoppingCart(Article article, User user, int qty) {
-		ShoppingCart shoppingCart = this.getShoppingCart(user);
-		CartItem cartItem = shoppingCart.findCartItemByArticle(article.getId());
-		if (cartItem != null) {
-			cartItem.addQuantity(qty);
-			cartItem = cartItemRepository.save(cartItem);
+	public ProductoCarrito addArticleToShoppingCart(Article article, User user, int cantidad) {
+		carritoCompra carritoCompra = this.getShoppingCart(user);
+		ProductoCarrito productoCarrito = carritoCompra.findCartItemByArticle(article.getId());
+		if (productoCarrito != null) {
+			productoCarrito.addQuantity(cantidad);
+			productoCarrito = cartItemRepository.save(productoCarrito);
 		} else {
-			cartItem = new CartItem();
-			cartItem.setUser(user);
-			cartItem.setArticle(article);
-			cartItem.setQty(qty);
-			cartItem = cartItemRepository.save(cartItem);
+			productoCarrito = new ProductoCarrito();
+			productoCarrito.setUser(user);
+			productoCarrito.setArticle(article);
+			productoCarrito.setCantidad(cantidad);
+			productoCarrito = cartItemRepository.save(productoCarrito);
 		}		
-		return cartItem;	
+		return productoCarrito;	
 	}
 
 	@Override
 	@CacheEvict(value = "itemcount", allEntries = true)
-	public void removeCartItem(CartItem cartItem) {
-		cartItemRepository.deleteById(cartItem.getId());
+	public void removeCartItem(ProductoCarrito productoCarrito) {
+		cartItemRepository.deleteById(productoCarrito.getId());
 	}
 	
 	@Override
 	@CacheEvict(value = "itemcount", allEntries = true)
-	public void updateCartItem(CartItem cartItem, Integer qty) {
-		if (qty == null || qty <= 0) {
-			this.removeCartItem(cartItem);
-		} else if (cartItem.getArticle().hasStock(qty)) {
-			cartItem.setQty(qty);
-			cartItemRepository.save(cartItem);
+	public void updateCartItem(ProductoCarrito productoCarrito, Integer cantidad) {
+		if (cantidad == null || cantidad <= 0) {
+			this.removeCartItem(productoCarrito);
+		} else if (productoCarrito.getArticle().hasStock(cantidad)) {
+			productoCarrito.setCantidad(cantidad);
+			cartItemRepository.save(productoCarrito);
 		}
 	}
 

@@ -60,26 +60,26 @@
     <h5 class="font-weight-bold text-center">Productos Comprados</h5>    
     <div class="row">
       <div class="card-body">
-        <div class="row align-items-center border-bottom py-2" th:each="cartItem : ${order.cartItems}">
+        <div class="row align-items-center border-bottom py-2" th:each="productoCarrito : ${order.productosCarrito}">
         
           <div class="col-12 col-md-6 mb-2">
             <div class="row align-items-center">
         
               <div class="col-4">
-                <a th:href="@{/detalle-producto?id=}+${cartItem.article.id}"><img class="img-fluid" th:src="'/image/article/pictures/'+${cartItem.article.picture}+'.jpg'" alt="${cartItem.article.title}"></a>
+                <a th:href="@{/detalle-producto?id=}+${productoCarrito.article.id}"><img class="img-fluid" th:src="'/image/article/pictures/'+${productoCarrito.article.picture}+'.jpg'" alt="${productoCarrito.article.title}"></a>
               </div>
               <div class="col-8">
-                <a th:href="@{/detalle-producto?id=}+${cartItem.article.id}" class="h6 bold d-inline-block" th:text=${cartItem.article.title}></a>
+                <a th:href="@{/detalle-producto?id=}+${productoCarrito.article.id}" class="h6 bold d-inline-block" th:text=${productoCarrito.article.title}></a>
                   <br>               
-                  <small><b>Precio/Ud.</b>: €<span th:text="${#numbers.formatDecimal(cartItem.article.price, 0, 'COMMA', 2, 'POINT')}"></span></small>
+                  <small><b>Precio/Ud.</b>: €<span th:text="${#numbers.formatDecimal(productoCarrito.article.price, 0, 'COMMA', 2, 'POINT')}"></span></small>
               </div>
               
             </div>
           </div>  
               
           <div class="col-12 col-md-6 text-right">
-            <span>x<span th:text="${cartItem.qty}"></span> unidad: </span>                           
-            <span class="font-weight-bold text-info">$ <span th:id="'price'+${cartItem.id}" th:text="${#numbers.formatDecimal(cartItem.subtotal, 0, 'COMMA', 2, 'POINT')}"></span></span>
+            <span>x<span th:text="${productoCarrito.cantidad}"></span> unidad: </span>                           
+            <span class="font-weight-bold text-info">€ <span th:id="'price'+${productoCarrito.id}" th:text="${#numbers.formatDecimal(productoCarrito.subtotal, 0, 'COMMA', 2, 'POINT')}"></span></span>
           </div>  
               
             

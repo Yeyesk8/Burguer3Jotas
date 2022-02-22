@@ -14,7 +14,7 @@ import com.Burguer.TresJotas.entity.Direccion;
 import com.Burguer.TresJotas.entity.Pedido;
 import com.Burguer.TresJotas.entity.Pago;
 import com.Burguer.TresJotas.entity.Envio;
-import com.Burguer.TresJotas.entity.ShoppingCart;
+import com.Burguer.TresJotas.entity.carritoCompra;
 import com.Burguer.TresJotas.entity.User;
 import com.Burguer.TresJotas.service.OrderService;
 import com.Burguer.TresJotas.service.ShoppingCartService;
@@ -23,7 +23,7 @@ import com.Burguer.TresJotas.service.ShoppingCartService;
 public class VerificarControler {
 	
 	@Autowired 
-	private ShoppingCartService shoppingCartService;
+	private ShoppingCartService carritoCompraService;
 	
 	@Autowired
 	private OrderService orderService;
@@ -32,13 +32,13 @@ public class VerificarControler {
 	public String verificar( @RequestParam(value="missingRequiredField", required=false) boolean missingRequiredField,
 							Model model, Authentication authentication) {		
 		User user = (User) authentication.getPrincipal();	
-		ShoppingCart shoppingCart = shoppingCartService.getShoppingCart(user);
-		if(shoppingCart.isEmpty()) {
+		carritoCompra carritoCompra = carritoCompraService.getShoppingCart(user);
+		if(carritoCompra.isEmpty()) {
 			model.addAttribute("emptyCart", true);
-			return "redirect:/shopping-cart/cart";
+			return "redirect:/carrito/carrito";
 		}						
-		model.addAttribute("cartItemList", shoppingCart.getCartItems());
-		model.addAttribute("shoppingCart", shoppingCart);
+		model.addAttribute("ListaProductosCarrito", carritoCompra.getProductosCarrito());
+		model.addAttribute("carritoCompra", carritoCompra);
 		if(missingRequiredField) {
 			model.addAttribute("missingRequiredField", true);
 		}		
@@ -51,10 +51,10 @@ public class VerificarControler {
 							@ModelAttribute("pago") Pago pago,
 							RedirectAttributes redirectAttributes, Authentication authentication) {		
 		User user = (User) authentication.getPrincipal();		
-		ShoppingCart shoppingCart = shoppingCartService.getShoppingCart(user);	
-		if (!shoppingCart.isEmpty()) {
+		carritoCompra carritoCompra = carritoCompraService.getShoppingCart(user);	
+		if (!carritoCompra.isEmpty()) {
 			envio.setDireccion(direccion);
-			Pedido order = orderService.createOrder(shoppingCart, envio, pago, user);		
+			Pedido order = orderService.createOrder(carritoCompra, envio, pago, user);		
 			redirectAttributes.addFlashAttribute("order", order);
 		}
 		return "redirect:/pedido-validado";

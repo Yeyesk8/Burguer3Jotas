@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.Burguer.TresJotas.entity.Article;
-import com.Burguer.TresJotas.entity.CartItem;
-import com.Burguer.TresJotas.entity.ShoppingCart;
+import com.Burguer.TresJotas.entity.ProductoCarrito;
+import com.Burguer.TresJotas.entity.carritoCompra;
 import com.Burguer.TresJotas.entity.User;
 import com.Burguer.TresJotas.service.ArticleService;
 import com.Burguer.TresJotas.service.ShoppingCartService;
@@ -26,44 +26,44 @@ public class CarritoController {
 	private ArticleService articleService;
 	
 	@Autowired
-	private ShoppingCartService shoppingCartService;
+	private ShoppingCartService carritoCompraService;
 	
 	@GetMapping("/carrito")
 	public String carrito(Model model, Authentication authentication) {		
 		User user = (User) authentication.getPrincipal();		
-		ShoppingCart shoppingCart = shoppingCartService.getShoppingCart(user);		
-		model.addAttribute("cartItemList", shoppingCart.getCartItems());
-		model.addAttribute("shoppingCart", shoppingCart);		
+		carritoCompra carritoCompra = carritoCompraService.getShoppingCart(user);		
+		model.addAttribute("ListaProductosCarrito", carritoCompra.getProductosCarrito());
+		model.addAttribute("carritoCompra", carritoCompra);		
 		return "carrito";
 	}
 
 	@PostMapping("/añadir-carrito")
-	public String aniadirCarrito(@ModelAttribute("article") Article article, @RequestParam("qty") String qty,
+	public String aniadirCarrito(@ModelAttribute("article") Article article, @RequestParam("cantidad") String cantidad,
 						  RedirectAttributes attributes, Model model, Authentication authentication) {
 		article = articleService.findArticleById(article.getId());				
-		if (!article.hasStock(Integer.parseInt(qty))) {
+		if (!article.hasStock(Integer.parseInt(cantidad))) {
 			attributes.addFlashAttribute("notEnoughStock", true);
 			return "redirect:/detalle-producto?id="+article.getId();
 		}		
 		User user = (User) authentication.getPrincipal();		
-		shoppingCartService.addArticleToShoppingCart(article, user, Integer.parseInt(qty));
+		carritoCompraService.addArticleToShoppingCart(article, user, Integer.parseInt(cantidad));
 		attributes.addFlashAttribute("addArticleSuccess", true);
 		return "redirect:/detalle-producto?id="+article.getId();
 	}
 	
 	@PostMapping("/editar-carrito")
 	public String editarCarrito(@RequestParam("id") Long cartItemId,
-									 @RequestParam("qty") Integer qty, Model model) {		
-		CartItem cartItem = shoppingCartService.findCartItemById(cartItemId);
-		if (cartItem.canUpdateQty(qty)) {
-			shoppingCartService.updateCartItem(cartItem, qty);
+									 @RequestParam("cantidad") Integer cantidad, Model model) {		
+		ProductoCarrito productoCarrito = carritoCompraService.findCartItemById(cartItemId);
+		if (productoCarrito.canUpdateQty(cantidad)) {
+			carritoCompraService.updateCartItem(productoCarrito, cantidad);
 		}
 		return "redirect:/carrito/carrito";
 	}
 	
 	@GetMapping("/eliminar-producto-carrito")
 	public String eliminarProductoCarrito(@RequestParam("id") Long id) {		
-		shoppingCartService.removeCartItem(shoppingCartService.findCartItemById(id));		
+		carritoCompraService.removeCartItem(carritoCompraService.findCartItemById(id));		
 		return "redirect:/carrito/carrito";
 	} 
 }

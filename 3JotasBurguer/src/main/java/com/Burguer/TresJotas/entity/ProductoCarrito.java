@@ -12,12 +12,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
-public class CartItem {
+public class ProductoCarrito {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private int qty;
+	private int cantidad;
 	
 	@OneToOne
 	@JoinColumn(name="article_id")
@@ -31,20 +31,20 @@ public class CartItem {
 	@JoinColumn(name="order_id")
 	private Pedido order;
 	
-	public CartItem() {		
+	public ProductoCarrito() {		
 	}
 	
-	public boolean canUpdateQty(Integer qty) {
-		return qty == null || qty <= 0 || this.getArticle().hasStock(qty);
+	public boolean canUpdateQty(Integer cantidad) {
+		return cantidad == null || cantidad <= 0 || this.getArticle().hasStock(cantidad);
 	}
 	
 	public BigDecimal getSubtotal() {
-		return new BigDecimal(article.getPrice()).multiply(new BigDecimal(qty));
+		return new BigDecimal(article.getPrice()).multiply(new BigDecimal(cantidad));
 	}
 
-	public void addQuantity(int qty) {
-		if (qty > 0) {
-			this.qty = this.qty + qty;
+	public void addQuantity(int cantidad) {
+		if (cantidad > 0) {
+			this.cantidad = this.cantidad + cantidad;
 		}
 	}
 	
@@ -55,12 +55,15 @@ public class CartItem {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public int getQty() {
-		return qty;
+	
+	public int getCantidad() {
+		return cantidad;
 	}
-	public void setQty(int qty) {
-		this.qty = qty;
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
 	}
+
 	public Article getArticle() {
 		return article;
 	}
