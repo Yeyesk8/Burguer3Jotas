@@ -13,7 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.Burguer.TresJotas.entity.Article;
+import com.Burguer.TresJotas.entity.Producto;
 import com.Burguer.TresJotas.repository.ArticleRepository;
 import com.Burguer.TresJotas.repository.ArticleSpecification;
 import com.Burguer.TresJotas.service.ArticleService;
@@ -29,33 +29,33 @@ public class ArticleServiceImpl implements ArticleService {
 	private int featuredArticlesNumber;
 
 	@Override
-	public List<Article> findAllArticles() {
-		return (List<Article>) articleRepository.findAllEagerBy();
+	public List<Producto> findAllArticles() {
+		return (List<Producto>) articleRepository.findAllEagerBy();
 	}
 
 	@Override
-	public Page<Article> findArticlesByCriteria(Pageable pageable, Integer priceLow, Integer priceHigh,
-			List<String> categorias,List<String> ingredientes, String search) {
-		Page<Article> page = articleRepository
-				.findAll(ArticleSpecification.filterBy(priceLow, priceHigh, categorias,ingredientes, search), pageable);
+	public Page<Producto> findArticlesByCriteria(Pageable pageable, Double precioBajo, Double precioAlto,
+			List<String> categorias,List<String> ingredientes, String busqueda) {
+		Page<Producto> page = articleRepository
+				.findAll(ArticleSpecification.filterBy(precioBajo, precioAlto, categorias,ingredientes, busqueda), pageable);
 		return page;
 	}
 
 	@Override
-	public List<Article> findFirstArticles() {
+	public List<Producto> findFirstArticles() {
 		return articleRepository.findAll(PageRequest.of(0, featuredArticlesNumber)).getContent();
 	}
 
 	@Override
-	public Article findArticleById(Long id) {
-		Optional<Article> opt = articleRepository.findById(id);
+	public Producto findArticleById(Long id) {
+		Optional<Producto> opt = articleRepository.findById(id);
 		return opt.get();
 	}
 
 	@Override
 	@CacheEvict(value = {"categorias","ingredientes" }, allEntries = true)
-	public Article saveArticle(Article article) {
-		return articleRepository.save(article);
+	public Producto saveArticle(Producto producto) {
+		return articleRepository.save(producto);
 	}
 
 	@Override

@@ -43,7 +43,7 @@
 		</div>
 		<div th:if="${notEnoughStock}" class="alert alert-danger alert-dismissible fade show" role="alert">
 			<strong>No se pudo agregar al carrito, nos quedan <span
-					th:text="${article.stock}"></span>disponibles</strong>
+					th:text="${producto.stock}"></span>disponibles</strong>
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			</button>
@@ -52,20 +52,20 @@
 			<div class="card-body">
 				<div class="row">
 					<div class="col-md-6">
-						<img class="img-fluid" th:src="'/image/article/pictures/'+${article.picture}+'.jpg'">
+						<img class="img-fluid" th:src="'/image/article/pictures/'+${producto.imagen}+'.jpg'">
 					</div>
 					<div class="col-md-6 mt-3 mt-md-0">
-						<h2 class="card-title" th:text="${article.title}"></h2>
+						<h2 class="card-title" th:text="${producto.nombre}"></h2>
 						<div class="d-flex align-items-center">
-							<h2 class="price font-weight-bold mr-3">
+							<h2 class="precio font-weight-bold mr-3">
 								<span
-									th:text="'€'+${#numbers.formatDecimal(article.price, 0, T(Math).round(article.price) == article.price ? 0 : 2)}"></span>
+									th:text="'€'+${#numbers.formatDecimal(producto.precio, 0, T(Math).round(producto.precio) == producto.precio ? 0 : 2)}"></span>
 							</h2>
-							<h6>(<span th:text="${article.stock}"></span> Existencias)</h6>
+							<h6>(<span th:text="${producto.stock}"></span> Existencias)</h6>
 						</div>
-						<p class="d-none d-lg-block"><span th:text="${article.descripcion}"></span></p>
+						<p class="d-none d-lg-block"><span th:text="${producto.descripcion}"></span></p>
 						<form th:action="@{/carrito/añadir-carrito}" method="post">
-							<input hidden="hidden" th:field="*{article.id}">
+							<input hidden="hidden" th:field="*{producto.id}">
 							<div class="form-row">
 								<div class="form-group col-sm-3">
 									<label class="font-weight-bold" for="quantity">Cantidad</label>

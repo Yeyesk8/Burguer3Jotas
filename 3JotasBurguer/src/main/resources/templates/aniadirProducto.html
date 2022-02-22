@@ -13,9 +13,9 @@
         </legend>
               
         <div class="form-group row">
-          <label for="title" class="col-2 col-form-label text-right">Nombre</label>
+          <label for="nombre" class="col-2 col-form-label text-right">Nombre</label>
           <div class="col-6">
-            <input type="text" class="form-control" id="title" name="title">
+            <input type="text" class="form-control" id="nombre" name="nombre">
           </div>
         </div>
         
@@ -49,29 +49,29 @@
         </div>
                
         <div class="form-group row">
-          <label for="price" class="col-2 col-form-label text-right">Precio</label>
+          <label for="precio" class="col-2 col-form-label text-right">Precio</label>
           <div class="col-6 input-group">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">€</span>
             </div>
-            <input th:value="${article.price}" type="number" name="price" step="0.5"
-  				class="form-control" id="price" placeholder="List Price" />
+            <input th:value="${producto.precio}" type="number" name="precio" step="0.5"
+  				class="form-control" id="precio" placeholder="List Price" />
           </div>
         </div>
         
         <div class="form-group row">
           <label for="stock" class="col-2 col-form-label text-right">Stock disponible</label>
           <div class="col-6">
-            <input th:value="${article.stock}" type="number"
+            <input th:value="${producto.stock}" type="number"
                         name="stock" class="form-control" id="stock"
                         placeholder="Number of in-stock" />
           </div>
         </div>       
         
         <div class="form-group row">
-          <label for="picture" class="col-2 col-form-label text-right">Link imagen Producto</label>
+          <label for="imagen" class="col-2 col-form-label text-right">Link imagen Producto</label>
           <div class="col-6">
-            <input type="text" class="form-control" id="picture" name="picture">
+            <input type="text" class="form-control" id="imagen" name="imagen">
           </div>
         </div>
         

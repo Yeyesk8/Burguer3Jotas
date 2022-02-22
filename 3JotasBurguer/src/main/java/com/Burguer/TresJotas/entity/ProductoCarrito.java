@@ -20,8 +20,8 @@ public class ProductoCarrito {
 	private int cantidad;
 	
 	@OneToOne
-	@JoinColumn(name="article_id")
-	private Article article;
+	@JoinColumn(name="producto_id")
+	private Producto producto;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="user_id")
@@ -35,11 +35,11 @@ public class ProductoCarrito {
 	}
 	
 	public boolean canUpdateQty(Integer cantidad) {
-		return cantidad == null || cantidad <= 0 || this.getArticle().hasStock(cantidad);
+		return cantidad == null || cantidad <= 0 || this.getProducto().hasStock(cantidad);
 	}
 	
 	public BigDecimal getSubtotal() {
-		return new BigDecimal(article.getPrice()).multiply(new BigDecimal(cantidad));
+		return new BigDecimal(producto.getPrecio()/*getPrice()*/).multiply(new BigDecimal(cantidad));
 	}
 
 	public void addQuantity(int cantidad) {
@@ -64,15 +64,17 @@ public class ProductoCarrito {
 		this.cantidad = cantidad;
 	}
 
-	public Article getArticle() {
-		return article;
-	}
-	public void setArticle(Article article) {
-		this.article = article;
-	}
 	public User getUser() {
 		return user;
 	}
+	public Producto getProducto() {
+		return producto;
+	}
+
+	public void setProducto(Producto producto) {
+		this.producto = producto;
+	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}

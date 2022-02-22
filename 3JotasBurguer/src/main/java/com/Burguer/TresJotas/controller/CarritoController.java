@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.Burguer.TresJotas.entity.Article;
+import com.Burguer.TresJotas.entity.Producto;
 import com.Burguer.TresJotas.entity.ProductoCarrito;
-import com.Burguer.TresJotas.entity.carritoCompra;
+import com.Burguer.TresJotas.entity.CarritoCompra;
 import com.Burguer.TresJotas.entity.User;
 import com.Burguer.TresJotas.service.ArticleService;
 import com.Burguer.TresJotas.service.ShoppingCartService;
@@ -31,14 +31,14 @@ public class CarritoController {
 	@GetMapping("/carrito")
 	public String carrito(Model model, Authentication authentication) {		
 		User user = (User) authentication.getPrincipal();		
-		carritoCompra carritoCompra = carritoCompraService.getShoppingCart(user);		
+		CarritoCompra carritoCompra = carritoCompraService.getShoppingCart(user);		
 		model.addAttribute("ListaProductosCarrito", carritoCompra.getProductosCarrito());
 		model.addAttribute("carritoCompra", carritoCompra);		
 		return "carrito";
 	}
 
 	@PostMapping("/añadir-carrito")
-	public String aniadirCarrito(@ModelAttribute("article") Article article, @RequestParam("cantidad") String cantidad,
+	public String aniadirCarrito(@ModelAttribute("article") Producto article, @RequestParam("cantidad") String cantidad,
 						  RedirectAttributes attributes, Model model, Authentication authentication) {
 		article = articleService.findArticleById(article.getId());				
 		if (!article.hasStock(Integer.parseInt(cantidad))) {

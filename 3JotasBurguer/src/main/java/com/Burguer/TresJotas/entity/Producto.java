@@ -10,25 +10,25 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Article {
+public class Producto {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	private String title;
+	private String nombre;
 	private String descripcion;
 	private int stock;	
-	private double price;
-	private String picture;
+	private double precio;
+	private String imagen;
 	
 
-	@OneToMany(mappedBy="article", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy="producto", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Categoria> categorias;
 	
-	@OneToMany(mappedBy="article", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy="producto", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Ingrediente> ingredientes;
 
-	public Article() {
+	public Producto() {
 	}
 	
 	public boolean hasStock(int amount) {
@@ -40,41 +40,42 @@ public class Article {
 	}
 	
     
-	public void addCategory(Categoria category) {
-        categorias.add(category);
-        category.setArticle(this);
+	public void addCategory(Categoria categoria) {
+        categorias.add(categoria);
+        categoria.setProducto(this);
     }
  
-    public void removeCategory(Categoria category) {
-    	categorias.remove(category);
-        category.setArticle(null);
+    public void removeCategory(Categoria categoria) {
+    	categorias.remove(categoria);   	
+    	categoria.setProducto(null);
     }
     
     public void addIngrediente(Ingrediente ingrediente) {
-    	ingredientes.add(ingrediente);
-    	ingrediente.setArticle(this);
+    	ingredientes.add(ingrediente);   	
+    	ingrediente.setProducto(this);
     }
  
     public void removeIngrediente(Ingrediente ingrediente) {
     	ingredientes.remove(ingrediente);
-    	ingrediente.setArticle(null);
+    	ingrediente.setProducto(null);
     }
-    
-    
-    
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getTitle() {
-		return title;
+
+	public String getNombre() {
+		return nombre;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
-	
+
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -83,22 +84,35 @@ public class Article {
 		this.descripcion = descripcion;
 	}
 
-	public double getPrice() {
-		return price;
-	}
-	public void setPrice(double price) {
-		this.price = price;
-	}
 	public int getStock() {
 		return stock;
 	}
+
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
+
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
 	public Set<Categoria> getCategorias() {
 		return categorias;
 	}
-	public void setCategories(Set<Categoria> categorias) {
+
+	public void setCategorias(Set<Categoria> categorias) {
 		this.categorias = categorias;
 	}
 
@@ -109,13 +123,9 @@ public class Article {
 	public void setIngredientes(Set<Ingrediente> ingredientes) {
 		this.ingredientes = ingredientes;
 	}
-
-	public String getPicture() {
-		return picture;
-	}
-	public void setPicture(String picture) {
-		this.picture = picture;
-	}
+    
+    
+    
 	
 	
 

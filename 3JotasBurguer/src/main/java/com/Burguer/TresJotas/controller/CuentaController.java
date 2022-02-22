@@ -117,19 +117,19 @@ public class CuentaController {
 		if(currentUser == null) {
 			throw new Exception ("User not found");
 		}
-		/*check username already exists*/
+		/*verifica si el username ya existe*/
 		User existingUser = userService.findByUsername(user.getUsername());
 		if (existingUser != null && !existingUser.getId().equals(currentUser.getId()))  {
 			model.addAttribute("usernameExists", true);
 			return "miPerfil";
 		}	
-		/*check email already exists*/
+		/*verifica si el email ya existe*/
 		existingUser = userService.findByEmail(user.getEmail());
 		if (existingUser != null && !existingUser.getId().equals(currentUser.getId()))  {
 			model.addAttribute("emailExists", true);
 			return "miPerfil";
 		}			
-		/*update password*/
+		/*actualizar contraseña*/
 		if (newPassword != null && !newPassword.isEmpty() && !newPassword.equals("")){
 			BCryptPasswordEncoder passwordEncoder = SecurityUtility.passwordEncoder();
 			String dbPassword = currentUser.getPassword();

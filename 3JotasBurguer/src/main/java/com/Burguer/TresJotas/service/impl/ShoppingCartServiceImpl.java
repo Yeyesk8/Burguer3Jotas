@@ -7,9 +7,9 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import com.Burguer.TresJotas.entity.Article;
+import com.Burguer.TresJotas.entity.Producto;
 import com.Burguer.TresJotas.entity.ProductoCarrito;
-import com.Burguer.TresJotas.entity.carritoCompra;
+import com.Burguer.TresJotas.entity.CarritoCompra;
 import com.Burguer.TresJotas.entity.User;
 import com.Burguer.TresJotas.repository.CartItemRepository;
 import com.Burguer.TresJotas.service.ShoppingCartService;
@@ -21,8 +21,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 	private CartItemRepository cartItemRepository;
 	
 	@Override
-	public carritoCompra getShoppingCart(User user) {
-		return new carritoCompra(cartItemRepository.findAllByUserAndOrderIsNull(user));
+	public CarritoCompra getShoppingCart(User user) {
+		return new CarritoCompra(cartItemRepository.findAllByUserAndOrderIsNull(user));
 	}
 	
 	@Override
@@ -39,16 +39,16 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
 	@Override
 	@CacheEvict(value = "itemcount", allEntries = true)
-	public ProductoCarrito addArticleToShoppingCart(Article article, User user, int cantidad) {
-		carritoCompra carritoCompra = this.getShoppingCart(user);
-		ProductoCarrito productoCarrito = carritoCompra.findCartItemByArticle(article.getId());
+	public ProductoCarrito addArticleToShoppingCart(Producto producto, User user, int cantidad) {
+		CarritoCompra carritoCompra = this.getShoppingCart(user);
+		ProductoCarrito productoCarrito = carritoCompra.findCartItemByArticle(producto.getId());
 		if (productoCarrito != null) {
 			productoCarrito.addQuantity(cantidad);
 			productoCarrito = cartItemRepository.save(productoCarrito);
 		} else {
 			productoCarrito = new ProductoCarrito();
 			productoCarrito.setUser(user);
-			productoCarrito.setArticle(article);
+			productoCarrito.setProducto(producto);
 			productoCarrito.setCantidad(cantidad);
 			productoCarrito = cartItemRepository.save(productoCarrito);
 		}		
@@ -66,7 +66,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 	public void updateCartItem(ProductoCarrito productoCarrito, Integer cantidad) {
 		if (cantidad == null || cantidad <= 0) {
 			this.removeCartItem(productoCarrito);
-		} else if (productoCarrito.getArticle().hasStock(cantidad)) {
+		} else if (productoCarrito.getProducto().hasStock(cantidad)) {
 			productoCarrito.setCantidad(cantidad);
 			cartItemRepository.save(productoCarrito);
 		}

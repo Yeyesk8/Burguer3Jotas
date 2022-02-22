@@ -24,9 +24,6 @@ public class Sugerencia {
 	private String asunto;
 	private String mensaje;
 	
-	
-	
-	
 	public Sugerencia() {
 	}
 	
@@ -39,8 +36,6 @@ public class Sugerencia {
 		this.asunto = asunto;
 		this.mensaje = mensaje;
 	}
-
-
 
 	public Long getId() {
 		return id;

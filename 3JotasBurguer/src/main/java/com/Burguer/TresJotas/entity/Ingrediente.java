@@ -15,17 +15,17 @@ public class Ingrediente {
 	private Long id;
 	
 	@ManyToOne
-	@JoinColumn(name="article_id")
-	private Article article;
+	@JoinColumn(name="producto_id")
+	private Producto producto;
 	
 	private String nombre;
 	
 	public Ingrediente() {
 	}
 	
-	public Ingrediente(String nombre, Article article) {
+	public Ingrediente(String nombre, Producto producto) {
 		this.nombre = nombre;
-		this.article = article;
+		this.producto = producto;
 	}
 
 	public Long getId() {
@@ -36,16 +36,16 @@ public class Ingrediente {
 		this.id = id;
 	}
 
-	public Article getArticle() {
-		return article;
-	}
-
-	public void setArticle(Article article) {
-		this.article = article;
-	}
-
 	public String getNombre() {
 		return nombre;
+	}
+
+	public Producto getProducto() {
+		return producto;
+	}
+
+	public void setProducto(Producto producto) {
+		this.producto = producto;
 	}
 
 	public void setNombre(String nombre) {

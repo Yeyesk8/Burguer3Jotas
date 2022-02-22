@@ -54,21 +54,21 @@
               <form th:action="@{/actualizar-direccion}" method="post">
                 <div class="form-row">
                   <div class="form-group col-12">
-                    <label for="billingAddress">Calle</label>
+                    <label for="calle">Calle</label>
                     <input type="text" class="form-control" th:name="calle" th:value="${user?.direccion?.calle}">
                   </div>
                   <div class="form-group col-6 col-sm-5">
-                    <label for="billingCountry">Pueblo</label>
+                    <label for="pueblo">Pueblo</label>
                     <input type="text" class="form-control" th:name="pueblo" th:value="${user?.direccion?.pueblo}">
                     
                   </div>
                   <div class="form-group col-6 col-sm-5">
-                    <label for="billingCity">Ciudad</label>
+                    <label for="ciudad">Ciudad</label>
                     <input type="text" class="form-control"   th:name="ciudad" th:value="${user?.direccion?.ciudad}">
                   </div>
                   <div class="form-group col-3 col-sm-2">
-                    <label for="billingZip">Código postal</label>
-                    <input type="number" class="form-control" th:name="codigoPostal" th:value="${user?.direccion?.codigoPostal}">
+                    <label for="codigoPostal">Código postal</label>
+                    <input type="text" class="form-control" th:name="codigoPostal" th:value="${user?.direccion?.codigoPostal}">
                   </div>
                 </div>
                 <div class="form-group">

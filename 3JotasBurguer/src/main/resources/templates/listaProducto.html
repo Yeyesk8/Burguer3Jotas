@@ -29,23 +29,23 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr data-th-each="article : ${articles}">
-					<td th:text="${article.id}"></td>
-					<td th:text="${article.title}"></td>
-					<td th:text="${article.descripcion}"></td>
+				<tr data-th-each="producto : ${productos}">
+					<td th:text="${producto.id}"></td>
+					<td th:text="${producto.nombre}"></td>
+					<td th:text="${producto.descripcion}"></td>
 					<td>
-						<div style="display:flex;"><span th:each="item : ${article.categorias}"
+						<div style="display:flex;"><span th:each="item : ${producto.categorias}"
 								th:text="${item.getNombre()}" class="badge badge-secondary mt-1 mr-1"></span></div>
 					</td>
 					<td>
-						<div style="display:flex;"><span th:each="item : ${article.ingredientes}"
+						<div style="display:flex;"><span th:each="item : ${producto.ingredientes}"
 								th:text="${item.getNombre()}" class="badge badge-secondary mt-1 mr-1"></span></div>
 					</td>
-					<td th:text="${article.price}"></td>
-					<td th:text="${article.stock}"></td>
-					<td><a th:href="@{/producto/editar?id=}+${article.id}" class="badge badge-primary"><i
+					<td th:text="${producto.precio}"></td>
+					<td th:text="${producto.stock}"></td>
+					<td><a th:href="@{/producto/editar?id=}+${producto.id}" class="badge badge-primary"><i
 												class="fas fa-edit"></i></a>
-						<a th:href="@{/producto/eliminar?id=}+${article.id}" class="badge badge-danger"><i
+						<a th:href="@{/producto/eliminar?id=}+${producto.id}" class="badge badge-danger"><i
 								class="fas fa-solid fa-trash"></i> </a>
 					</td>
 				</tr>

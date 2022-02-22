@@ -14,7 +14,7 @@ import com.Burguer.TresJotas.entity.Direccion;
 import com.Burguer.TresJotas.entity.Pedido;
 import com.Burguer.TresJotas.entity.Pago;
 import com.Burguer.TresJotas.entity.Envio;
-import com.Burguer.TresJotas.entity.carritoCompra;
+import com.Burguer.TresJotas.entity.CarritoCompra;
 import com.Burguer.TresJotas.entity.User;
 import com.Burguer.TresJotas.service.OrderService;
 import com.Burguer.TresJotas.service.ShoppingCartService;
@@ -32,7 +32,7 @@ public class VerificarControler {
 	public String verificar( @RequestParam(value="missingRequiredField", required=false) boolean missingRequiredField,
 							Model model, Authentication authentication) {		
 		User user = (User) authentication.getPrincipal();	
-		carritoCompra carritoCompra = carritoCompraService.getShoppingCart(user);
+		CarritoCompra carritoCompra = carritoCompraService.getShoppingCart(user);
 		if(carritoCompra.isEmpty()) {
 			model.addAttribute("emptyCart", true);
 			return "redirect:/carrito/carrito";
@@ -51,7 +51,7 @@ public class VerificarControler {
 							@ModelAttribute("pago") Pago pago,
 							RedirectAttributes redirectAttributes, Authentication authentication) {		
 		User user = (User) authentication.getPrincipal();		
-		carritoCompra carritoCompra = carritoCompraService.getShoppingCart(user);	
+		CarritoCompra carritoCompra = carritoCompraService.getShoppingCart(user);	
 		if (!carritoCompra.isEmpty()) {
 			envio.setDireccion(direccion);
 			Pedido order = orderService.createOrder(carritoCompra, envio, pago, user);		

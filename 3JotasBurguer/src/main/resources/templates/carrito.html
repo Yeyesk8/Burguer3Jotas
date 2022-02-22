@@ -37,13 +37,13 @@
            <div class="col-12 col-md-6">
               <div class="row align-items-center">              
                 <div class="col-4">
-                  <a th:href="@{/detalle-producto?id=}+${productoCarrito.article.id}"><img class="img-fluid" 
-                  th:src="'/image/article/pictures/'+${productoCarrito.article.picture}+'.jpg'" alt="${productoCarrito.article.title}"></a>
+                  <a th:href="@{/detalle-producto?id=}+${productoCarrito.producto.id}"><img class="img-fluid" 
+                  th:src="'/image/article/pictures/'+${productoCarrito.producto.imagen}+'.jpg'" alt="${productoCarrito.producto.nombre}"></a>
                 </div>
                 <div class="col-8">
-                  <a th:href="@{/detalle-producto?id=}+${productoCarrito.article.id}" class="h6 bold d-inline-block" th:text=${productoCarrito.article.title}></a>
+                  <a th:href="@{/detalle-producto?id=}+${productoCarrito.producto.id}" class="h6 bold d-inline-block" th:text=${productoCarrito.producto.nombre}></a>
                   <div><i data-feather="check-circle" class="text-success"></i> Disponible</div>                                                   
-                  <small><b>Precio/Ud.</b>: €<span th:text="${#numbers.formatDecimal(productoCarrito.article.price, 0, 'COMMA', 2, 'POINT')}"></span></small>
+                  <small><b>Precio/Ud.</b>: €<span th:text="${#numbers.formatDecimal(productoCarrito.producto.precio, 0, 'COMMA', 2, 'POINT')}"></span></small>
                 </div>                
               </div>  
            </div>                 
@@ -53,8 +53,8 @@
                   <div class="row ">
                     <label th:for="${productoCarrito.id}" class="col-sm-6 col-form-label text-sm-right">Cantidad</label>
                     <div class="col-sm-6">
-                      <input th:id="${productoCarrito.id}" th:disabled="${productoCarrito.article.stock==0}" 
-                         type="number" min="0" max="${productoCarrito.article.stock}"
+                      <input th:id="${productoCarrito.id}" th:disabled="${productoCarrito.producto.stock==0}" 
+                         type="number" min="0" max="${productoCarrito.producto.stock}"
                          class="form-control cartItemQty" th:value="${productoCarrito.cantidad}">
                       <button style="display: none;"
                           th:id="'update-item-'+${productoCarrito.id}" type="submit"
@@ -63,7 +63,7 @@
                   </div>            
                 </div>
                 <div class="col-5 text-right">
-                  <span class="font-weight-bold">€ <span th:id="'price'+${productoCarrito.id}" th:text="${#numbers.formatDecimal(productoCarrito.subtotal, 0, 'COMMA', 2, 'POINT')}"></span></span>
+                  <span class="font-weight-bold">€ <span th:id="'precio'+${productoCarrito.id}" th:text="${#numbers.formatDecimal(productoCarrito.subtotal, 0, 'COMMA', 2, 'POINT')}"></span></span>
                 </div>
                 <div class="col-2 ">
                   <a th:href="@{/carrito/eliminar-producto-carrito?id=}+${productoCarrito.id}"><i class="mb-1" data-feather="trash-2"></i></a>                              

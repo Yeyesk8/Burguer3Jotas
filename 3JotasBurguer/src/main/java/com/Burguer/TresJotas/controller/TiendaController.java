@@ -10,10 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-import com.Burguer.TresJotas.entity.Article;
-import com.Burguer.TresJotas.form.ArticleFilterForm;
+import com.Burguer.TresJotas.entity.Producto;
+import com.Burguer.TresJotas.form.FiltroProductos;
 import com.Burguer.TresJotas.service.ArticleService;
-import com.Burguer.TresJotas.type.SortFilter;
+import com.Burguer.TresJotas.type.FiltroClasificacion;
 
 @Controller
 public class TiendaController {
@@ -22,17 +22,17 @@ public class TiendaController {
 	private ArticleService articleService;
 
 	@GetMapping("/tienda")
-	public String tienda(@ModelAttribute("filters") ArticleFilterForm filters, Model model) {
-		Integer page = filters.getPage();
-		int pagenumber = (page == null || page <= 0) ? 0 : page - 1;
-		SortFilter sortFilter = new SortFilter(filters.getSort());
-		Page<Article> pageresult = articleService.findArticlesByCriteria(
-				PageRequest.of(pagenumber, 9, sortFilter.getSortType()), filters.getPricelow(), filters.getPricehigh(),
-				filters.getCategoria(),filters.getIngrediente(), filters.getSearch());
+	public String tienda(@ModelAttribute("filtros") FiltroProductos filtros, Model model) {
+		Integer pagina = filtros.getPagina();
+		int numeropagina = (pagina == null || pagina <= 0) ? 0 : pagina - 1;
+		FiltroClasificacion filtroClasificacion = new FiltroClasificacion(filtros.getClasificacion());
+		Page<Producto> pageresult = articleService.findArticlesByCriteria(
+				PageRequest.of(numeropagina, 9, filtroClasificacion.getSortType()), filtros.getPrecioBajo(), filtros.getPrecioAlto(),
+				filtros.getCategoria(),filtros.getIngrediente(), filtros.getBusqueda());
 		
 		model.addAttribute("allCategorias", articleService.getAllCategorias());
 		model.addAttribute("allIngredientes", articleService.getAllIngredientes());
-		model.addAttribute("articles", pageresult.getContent());
+		model.addAttribute("productos", pageresult.getContent());
 		model.addAttribute("totalitems", pageresult.getTotalElements());
 		model.addAttribute("itemsperpage", 9);
 		return "tienda";
@@ -40,8 +40,8 @@ public class TiendaController {
 
 	@GetMapping("/detalle-producto")
 	public String detalleProducto(@PathParam("id") Long id, Model model) {
-		Article article = articleService.findArticleById(id);
-		model.addAttribute("article", article);
+		Producto producto = articleService.findArticleById(id);
+		model.addAttribute("producto", producto);
 		model.addAttribute("notEnoughStock", model.asMap().get("notEnoughStock"));
 		model.addAttribute("addArticleSuccess", model.asMap().get("addArticleSuccess"));
 		return "detalleProducto";

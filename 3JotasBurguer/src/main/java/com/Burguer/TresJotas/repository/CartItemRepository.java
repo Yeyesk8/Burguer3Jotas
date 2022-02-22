@@ -10,7 +10,7 @@ import com.Burguer.TresJotas.entity.User;
 
 public interface CartItemRepository extends CrudRepository<ProductoCarrito, Long> {
 
-	@EntityGraph(attributePaths = { "article" })
+	@EntityGraph(attributePaths = { "producto" })
 	List<ProductoCarrito> findAllByUserAndOrderIsNull(User user);
 	
 	void deleteAllByUserAndOrderIsNull(User user);

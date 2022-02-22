@@ -9,15 +9,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
-import com.Burguer.TresJotas.entity.Article;
+import com.Burguer.TresJotas.entity.Producto;
 
-public interface ArticleRepository extends JpaRepository<Article, Long>, JpaSpecificationExecutor<Article> {
+public interface ArticleRepository extends JpaRepository<Producto, Long>, JpaSpecificationExecutor<Producto> {
 	
 	@EntityGraph(attributePaths = {"categorias","ingredientes"})
-	List<Article> findAllEagerBy();	
+	List<Producto> findAllEagerBy();	
 		
 	@EntityGraph(attributePaths = {"categorias","ingredientes"})
-	Optional<Article> findById(Long id);
+	Optional<Producto> findById(Long id);
 	
 	@Query("SELECT DISTINCT c.nombre FROM Categoria c")
 	List<String> findAllCategorias();

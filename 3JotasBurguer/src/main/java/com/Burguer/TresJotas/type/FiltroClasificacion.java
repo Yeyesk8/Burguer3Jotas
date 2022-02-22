@@ -2,11 +2,11 @@ package com.Burguer.TresJotas.type;
 
 import org.springframework.data.domain.Sort;
 
-public class SortFilter {
+public class FiltroClasificacion {
 	
 	private String sortType;
 	
-	public SortFilter(String type) {
+	public FiltroClasificacion(String type) {
 		this.sortType = type;
 	}
 	
@@ -16,13 +16,13 @@ public class SortFilter {
 		}		
 		switch(this.sortType) {
 			case "priceasc":
-				return Sort.by("price").ascending();
+				return Sort.by("precio").ascending();
 			case "pricedesc":
-				return Sort.by("price").descending();
+				return Sort.by("precio").descending();
 			case "alphasc":
-				return Sort.by("title").ascending();
+				return Sort.by("nombre").ascending();
 			case "alphdesc":
-				return Sort.by("title").descending();
+				return Sort.by("nombre").descending();
 			default: 
 				return Sort.by("id").descending();
 				

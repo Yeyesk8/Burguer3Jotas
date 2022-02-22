@@ -3,10 +3,10 @@ package com.Burguer.TresJotas.dto;
 public class ArticleDTO {
 
 	private Long id;
-	private String title;
+	private String nombre;
 	private String descripcion;
-	private double price;
-	private String picture;
+	private double precio;
+	private String imagen;
 	
 	public ArticleDTO() {
 	}
@@ -19,14 +19,13 @@ public class ArticleDTO {
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
-	
 
 	public String getDescripcion() {
 		return descripcion;
@@ -36,21 +35,22 @@ public class ArticleDTO {
 		this.descripcion = descripcion;
 	}
 
-	public double getPrice() {
-		return price;
+	public double getPrecio() {
+		return precio;
 	}
 
-	public void setPrice(double price) {
-		this.price = price;
+	public void setPrecio(double precio) {
+		this.precio = precio;
 	}
 
-	public String getPicture() {
-		return picture;
+	public String getImagen() {
+		return imagen;
 	}
 
-	public void setPicture(String picture) {
-		this.picture = picture;
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
+
 	
 	
 	

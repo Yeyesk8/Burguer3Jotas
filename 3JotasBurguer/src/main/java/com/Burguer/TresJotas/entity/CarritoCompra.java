@@ -3,11 +3,11 @@ package com.Burguer.TresJotas.entity;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class carritoCompra {
+public class CarritoCompra {
 	
 	private List<ProductoCarrito> productosCarrito;
 
-	public carritoCompra(List<ProductoCarrito> productosCarrito) {
+	public CarritoCompra(List<ProductoCarrito> productosCarrito) {
 		this.productosCarrito = productosCarrito;
 	}
 
@@ -33,7 +33,7 @@ public class carritoCompra {
 	
 	public ProductoCarrito findCartItemByArticle(Long id) {
 		for (ProductoCarrito item : this.productosCarrito) {
-			if (item.getArticle().getId().equals(id)) {
+			if (item.getProducto().getId().equals(id)) {
 				return item;
 			}
 		}

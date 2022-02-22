@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.Burguer.TresJotas.entity.Article;
-import com.Burguer.TresJotas.entity.ArticleBuilder;
+import com.Burguer.TresJotas.entity.Producto;
+import com.Burguer.TresJotas.entity.ContructorProducto;
 import com.Burguer.TresJotas.entity.Categoria;
 import com.Burguer.TresJotas.entity.Ingrediente;
 import com.Burguer.TresJotas.service.ArticleService;
@@ -29,48 +29,48 @@ public class ProductoController {
 	
 	@GetMapping("/añadir")
 	public String aniadirProducto(Model model) {
-		Article article = new Article();
-		model.addAttribute("article", article);
+		Producto producto = new Producto();
+		model.addAttribute("producto", producto);
 		model.addAttribute("allCategorias", articleService.getAllCategorias());
 		model.addAttribute("allIngredientes", articleService.getAllIngredientes());
 		return "aniadirProducto";
 	}
 	
 	@PostMapping("/añadir")
-	public String aniadirProductoPost(@ModelAttribute("article") Article article, HttpServletRequest request) {
-		Article newArticle = new ArticleBuilder()
-				.withTitle(article.getTitle())
-				.withDescripcion(article.getDescripcion())
-				.stockAvailable(article.getStock())
-				.withPrice(article.getPrice())
-				.imageLink(article.getPicture())
-				.ofCategories(Arrays.asList(request.getParameter("categoria").split("\\s*,\\s*")))
-				.ofIngrediente(Arrays.asList(request.getParameter("ingrediente").split("\\s*,\\s*")))
+	public String aniadirProductoPost(@ModelAttribute("producto") Producto producto, HttpServletRequest request) {
+		Producto nuevo = new ContructorProducto()							
+				.conTitulo(producto.getNombre())
+				.conDescripcion(producto.getDescripcion())
+				.stockDisponible(producto.getStock())
+				.conPrecio(producto.getPrecio())
+				.LinkImagen(producto.getImagen())
+				.conCategorias(Arrays.asList(request.getParameter("categoria").split("\\s*,\\s*")))
+				.conIngrediente(Arrays.asList(request.getParameter("ingrediente").split("\\s*,\\s*")))
 				.build();		
-		articleService.saveArticle(newArticle);	
+		articleService.saveArticle(nuevo);	
 		return "redirect:lista-productos";
 	}
 	
 	@GetMapping("/lista-productos")
 	public String listaProducto(Model model) {
-		List<Article> articles = articleService.findAllArticles();
-		model.addAttribute("articles", articles);
+		List<Producto> productos = articleService.findAllArticles();
+		model.addAttribute("productos", productos);
 		return "listaProducto";
 	}
 	
 	@GetMapping("/editar")
 	public String editarProducto(@RequestParam("id") Long id, Model model) {
-		Article article = articleService.findArticleById(id);
+		Producto producto = articleService.findArticleById(id);
 		
 		String preselectedCategorias = "";
-		for (Categoria categoria : article.getCategorias()) {
+		for (Categoria categoria : producto.getCategorias()) {
 			preselectedCategorias += (categoria.getNombre() + ",");
 		}		
 		String preselectedIngredientes = "";
-		for (Ingrediente ingrediente : article.getIngredientes()) {
+		for (Ingrediente ingrediente : producto.getIngredientes()) {
 			preselectedIngredientes += (ingrediente.getNombre() + ",");
 		}
-		model.addAttribute("article", article);
+		model.addAttribute("producto", producto);
 		model.addAttribute("preselectedCategorias", preselectedCategorias);
 		model.addAttribute("preselectedIngredientes", preselectedIngredientes);
 		model.addAttribute("allCategorias", articleService.getAllCategorias());
@@ -79,18 +79,18 @@ public class ProductoController {
 	}
 	
 	@PostMapping("/editar")
-	public String editarProductoPost(@ModelAttribute("article") Article article, HttpServletRequest request) {		
-		Article newArticle = new ArticleBuilder()
-				.withTitle(article.getTitle())
-				.withDescripcion(article.getDescripcion())
-				.stockAvailable(article.getStock())
-				.withPrice(article.getPrice())
-				.imageLink(article.getPicture())				
-				.ofCategories(Arrays.asList(request.getParameter("categoria").split("\\s*,\\s*")))
-				.ofIngrediente(Arrays.asList(request.getParameter("ingrediente").split("\\s*,\\s*")))
+	public String editarProductoPost(@ModelAttribute("producto") Producto producto, HttpServletRequest request) {		
+		Producto nuevo = new ContructorProducto()						
+				.conTitulo(producto.getNombre())
+				.conDescripcion(producto.getDescripcion())
+				.stockDisponible(producto.getStock())
+				.conPrecio(producto.getPrecio())
+				.LinkImagen(producto.getImagen())
+				.conCategorias(Arrays.asList(request.getParameter("categoria").split("\\s*,\\s*")))
+				.conIngrediente(Arrays.asList(request.getParameter("ingrediente").split("\\s*,\\s*")))
 				.build();
-		newArticle.setId(article.getId());
-		articleService.saveArticle(newArticle);	
+		nuevo.setId(producto.getId());
+		articleService.saveArticle(nuevo);	
 		return "redirect:lista-productos";
 	}
 	

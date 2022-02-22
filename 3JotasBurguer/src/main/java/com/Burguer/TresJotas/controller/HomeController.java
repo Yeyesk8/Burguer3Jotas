@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.Burguer.TresJotas.entity.Article;
+import com.Burguer.TresJotas.entity.Producto;
 import com.Burguer.TresJotas.entity.Sugerencia;
 import com.Burguer.TresJotas.service.ArticleService;
 import com.Burguer.TresJotas.service.SugerenciaService;
@@ -28,8 +28,8 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String index(Model model) {
-		List<Article> articles = articleService.findFirstArticles();
-		model.addAttribute("articles", articles);
+		List<Producto> productos = articleService.findFirstArticles();
+		model.addAttribute("productos", productos);
 		return "index";
 	}
 

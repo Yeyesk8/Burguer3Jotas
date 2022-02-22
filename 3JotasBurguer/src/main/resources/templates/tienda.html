@@ -75,9 +75,9 @@
                 <div class="card-body">
                   <div class="d-flex justify-content-between">
                     <input type="text" class="form-control form-control-sm rounded-pill text-center font-weight-bold bg-light mr-2 minw-0"
-                           th:name="pricelow" th:value="${param.pricelow}">
+                           th:name="precioBajo" th:value="${param.precioBajo}">
                     <input type="text" class="form-control form-control-sm rounded-pill text-center font-weight-bold bg-light ml-2 minw-0"
-                           th:name="pricehigh" th:value="${param.pricehigh}">                   
+                           th:name="precioAlto" th:value="${param.precioAlto}">                   
                   </div>
                 </div>
               </div>
@@ -89,8 +89,9 @@
             </div>
           </div>   <!-- end of accordion sidebar -->         
                          
-        </div>        
-        <!-- /Shop Filters -->
+        </div>    
+            
+        <!-- Filtros -->
 
         <div class="col-lg-9 col-md-8">                
           <!-- /Shop Toolbar -->
@@ -103,7 +104,7 @@
                 <div class="input-group">
                   
                   <input type="text" class="form-control border-0 bg-light input-search" placeholder="Buscar..." 
-                         th:name="search" th:value="${filters.search}">
+                         th:name="busqueda" th:value="${filtros.busqueda}">
                   <div class="input-group-append">
                     <button class="btn btn-light" type="submit"><i data-feather="search"></i></button>
                   </div>
@@ -113,7 +114,7 @@
               <div class="btn-group">
                 <button type="button" class="btn btn-light btn-sm border rounded-pill" data-toggle="dropdown" 
                         aria-haspopup="true" aria-expanded="false">                        
-                  <th:block th:switch="${filters.sort}">                    
+                  <th:block th:switch="${filtros.clasificacion}">                    
                     <span id="dropdown-sort-text" th:case="'priceasc'">Precio bajo - alto</span>
                     <span id="dropdown-sort-text" th:case="'pricedesc'">Precio alto - bajo</span>
                     <span id="dropdown-sort-text" th:case="'alphasc'">Orden de la A a la Z</span>
@@ -130,18 +131,18 @@
                   <button class="dropdown-item button-sort" type="button" value="alphdesc">Orden de la Z a la A</button>
                 </div>
               </div> 
-              <input id="input-sort" hidden="hidden" type="text" name="sort" th:value="${filters.sort}">                           
+              <input id="input-sort" hidden="hidden" type="text" name="clasificacion" th:value="${filtros.clasificacion}">                           
             </div>
           </div>
           <!-- Shop toolbar -->
           
           <!-- Shop Grid -->          
           <div class="grid grid-gap-3 grid-col-2 grid-col-lg-3 mb-3">
-              <div class="card card-product" th:each="article : ${articles}">
+              <div class="card card-product" th:each="producto : ${productos}">
                 <div class="card-body">
-                  <a th:href="@{/detalle-producto?id=}+${article.id}"><img class="card-img-top" th:src="${article.picture} ? '/image/article/pictures/'+${article.picture}+'.jpg' : '/image/article/itemexample.jpg'" alt="Card image cap"></a>
-                  <a th:href="@{/detalle-producto?id=}+${article.id}" class="card-title" th:text="${article.title}"></a>
-                  <div class="price"><span class="h5" th:text="'$'+${#numbers.formatDecimal(article.price, 0, T(Math).round(article.price) == article.price ? 0 : 2)}"> </span></div>
+                  <a th:href="@{/detalle-producto?id=}+${producto.id}"><img class="card-img-top" th:src="${producto.imagen} ? '/image/article/pictures/'+${producto.imagen}+'.jpg' : '/image/article/itemexample.jpg'" alt="Card image cap"></a>
+                  <a th:href="@{/detalle-producto?id=}+${producto.id}" class="card-title" th:text="${producto.nombre}"></a>
+                  <div class="price"><span class="h5" th:text="'€ '+${#numbers.formatDecimal(producto.precio, 0, T(Math).round(producto.precio) == producto.precio ? 0 : 2)}"> </span></div>
                 </div>              
               </div>
           </div>      
@@ -176,7 +177,7 @@
     </div>
     <!-- /Filter Modal -->
         
-    <input id="page" hidden="hidden" type="text" name="page" th:value="${filters.page}">     
+    <input id="page" hidden="hidden" type="text" name="page" th:value="${filtros.pagina}">     
     
     <input id="totalitems" hidden="hidden" type="text" th:value="${totalitems}">
     <input id="itemsperpage" hidden="hidden" type="text" th:value="${itemsperpage}">   
