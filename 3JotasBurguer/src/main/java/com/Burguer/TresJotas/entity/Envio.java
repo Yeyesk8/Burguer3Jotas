@@ -28,9 +28,6 @@ public class Envio {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	
-
 	public String getDestinatario() {
 		return destinatario;
 	}

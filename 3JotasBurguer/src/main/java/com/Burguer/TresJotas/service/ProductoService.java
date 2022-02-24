@@ -7,20 +7,20 @@ import org.springframework.data.domain.Pageable;
 
 import com.Burguer.TresJotas.entity.Producto;
 
-public interface ArticleService {
+public interface ProductoService {
 
-	List<Producto> findAllArticles();
+	List<Producto> findAllProductos();
 
-	Page<Producto> findArticlesByCriteria(Pageable pageable, Double precioBajo, Double precioAlto,
+	Page<Producto> findProductosPorCriterios(Pageable pageable, Double precioBajo, Double precioAlto,
 			List<String> categorias,List<String> ingredientes, String busqueda);
 
-	List<Producto> findFirstArticles();
+	List<Producto> findPrimerosProductos();
 
-	Producto findArticleById(Long id);
+	Producto findProductoById(Long id);
 
-	Producto saveArticle(Producto producto);
+	Producto guardarProducto(Producto producto);
 
-	void deleteArticleById(Long id);
+	void borrarProductoById(Long id);
 
 	List<String> getAllCategorias();
 	

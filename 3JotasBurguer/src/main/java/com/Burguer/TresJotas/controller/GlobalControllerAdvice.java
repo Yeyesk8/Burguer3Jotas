@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.Burguer.TresJotas.entity.User;
-import com.Burguer.TresJotas.service.ShoppingCartService;
+import com.Burguer.TresJotas.service.CarritoService;
 
 @ControllerAdvice
 public class GlobalControllerAdvice {
@@ -28,7 +28,7 @@ public class GlobalControllerAdvice {
 	public static final String DEFAULT_ERROR_VIEW = "error";
 		
 	@Autowired
-	private ShoppingCartService shoppingCartService;
+	private CarritoService shoppingCartService;
 
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder) {
@@ -42,7 +42,7 @@ public class GlobalControllerAdvice {
 		if (auth != null && auth.isAuthenticated() && !(auth instanceof AnonymousAuthenticationToken)) {				
 			User user =  (User) auth.getPrincipal(); 
 			if (user != null) {
-				model.addAttribute("shoppingCartItemNumber", shoppingCartService.getItemsNumber(user) );
+				model.addAttribute("shoppingCartItemNumber", shoppingCartService.getnumeroItems(user) );
 			}
 		} else { 
 			model.addAttribute("shoppingCartItemNumber", 0);

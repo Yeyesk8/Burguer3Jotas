@@ -14,67 +14,67 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.Burguer.TresJotas.entity.Producto;
-import com.Burguer.TresJotas.repository.ArticleRepository;
-import com.Burguer.TresJotas.repository.ArticleSpecification;
-import com.Burguer.TresJotas.service.ArticleService;
+import com.Burguer.TresJotas.repository.ProductoRepository;
+import com.Burguer.TresJotas.repository.EspecificacionProducto;
+import com.Burguer.TresJotas.service.ProductoService;
 
 @Service
 @Transactional
-public class ArticleServiceImpl implements ArticleService {
+public class ProductoServiceImpl implements ProductoService {
 
 	@Autowired
-	private ArticleRepository articleRepository;
+	private ProductoRepository productoRepositoy;
 
 	@Value("${articleservice.featured-items-number}")
 	private int featuredArticlesNumber;
 
 	@Override
-	public List<Producto> findAllArticles() {
-		return (List<Producto>) articleRepository.findAllEagerBy();
+	public List<Producto> findAllProductos() {
+		return (List<Producto>) productoRepositoy.findAllEagerBy();
 	}
 
 	@Override
-	public Page<Producto> findArticlesByCriteria(Pageable pageable, Double precioBajo, Double precioAlto,
+	public Page<Producto> findProductosPorCriterios(Pageable pageable, Double precioBajo, Double precioAlto,
 			List<String> categorias,List<String> ingredientes, String busqueda) {
-		Page<Producto> page = articleRepository
-				.findAll(ArticleSpecification.filterBy(precioBajo, precioAlto, categorias,ingredientes, busqueda), pageable);
+		Page<Producto> page = productoRepositoy
+				.findAll(EspecificacionProducto.filtrarPor(precioBajo, precioAlto, categorias,ingredientes, busqueda), pageable);
 		return page;
 	}
 
 	@Override
-	public List<Producto> findFirstArticles() {
-		return articleRepository.findAll(PageRequest.of(0, featuredArticlesNumber)).getContent();
+	public List<Producto> findPrimerosProductos() {
+		return productoRepositoy.findAll(PageRequest.of(0, featuredArticlesNumber)).getContent();
 	}
 
 	@Override
-	public Producto findArticleById(Long id) {
-		Optional<Producto> opt = articleRepository.findById(id);
+	public Producto findProductoById(Long id) {
+		Optional<Producto> opt = productoRepositoy.findById(id);
 		return opt.get();
 	}
 
 	@Override
 	@CacheEvict(value = {"categorias","ingredientes" }, allEntries = true)
-	public Producto saveArticle(Producto producto) {
-		return articleRepository.save(producto);
+	public Producto guardarProducto(Producto producto) {
+		return productoRepositoy.save(producto);
 	}
 
 	@Override
 	@CacheEvict(value = {"categorias","ingredientes" }, allEntries = true)
-	public void deleteArticleById(Long id) {
-		articleRepository.deleteById(id);
+	public void borrarProductoById(Long id) {
+		productoRepositoy.deleteById(id);
 	}
 
 	
 	@Override
 	@Cacheable("categorias")
 	public List<String> getAllCategorias() {
-		return articleRepository.findAllCategorias();
+		return productoRepositoy.findAllCategorias();
 	}
 	
 	@Override
 	@Cacheable("ingredientes")
 	public List<String> getAllIngredientes() {
-		return articleRepository.findAllIngredientes();
+		return productoRepositoy.findAllIngredientes();
 	}
 
 }

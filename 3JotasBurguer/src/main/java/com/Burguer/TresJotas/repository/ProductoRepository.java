@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.Burguer.TresJotas.entity.Producto;
 
-public interface ArticleRepository extends JpaRepository<Producto, Long>, JpaSpecificationExecutor<Producto> {
+public interface ProductoRepository extends JpaRepository<Producto, Long>, JpaSpecificationExecutor<Producto> {
 	
 	@EntityGraph(attributePaths = {"categorias","ingredientes"})
 	List<Producto> findAllEagerBy();	

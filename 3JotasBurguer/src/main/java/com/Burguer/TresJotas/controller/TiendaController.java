@@ -12,26 +12,26 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.Burguer.TresJotas.entity.Producto;
 import com.Burguer.TresJotas.form.FiltroProductos;
-import com.Burguer.TresJotas.service.ArticleService;
+import com.Burguer.TresJotas.service.ProductoService;
 import com.Burguer.TresJotas.type.FiltroClasificacion;
 
 @Controller
 public class TiendaController {
 
 	@Autowired
-	private ArticleService articleService;
+	private ProductoService productoService;
 
 	@GetMapping("/tienda")
 	public String tienda(@ModelAttribute("filtros") FiltroProductos filtros, Model model) {
 		Integer pagina = filtros.getPagina();
 		int numeropagina = (pagina == null || pagina <= 0) ? 0 : pagina - 1;
 		FiltroClasificacion filtroClasificacion = new FiltroClasificacion(filtros.getClasificacion());
-		Page<Producto> pageresult = articleService.findArticlesByCriteria(
+		Page<Producto> pageresult = productoService.findProductosPorCriterios(
 				PageRequest.of(numeropagina, 9, filtroClasificacion.getSortType()), filtros.getPrecioBajo(), filtros.getPrecioAlto(),
 				filtros.getCategoria(),filtros.getIngrediente(), filtros.getBusqueda());
 		
-		model.addAttribute("allCategorias", articleService.getAllCategorias());
-		model.addAttribute("allIngredientes", articleService.getAllIngredientes());
+		model.addAttribute("allCategorias", productoService.getAllCategorias());
+		model.addAttribute("allIngredientes", productoService.getAllIngredientes());
 		model.addAttribute("productos", pageresult.getContent());
 		model.addAttribute("totalitems", pageresult.getTotalElements());
 		model.addAttribute("itemsperpage", 9);
@@ -40,7 +40,7 @@ public class TiendaController {
 
 	@GetMapping("/detalle-producto")
 	public String detalleProducto(@PathParam("id") Long id, Model model) {
-		Producto producto = articleService.findArticleById(id);
+		Producto producto = productoService.findProductoById(id);
 		model.addAttribute("producto", producto);
 		model.addAttribute("notEnoughStock", model.asMap().get("notEnoughStock"));
 		model.addAttribute("addArticleSuccess", model.asMap().get("addArticleSuccess"));

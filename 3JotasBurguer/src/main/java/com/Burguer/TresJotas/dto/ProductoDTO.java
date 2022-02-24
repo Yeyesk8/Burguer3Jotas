@@ -1,6 +1,6 @@
 package com.Burguer.TresJotas.dto;
 
-public class ArticleDTO {
+public class ProductoDTO {
 
 	private Long id;
 	private String nombre;
@@ -8,7 +8,7 @@ public class ArticleDTO {
 	private double precio;
 	private String imagen;
 	
-	public ArticleDTO() {
+	public ProductoDTO() {
 	}
 
 	public Long getId() {

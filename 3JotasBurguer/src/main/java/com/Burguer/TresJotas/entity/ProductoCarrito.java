@@ -39,7 +39,7 @@ public class ProductoCarrito {
 	}
 	
 	public BigDecimal getSubtotal() {
-		return new BigDecimal(producto.getPrecio()/*getPrice()*/).multiply(new BigDecimal(cantidad));
+		return new BigDecimal(producto.getPrecio()).multiply(new BigDecimal(cantidad));
 	}
 
 	public void addQuantity(int cantidad) {

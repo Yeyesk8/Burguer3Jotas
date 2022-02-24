@@ -1,5 +1,5 @@
 package com.Burguer.TresJotas.form;
 
-public class UserProfileForm {
+public class UserPerfilForm {
 
 }

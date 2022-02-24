@@ -17,8 +17,8 @@ import com.Burguer.TresJotas.entity.Pago;
 import com.Burguer.TresJotas.entity.Envio;
 import com.Burguer.TresJotas.entity.CarritoCompra;
 import com.Burguer.TresJotas.entity.User;
-import com.Burguer.TresJotas.repository.ArticleRepository;
-import com.Burguer.TresJotas.repository.CartItemRepository;
+import com.Burguer.TresJotas.repository.ProductoRepository;
+import com.Burguer.TresJotas.repository.ProductoCarritoRepository;
 import com.Burguer.TresJotas.repository.OrderRepository;
 import com.Burguer.TresJotas.service.OrderService;
 
@@ -29,10 +29,10 @@ public class OrderServiceImpl implements OrderService {
 	OrderRepository orderRepository;
 	
 	@Autowired
-	CartItemRepository cartItemRepository;
+	ProductoCarritoRepository productoCarritoRepository;
 	
 	@Autowired
-	ArticleRepository articleRepository;
+	ProductoRepository productoRepository;
 			
 	@Override
 	@Transactional
@@ -56,9 +56,9 @@ public class OrderServiceImpl implements OrderService {
 		for (ProductoCarrito item : productosCarrito) {
 			Producto producto = item.getProducto();
 			producto.decreaseStock(item.getCantidad());
-			articleRepository.save(producto);
+			productoRepository.save(producto);
 			item.setOrder(order);
-			cartItemRepository.save(item);
+			productoCarritoRepository.save(item);
 		}		
 		return order;	
 	}

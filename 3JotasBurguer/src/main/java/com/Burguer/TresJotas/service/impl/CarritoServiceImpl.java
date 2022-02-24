@@ -11,70 +11,70 @@ import com.Burguer.TresJotas.entity.Producto;
 import com.Burguer.TresJotas.entity.ProductoCarrito;
 import com.Burguer.TresJotas.entity.CarritoCompra;
 import com.Burguer.TresJotas.entity.User;
-import com.Burguer.TresJotas.repository.CartItemRepository;
-import com.Burguer.TresJotas.service.ShoppingCartService;
+import com.Burguer.TresJotas.repository.ProductoCarritoRepository;
+import com.Burguer.TresJotas.service.CarritoService;
 
 @Service
-public class ShoppingCartServiceImpl implements ShoppingCartService {
+public class CarritoServiceImpl implements CarritoService {
 
 	@Autowired
-	private CartItemRepository cartItemRepository;
+	private ProductoCarritoRepository productoCarritoRepository;
 	
 	@Override
-	public CarritoCompra getShoppingCart(User user) {
-		return new CarritoCompra(cartItemRepository.findAllByUserAndOrderIsNull(user));
+	public CarritoCompra getCarrito(User user) {
+		return new CarritoCompra(productoCarritoRepository.findAllByUserAndOrderIsNull(user));
 	}
 	
 	@Override
 	@Cacheable("itemcount")
-	public int getItemsNumber(User user) {
-		return cartItemRepository.countDistinctByUserAndOrderIsNull(user);
+	public int getnumeroItems(User user) {
+		return productoCarritoRepository.countDistinctByUserAndOrderIsNull(user);
 	}
 
 	@Override
-	public ProductoCarrito findCartItemById(Long cartItemId) {
-		Optional<ProductoCarrito> opt = cartItemRepository.findById(cartItemId);
+	public ProductoCarrito findProductoCarritoById(Long productoCarritoId) {
+		Optional<ProductoCarrito> opt = productoCarritoRepository.findById(productoCarritoId);
 		return opt.get();
 	}
 
 	@Override
 	@CacheEvict(value = "itemcount", allEntries = true)
-	public ProductoCarrito addArticleToShoppingCart(Producto producto, User user, int cantidad) {
-		CarritoCompra carritoCompra = this.getShoppingCart(user);
+	public ProductoCarrito addProductoCarrito(Producto producto, User user, int cantidad) {
+		CarritoCompra carritoCompra = this.getCarrito(user);
 		ProductoCarrito productoCarrito = carritoCompra.findCartItemByArticle(producto.getId());
 		if (productoCarrito != null) {
 			productoCarrito.addQuantity(cantidad);
-			productoCarrito = cartItemRepository.save(productoCarrito);
+			productoCarrito = productoCarritoRepository.save(productoCarrito);
 		} else {
 			productoCarrito = new ProductoCarrito();
 			productoCarrito.setUser(user);
 			productoCarrito.setProducto(producto);
 			productoCarrito.setCantidad(cantidad);
-			productoCarrito = cartItemRepository.save(productoCarrito);
+			productoCarrito = productoCarritoRepository.save(productoCarrito);
 		}		
 		return productoCarrito;	
 	}
 
 	@Override
 	@CacheEvict(value = "itemcount", allEntries = true)
-	public void removeCartItem(ProductoCarrito productoCarrito) {
-		cartItemRepository.deleteById(productoCarrito.getId());
+	public void retirarProductoCarrito(ProductoCarrito productoCarrito) {
+		productoCarritoRepository.deleteById(productoCarrito.getId());
 	}
 	
 	@Override
 	@CacheEvict(value = "itemcount", allEntries = true)
-	public void updateCartItem(ProductoCarrito productoCarrito, Integer cantidad) {
+	public void actualizarProductoCarrito(ProductoCarrito productoCarrito, Integer cantidad) {
 		if (cantidad == null || cantidad <= 0) {
-			this.removeCartItem(productoCarrito);
+			this.retirarProductoCarrito(productoCarrito);
 		} else if (productoCarrito.getProducto().hasStock(cantidad)) {
 			productoCarrito.setCantidad(cantidad);
-			cartItemRepository.save(productoCarrito);
+			productoCarritoRepository.save(productoCarrito);
 		}
 	}
 
 	@Override
 	@CacheEvict(value = "itemcount", allEntries = true)
-	public void clearShoppingCart(User user) {
-		cartItemRepository.deleteAllByUserAndOrderIsNull(user);	
+	public void vaciarCarrito(User user) {
+		productoCarritoRepository.deleteAllByUserAndOrderIsNull(user);	
 	}	
 }

@@ -15,13 +15,13 @@ import com.Burguer.TresJotas.entity.Producto;
 import com.Burguer.TresJotas.entity.Categoria;
 import com.Burguer.TresJotas.entity.Ingrediente;
 
-public class ArticleSpecification {
+public class EspecificacionProducto {
 
-	private ArticleSpecification() {
+	private EspecificacionProducto() {
 	}
 
 	@SuppressWarnings("serial")
-	public static Specification<Producto> filterBy(Double precioBajo, Double precioAlto, List<String> categorias, List<String> ingredientes,
+	public static Specification<Producto> filtrarPor(Double precioBajo, Double precioAlto, List<String> categorias, List<String> ingredientes,
 			String busqueda) {
 		return new Specification<Producto>() {
 			@Override

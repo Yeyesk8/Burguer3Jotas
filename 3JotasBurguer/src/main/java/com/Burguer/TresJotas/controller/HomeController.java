@@ -14,21 +14,21 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.Burguer.TresJotas.entity.Producto;
 import com.Burguer.TresJotas.entity.Sugerencia;
-import com.Burguer.TresJotas.service.ArticleService;
+import com.Burguer.TresJotas.service.ProductoService;
 import com.Burguer.TresJotas.service.SugerenciaService;
 
 @Controller
 public class HomeController {
 
 	@Autowired
-	private ArticleService articleService;
+	private ProductoService productoService;
 
 	@Autowired
 	private SugerenciaService sugerenciaService;
 
 	@GetMapping("/")
 	public String index(Model model) {
-		List<Producto> productos = articleService.findFirstArticles();
+		List<Producto> productos = productoService.findPrimerosProductos();
 		model.addAttribute("productos", productos);
 		return "index";
 	}

@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 import com.Burguer.TresJotas.entity.ProductoCarrito;
 import com.Burguer.TresJotas.entity.User;
 
-public interface CartItemRepository extends CrudRepository<ProductoCarrito, Long> {
+public interface ProductoCarritoRepository extends CrudRepository<ProductoCarrito, Long> {
 
 	@EntityGraph(attributePaths = { "producto" })
 	List<ProductoCarrito> findAllByUserAndOrderIsNull(User user);

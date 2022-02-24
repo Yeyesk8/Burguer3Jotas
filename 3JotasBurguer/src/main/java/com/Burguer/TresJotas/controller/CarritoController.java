@@ -15,55 +15,56 @@ import com.Burguer.TresJotas.entity.Producto;
 import com.Burguer.TresJotas.entity.ProductoCarrito;
 import com.Burguer.TresJotas.entity.CarritoCompra;
 import com.Burguer.TresJotas.entity.User;
-import com.Burguer.TresJotas.service.ArticleService;
-import com.Burguer.TresJotas.service.ShoppingCartService;
+import com.Burguer.TresJotas.service.CarritoService;
+import com.Burguer.TresJotas.service.ProductoService;
+
 
 @Controller
 @RequestMapping("/carrito")
 public class CarritoController {
 		
 	@Autowired
-	private ArticleService articleService;
+	private ProductoService productoService;
 	
 	@Autowired
-	private ShoppingCartService carritoCompraService;
+	private CarritoService carritoCompraService;
 	
 	@GetMapping("/carrito")
 	public String carrito(Model model, Authentication authentication) {		
 		User user = (User) authentication.getPrincipal();		
-		CarritoCompra carritoCompra = carritoCompraService.getShoppingCart(user);		
+		CarritoCompra carritoCompra = carritoCompraService.getCarrito(user);		
 		model.addAttribute("ListaProductosCarrito", carritoCompra.getProductosCarrito());
 		model.addAttribute("carritoCompra", carritoCompra);		
 		return "carrito";
 	}
 
 	@PostMapping("/añadir-carrito")
-	public String aniadirCarrito(@ModelAttribute("article") Producto article, @RequestParam("cantidad") String cantidad,
+	public String aniadirCarrito(@ModelAttribute("producto") Producto producto, @RequestParam("cantidad") String cantidad,
 						  RedirectAttributes attributes, Model model, Authentication authentication) {
-		article = articleService.findArticleById(article.getId());				
-		if (!article.hasStock(Integer.parseInt(cantidad))) {
+		producto = productoService.findProductoById(producto.getId());				
+		if (!producto.hasStock(Integer.parseInt(cantidad))) {
 			attributes.addFlashAttribute("notEnoughStock", true);
-			return "redirect:/detalle-producto?id="+article.getId();
+			return "redirect:/detalle-producto?id="+producto.getId();
 		}		
 		User user = (User) authentication.getPrincipal();		
-		carritoCompraService.addArticleToShoppingCart(article, user, Integer.parseInt(cantidad));
+		carritoCompraService.addProductoCarrito(producto, user, Integer.parseInt(cantidad));
 		attributes.addFlashAttribute("addArticleSuccess", true);
-		return "redirect:/detalle-producto?id="+article.getId();
+		return "redirect:/detalle-producto?id="+producto.getId();
 	}
 	
 	@PostMapping("/editar-carrito")
-	public String editarCarrito(@RequestParam("id") Long cartItemId,
+	public String editarCarrito(@RequestParam("id") Long productoCarritoId,
 									 @RequestParam("cantidad") Integer cantidad, Model model) {		
-		ProductoCarrito productoCarrito = carritoCompraService.findCartItemById(cartItemId);
+		ProductoCarrito productoCarrito = carritoCompraService.findProductoCarritoById(productoCarritoId);
 		if (productoCarrito.canUpdateQty(cantidad)) {
-			carritoCompraService.updateCartItem(productoCarrito, cantidad);
+			carritoCompraService.actualizarProductoCarrito(productoCarrito, cantidad);
 		}
 		return "redirect:/carrito/carrito";
 	}
 	
 	@GetMapping("/eliminar-producto-carrito")
 	public String eliminarProductoCarrito(@RequestParam("id") Long id) {		
-		carritoCompraService.removeCartItem(carritoCompraService.findCartItemById(id));		
+		carritoCompraService.retirarProductoCarrito(carritoCompraService.findProductoCarritoById(id));		
 		return "redirect:/carrito/carrito";
 	} 
 }
