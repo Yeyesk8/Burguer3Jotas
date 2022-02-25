@@ -24,7 +24,7 @@ public class SugerenciaController {
 	
 	@GetMapping("/eliminar")
 	public String BorrarSugerencia(@RequestParam("id") Long id) {
-		sugerenciaService.deleteSugerenciaById(id);
+		sugerenciaService.borrarSugerenciaById(id);
 		
 		return "redirect:lista-sugerencias";
 	}

@@ -45,13 +45,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void save(User user) {
+	public void guardar(User user) {
 		userRepository.save(user);
 	}
 
 	@Override
 	@Transactional
-	public User createUser(String username, String password, String email, List<String> roles) {
+	public User crearUsuario(String username, String password, String email, List<String> roles) {
 		User user = findByUsername(username);
 		if (user != null) {
 			return user;
@@ -81,7 +81,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void deleteUserById(Long id) {
+	public void borrarUsuarioById(Long id) {
 		userRepository.deleteById(id);
 		
 	}

@@ -81,7 +81,7 @@
 										<div class="input-icon">
 											<i data-feather="mail"></i>
 											<input required="required" type="email" class="form-control"
-												th:classappend="${emailExists} ? is-invalid" name="email"
+												th:classappend="${emailExiste} ? is-invalid" name="email"
 												placeholder="Email" th:value="${email}">
 											<div class="invalid-feedback">E-mail ya está en uso</div>
 										</div>
@@ -90,7 +90,7 @@
 										<div class="input-icon">
 											<i data-feather="user"></i>
 											<input required="required" type="text" class="form-control"
-												th:classappend="${usernameExists} ? is-invalid" placeholder="Usuario"
+												th:classappend="${usernameExiste} ? is-invalid" placeholder="Usuario"
 												name="username" th:value="${username}">
 											<div class="invalid-feedback">El nombre de usuario ya está en uso</div>
 

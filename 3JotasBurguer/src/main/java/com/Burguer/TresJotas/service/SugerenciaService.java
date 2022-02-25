@@ -12,10 +12,10 @@ public interface SugerenciaService {
 
 	Sugerencia findByAsunto(String asunto);
 
-	void save(Sugerencia sugerencia);
+	void guardar(Sugerencia sugerencia);
 
-	Sugerencia createSugerencia(String nombre, String apellido, String email,String asunto,String mensaje);
+	Sugerencia crearSugerencia(String nombre, String apellido, String email,String asunto,String mensaje);
 	
-	void deleteSugerenciaById(Long id);
+	void borrarSugerenciaById(Long id);
 
 }

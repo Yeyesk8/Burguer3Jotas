@@ -17,10 +17,10 @@ public interface UserService {
 	
 	User findUserById(Long id);
 		
-	void save(User user);
+	void guardar(User user);
 	
-	User createUser(String username, String email,  String password, List<String> roles);
+	User crearUsuario(String username, String email,  String password, List<String> roles);
 	
-	void deleteUserById(Long id);
+	void borrarUsuarioById(Long id);
 
 }

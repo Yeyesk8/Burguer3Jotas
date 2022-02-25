@@ -19,14 +19,14 @@ import com.Burguer.TresJotas.entity.CarritoCompra;
 import com.Burguer.TresJotas.entity.User;
 import com.Burguer.TresJotas.repository.ProductoRepository;
 import com.Burguer.TresJotas.repository.ProductoCarritoRepository;
-import com.Burguer.TresJotas.repository.OrderRepository;
-import com.Burguer.TresJotas.service.OrderService;
+import com.Burguer.TresJotas.repository.PedidoRepository;
+import com.Burguer.TresJotas.service.PedidoService;
 
 @Service
-public class OrderServiceImpl implements OrderService {
+public class PedidoServiceImpl implements PedidoService {
 
 	@Autowired
-	OrderRepository orderRepository;
+	PedidoRepository orderRepository;
 	
 	@Autowired
 	ProductoCarritoRepository productoCarritoRepository;
@@ -37,7 +37,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	@Transactional
 	@CacheEvict(value = "itemcount", allEntries = true)
-	public synchronized Pedido createOrder(CarritoCompra carritoCompra, Envio envio, Pago pago, User user) {
+	public synchronized Pedido crearPedido(CarritoCompra carritoCompra, Envio envio, Pago pago, User user) {
 		Pedido order = new Pedido();
 		order.setUser(user);
 		order.setPago(pago);
@@ -64,7 +64,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 	@Override
-	public Pedido findOrderWithDetails(Long id) {
+	public Pedido findPedidoDetalles(Long id) {
 		return orderRepository.findEagerById(id);
 	}	
 
@@ -78,7 +78,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public void deletePedidoById(Long id) {
+	public void borrarPedidoById(Long id) {
 		orderRepository.deleteById(id);
 		
 	}

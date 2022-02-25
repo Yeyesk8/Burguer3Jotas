@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 import com.Burguer.TresJotas.entity.Pedido;
 import com.Burguer.TresJotas.entity.User;
 
-public interface OrderRepository extends CrudRepository<Pedido, Long> {
+public interface PedidoRepository extends CrudRepository<Pedido, Long> {
 
 	List<Pedido> findByUser(User user); 
 	

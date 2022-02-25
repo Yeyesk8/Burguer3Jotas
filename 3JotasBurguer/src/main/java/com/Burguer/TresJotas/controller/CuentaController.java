@@ -21,7 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.Burguer.TresJotas.entity.Direccion;
 import com.Burguer.TresJotas.entity.Pedido;
 import com.Burguer.TresJotas.entity.User;
-import com.Burguer.TresJotas.service.OrderService;
+import com.Burguer.TresJotas.service.PedidoService;
 import com.Burguer.TresJotas.service.UserService;
 import com.Burguer.TresJotas.service.impl.UserSecurityService;
 
@@ -38,12 +38,12 @@ public class CuentaController {
 	private UserSecurityService userSecurityService;
 	
 	@Autowired
-	private OrderService orderService;
+	private PedidoService pedidoService;
 
 	@GetMapping("/login")
 	public String log(Model model) {
-		model.addAttribute("usernameExists", model.asMap().get("usernameExists"));
-		model.addAttribute("emailExists", model.asMap().get("emailExists"));
+		model.addAttribute("usernameExiste", model.asMap().get("usernameExiste"));
+		model.addAttribute("emailExiste", model.asMap().get("emailExiste"));
 		return "miCuenta";
 	}
 	
@@ -59,7 +59,7 @@ public class CuentaController {
 	public String misPedidos(Model model, Authentication authentication) {
 		User user = (User) authentication.getPrincipal();
 		model.addAttribute("user", user);
-		List<Pedido> orders = orderService.findByUser(user);
+		List<Pedido> orders = pedidoService.findByUser(user);
 		model.addAttribute("orders", orders);
 		return "misPedidos";
 	}
@@ -74,12 +74,12 @@ public class CuentaController {
 	@PostMapping("/actualizar-direccion")
 	public String actualizardireccion(@ModelAttribute("direccion") Direccion direccion, 
 			Model model, Principal principal) throws Exception {
-		User currentUser = userService.findByUsername(principal.getName());
-		if(currentUser == null) {
+		User UserActual = userService.findByUsername(principal.getName());
+		if(UserActual == null) {
 			throw new Exception ("User not found");
 		}
-		currentUser.setDireccion(direccion);
-		userService.save(currentUser);
+		UserActual.setDireccion(direccion);
+		userService.guardar(UserActual);
 		return "redirect:/mi-direccion";
 	}
 	
@@ -94,17 +94,17 @@ public class CuentaController {
 			return "redirect:/login";
 		}		
 		if (userService.findByUsername(user.getUsername()) != null) {
-			redirectAttributes.addFlashAttribute("usernameExists", true);
+			redirectAttributes.addFlashAttribute("usernameExiste", true);
 			invalidFields = true;
 		}
 		if (userService.findByEmail(user.getEmail()) != null) {
-			redirectAttributes.addFlashAttribute("emailExists", true);
+			redirectAttributes.addFlashAttribute("emailExiste", true);
 			invalidFields = true;
 		}	
 		if (invalidFields) {
 			return "redirect:/login";
 		}		
-		user = userService.createUser(user.getUsername(), password,  user.getEmail(), Arrays.asList("ROLE_USER"));	
+		user = userService.crearUsuario(user.getUsername(), password,  user.getEmail(), Arrays.asList("ROLE_USER"));	
 		userSecurityService.authenticateUser(user.getUsername());
 		return "redirect:/mi-perfil";  
 	}
@@ -113,47 +113,47 @@ public class CuentaController {
 	public String editarInfoUsuario( @ModelAttribute("user") User user,
 								  @RequestParam("newPassword") String newPassword,
 								  Model model, Principal principal) throws Exception {
-		User currentUser = userService.findByUsername(principal.getName());
-		if(currentUser == null) {
+		User UserActual = userService.findByUsername(principal.getName());
+		if(UserActual == null) {
 			throw new Exception ("User not found");
 		}
 		/*verifica si el username ya existe*/
 		User existingUser = userService.findByUsername(user.getUsername());
-		if (existingUser != null && !existingUser.getId().equals(currentUser.getId()))  {
-			model.addAttribute("usernameExists", true);
+		if (existingUser != null && !existingUser.getId().equals(UserActual.getId()))  {
+			model.addAttribute("usernameExiste", true);
 			return "miPerfil";
 		}	
 		/*verifica si el email ya existe*/
 		existingUser = userService.findByEmail(user.getEmail());
-		if (existingUser != null && !existingUser.getId().equals(currentUser.getId()))  {
-			model.addAttribute("emailExists", true);
+		if (existingUser != null && !existingUser.getId().equals(UserActual.getId()))  {
+			model.addAttribute("emailExiste", true);
 			return "miPerfil";
 		}			
 		/*actualizar contraseña*/
 		if (newPassword != null && !newPassword.isEmpty() && !newPassword.equals("")){
 			BCryptPasswordEncoder passwordEncoder = SecurityUtility.passwordEncoder();
-			String dbPassword = currentUser.getPassword();
+			String dbPassword = UserActual.getPassword();
 			if(passwordEncoder.matches(user.getPassword(), dbPassword)){
-				currentUser.setPassword(passwordEncoder.encode(newPassword));
+				UserActual.setPassword(passwordEncoder.encode(newPassword));
 			} else {
 				model.addAttribute("incorrectPassword", true);
 				return "miPerfil";
 			}
 		}		
-		currentUser.setNombre(user.getNombre());
-		currentUser.setApellido(user.getApellido());
-		currentUser.setUsername(user.getUsername());
-		currentUser.setEmail(user.getEmail());		
-		userService.save(currentUser);
+		UserActual.setNombre(user.getNombre());
+		UserActual.setApellido(user.getApellido());
+		UserActual.setUsername(user.getUsername());
+		UserActual.setEmail(user.getEmail());		
+		userService.guardar(UserActual);
 		model.addAttribute("updateSuccess", true);
-		model.addAttribute("user", currentUser);				
-		userSecurityService.authenticateUser(currentUser.getUsername());		
+		model.addAttribute("user", UserActual);				
+		userSecurityService.authenticateUser(UserActual.getUsername());		
 		return "miPerfil";
 	}
 	
 	@GetMapping("/detalle-pedido")
 	public String detallePedido(@RequestParam("order") Long id, Model model) {
-		Pedido order = orderService.findOrderWithDetails(id);
+		Pedido order = pedidoService.findPedidoDetalles(id);
 		model.addAttribute("order", order);
 		return "detallePedido";
 	}

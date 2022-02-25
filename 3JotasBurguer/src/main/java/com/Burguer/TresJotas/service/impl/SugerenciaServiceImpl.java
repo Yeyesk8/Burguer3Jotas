@@ -25,13 +25,13 @@ public class SugerenciaServiceImpl implements SugerenciaService {
 	}
 	
 	@Override
-	public void save(Sugerencia sugerencia) {
+	public void guardar(Sugerencia sugerencia) {
 		sugerenciaRepository.save(sugerencia);
 	}
 
 
 	@Override
-	public Sugerencia createSugerencia(String nombre, String apellido, String email, String asunto, String mensaje) {
+	public Sugerencia crearSugerencia(String nombre, String apellido, String email, String asunto, String mensaje) {
 		Sugerencia sugerencia = findByAsunto(asunto);
 		if (sugerencia != null) {
 			return sugerencia;
@@ -59,7 +59,7 @@ public class SugerenciaServiceImpl implements SugerenciaService {
 	}
 
 	@Override
-	public void deleteSugerenciaById(Long id) {
+	public void borrarSugerenciaById(Long id) {
 		sugerenciaRepository.deleteById(id);
 		
 	}

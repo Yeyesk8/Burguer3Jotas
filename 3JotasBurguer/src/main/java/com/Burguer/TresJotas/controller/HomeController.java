@@ -83,7 +83,7 @@ public class HomeController {
 		if (invalidFields) {
 			return "redirect:/sugerencia";
 		}
-		sugerencia = sugerenciaService.createSugerencia(sugerencia.getNombre(),sugerencia.getApellido(),sugerencia.getEmail(),sugerencia.getAsunto(),sugerencia.getMensaje());
+		sugerencia = sugerenciaService.crearSugerencia(sugerencia.getNombre(),sugerencia.getApellido(),sugerencia.getEmail(),sugerencia.getAsunto(),sugerencia.getMensaje());
 		return "redirect:/";
 	}
 

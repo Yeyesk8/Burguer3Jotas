@@ -16,7 +16,7 @@ import com.Burguer.TresJotas.entity.Pago;
 import com.Burguer.TresJotas.entity.Envio;
 import com.Burguer.TresJotas.entity.CarritoCompra;
 import com.Burguer.TresJotas.entity.User;
-import com.Burguer.TresJotas.service.OrderService;
+import com.Burguer.TresJotas.service.PedidoService;
 import com.Burguer.TresJotas.service.CarritoService;
 
 @Controller
@@ -26,7 +26,7 @@ public class VerificarControler {
 	private CarritoService carritoCompraService;
 	
 	@Autowired
-	private OrderService orderService;
+	private PedidoService pedidoService;
 
 	@GetMapping("/verificar")
 	public String verificar( @RequestParam(value="missingRequiredField", required=false) boolean missingRequiredField,
@@ -54,7 +54,7 @@ public class VerificarControler {
 		CarritoCompra carritoCompra = carritoCompraService.getCarrito(user);	
 		if (!carritoCompra.isEmpty()) {
 			envio.setDireccion(direccion);
-			Pedido order = orderService.createOrder(carritoCompra, envio, pago, user);		
+			Pedido order = pedidoService.crearPedido(carritoCompra, envio, pago, user);		
 			redirectAttributes.addFlashAttribute("order", order);
 		}
 		return "redirect:/pedido-validado";

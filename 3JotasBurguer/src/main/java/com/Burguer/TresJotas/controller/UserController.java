@@ -26,7 +26,7 @@ public class UserController {
 	
 	@GetMapping("/eliminar")
 	public String BorrarUsuario(@RequestParam("id") Long id) {
-		userService.deleteUserById(id);
+		userService.borrarUsuarioById(id);
 		
 		return "redirect:lista-usuarios";
 	}

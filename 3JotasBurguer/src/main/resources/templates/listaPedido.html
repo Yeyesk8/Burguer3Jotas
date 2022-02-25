@@ -26,12 +26,12 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr data-th-each="user_pedido : ${pedidos}">
-					<td th:text="${user_pedido.id}"></td>
-					<td th:text="${user_pedido.fechaPedido}"></td>
-					<td th:text="${user_pedido.estadoPedido}"></td>
-					<td th:text="${user_pedido.totalPedido}"></td>					
-					<td><a th:href="@{/pedido/eliminar?id=}+${user_pedido.id}" class="badge badge-danger"><i
+				<tr data-th-each="user_order : ${pedidos}">
+					<td th:text="${user_order.id}"></td>
+					<td th:text="${user_order.fechaPedido}"></td>
+					<td th:text="${user_order.estadoPedido}"></td>
+					<td th:text="${user_order.totalPedido}"></td>					
+					<td><a th:href="@{/pedido/eliminar?id=}+${user_order.id}" class="badge badge-danger"><i
 								class="fas fa-solid fa-trash"></i> </a>
 					</td>
 				</tr>

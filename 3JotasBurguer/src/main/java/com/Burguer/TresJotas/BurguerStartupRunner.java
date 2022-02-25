@@ -9,14 +9,14 @@ import org.springframework.stereotype.Component;
 import com.Burguer.TresJotas.service.UserService;
 
 @Component
-public class StoreAppStartupRunner implements CommandLineRunner{
+public class BurguerStartupRunner implements CommandLineRunner{
 
 	@Autowired
 	private UserService userService;
 	
 	@Override
 	public void run(String... args) throws Exception {
-		userService.createUser("admin", "admin", "admin@admin.com", Arrays.asList("ROLE_USER", "ROLE_ADMIN"));	
+		userService.crearUsuario("admin", "admin", "admin@admin.com", Arrays.asList("ROLE_USER", "ROLE_ADMIN"));	
 	}
 }
 

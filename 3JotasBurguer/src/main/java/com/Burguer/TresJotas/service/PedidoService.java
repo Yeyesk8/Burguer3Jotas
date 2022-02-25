@@ -8,15 +8,15 @@ import com.Burguer.TresJotas.entity.Envio;
 import com.Burguer.TresJotas.entity.CarritoCompra;
 import com.Burguer.TresJotas.entity.User;
 
-public interface OrderService {
+public interface PedidoService {
 
-	Pedido createOrder(CarritoCompra carritoCompra, Envio envio, Pago pago, User user);
+	Pedido crearPedido(CarritoCompra carritoCompra, Envio envio, Pago pago, User user);
 	
 	List<Pedido> findByUser(User user);
 	
-	Pedido findOrderWithDetails(Long id);
+	Pedido findPedidoDetalles(Long id);
 	
 	 Iterable<Pedido> getAllPedidos();
 	 
-	 void deletePedidoById(Long id);
+	 void borrarPedidoById(Long id);
 }
