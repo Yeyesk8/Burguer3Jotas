@@ -18,7 +18,7 @@ import com.Burguer.TresJotas.service.ProductoService;
 import com.Burguer.TresJotas.service.SugerenciaService;
 
 @Controller
-public class HomeController {
+public class InicioController {
 
 	@Autowired
 	private ProductoService productoService;
