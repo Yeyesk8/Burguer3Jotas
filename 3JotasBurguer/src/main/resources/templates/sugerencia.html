@@ -1,6 +1,7 @@
-<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
 
-<head th:replace="common/cabecera :: common-cabecera" />
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
+<head th:replace="comun/cabecera :: comun-cabecera" />
+
 
 <head>
 	<meta charset="utf-8">
@@ -26,15 +27,15 @@
 
 <body>
 	</p>
-<div th:replace="common/cabecera :: navbar"> </div>
+<div th:replace="comun/cabecera :: navbar"> </div>
 	<div class="card card-profile card-plain">
 		<div class="row">
 			<div class="col-lg-5">
 				<a href="javascript:;">
 					<div class="position-relative">
 						<div class="blur-shadow-image">
-							<img class="w-100 rounded-2 shadow-lg" src="static/image/Bar-fuera.jpg"
-								th:src="@{/image/Bar-fuera.jpg}">
+							<img class="w-100 rounded-2 shadow-lg" src="static/img/Bar-fuera.jpg"
+								th:src="@{/img/Bar-fuera.jpg}">
 						</div>
 					</div>
 				</a>
@@ -92,7 +93,7 @@
 										<label class="col-lg-6 col-form-label form-control-label">Asunto</label>
 										<div class="form-group col-md-8">
 											<input class="form-control" type="text"
-												th:classappend="${asuntoExists} ? is-invalid" name="asunto"
+												th:classappend="${asuntoExiste} ? is-invalid" name="asunto"
 												placeholder="Introduce el Concepto" th:value="${asunto}"
 												required="required">
 											<div class="invalid-feedback">El Asunto ya está en uso</div>
@@ -132,7 +133,7 @@
 	</div>
 	
 	
-		<div th:replace="common/cabecera :: footer"> </div>
+		<div th:replace="comun/cabecera :: footer"> </div>
 </body>
 
 </html>

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.Burguer.TresJotas.entity.Producto;
-import com.Burguer.TresJotas.form.FiltroProductos;
+import com.Burguer.TresJotas.filtro.FiltroProductos;
 import com.Burguer.TresJotas.service.ProductoService;
 import com.Burguer.TresJotas.type.FiltroClasificacion;
 

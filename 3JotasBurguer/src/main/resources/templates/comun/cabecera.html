@@ -1,10 +1,10 @@
-<!doctype html>
+
 <html lang="en" xmlns:th="http://www.w3.org./1999/xhtml" xmlns:sec="http://www.w3.org./1999/xhtml">
-<head th:fragment="common-cabecera">
+<head th:fragment="comun-cabecera">
 
   
   <title>Tres Jotas</title>
-  <link rel="icon" href="/image/Logo.jpg">  
+  <link rel="icon" href="/img/Logo.jpg">  
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Nunito|Roboto|Roboto+Condensed|Roboto+Slab" rel="stylesheet">  
   <!-- Bootstrap core CSS -->
@@ -29,7 +29,7 @@
 <body>
   <div th:fragment="navbar">
     <nav class="navbar navbar-expand-lg navbar-Warning bg-Warning fixed-top shadow-sm  border-radius-md">
-      <a class="navbar-brand" th:href="@{/}"><image width="150" height="50" src="/image/Logo3.jpg"></a>
+      <a class="navbar-brand" th:href="@{/}"><image width="150" height="50" src="/img/Logo3.jpg"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse"
         data-target="#navbarCollapse" aria-controls="navbarCollapse"
         aria-expanded="false" aria-label="Toggle navigation">
@@ -133,11 +133,12 @@
     <script type="text/javascript" src="/js/jquery.simplePagination.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script>
-    //prevent multiple form submission
+    
+ 
     $(function() {
       $('form').submit(function(){
         $("button[type='submit']", this)
-          .text("Please Wait...")
+          .text("Espere por favor...")
           .attr('disabled', 'disabled');
         return true;
       });

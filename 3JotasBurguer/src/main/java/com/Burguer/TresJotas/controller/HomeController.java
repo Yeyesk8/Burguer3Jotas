@@ -35,7 +35,7 @@ public class HomeController {
 
 	@GetMapping("/sugerencia")
 	public String sugerencia(Model model) {
-		model.addAttribute("asuntoExists", model.asMap().get("asuntoExists"));
+		model.addAttribute("asuntoExiste", model.asMap().get("asuntoExiste"));
 
 		return "sugerencia";
 	}
@@ -76,7 +76,7 @@ public class HomeController {
 			return "redirect:/sugerencia";
 		}
 		if (sugerenciaService.findByAsunto(sugerencia.getAsunto()) != null) {
-			redirectAttributes.addFlashAttribute("asuntoExists", true);
+			redirectAttributes.addFlashAttribute("asuntoExiste", true);
 			invalidFields = true;
 		}
 		

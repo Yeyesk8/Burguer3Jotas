@@ -1,7 +1,7 @@
 
-
 <html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
-<head th:replace="common/cabecera :: common-cabecera" />
+<head th:replace="comun/cabecera :: comun-cabecera" />
+
 
 <head>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -25,7 +25,7 @@
 
 
 <body class="d-flex flex-column">
-  <div th:replace="common/cabecera :: navbar"> </div>
+  <div th:replace="comun/cabecera :: navbar"> </div>
 
   <div class="container page-content">       
     <form th:action="@{/carrito/editar-carrito}" method="post">   
@@ -83,8 +83,8 @@
     </form> 
   </div> 
   
-  <div th:replace="common/cabecera :: footer"> </div>
-  <div th:replace="common/cabecera :: body-scripts"> </div>
+  <div th:replace="comun/cabecera :: footer"> </div>
+  <div th:replace="comun/cabecera :: body-scripts"> </div>
   <script>
     $(document).ready(function(){
   		$(".cartItemQty").on('change', function(){

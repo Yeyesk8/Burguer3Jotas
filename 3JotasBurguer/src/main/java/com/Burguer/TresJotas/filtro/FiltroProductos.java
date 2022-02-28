@@ -1,4 +1,4 @@
-package com.Burguer.TresJotas.form;
+package com.Burguer.TresJotas.filtro;
 
 import java.util.List;
 

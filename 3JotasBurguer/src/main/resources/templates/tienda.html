@@ -1,6 +1,7 @@
 
 <html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
-<head th:replace="common/cabecera :: common-cabecera"/>
+<head th:replace="comun/cabecera :: comun-cabecera"/>
+
 
 <head>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -23,7 +24,7 @@
 </head>
 
 <body class="d-flex flex-column">
-  <div th:replace="common/cabecera :: navbar"> </div>
+  <div th:replace="comun/cabecera :: navbar"> </div>
       
    <form id="filter-form" th:action="@{/tienda}" method="get">
    <div class="container page-content">
@@ -140,7 +141,7 @@
           <div class="grid grid-gap-3 grid-col-2 grid-col-lg-3 mb-3">
               <div class="card card-product" th:each="producto : ${productos}">
                 <div class="card-body">
-                  <a th:href="@{/detalle-producto?id=}+${producto.id}"><img class="card-img-top" th:src="${producto.imagen} ? '/image/article/pictures/'+${producto.imagen}+'.jpg' : '/image/article/itemexample.jpg'" alt="Card image cap"></a>
+                  <a th:href="@{/detalle-producto?id=}+${producto.id}"><img class="card-img-top" th:src="${producto.imagen} ? '/img/producto/imagenes/'+${producto.imagen}+'.jpg' : '/img/producto/defecto.jpg'" alt="Card image cap"></a>
                   <a th:href="@{/detalle-producto?id=}+${producto.id}" class="card-title" th:text="${producto.nombre}"></a>
                   <div class="price"><span class="h5" th:text="'€ '+${#numbers.formatDecimal(producto.precio, 0, T(Math).round(producto.precio) == producto.precio ? 0 : 2)}"> </span></div>
                 </div>              
@@ -184,8 +185,8 @@
 
     </form>
   
-  <div th:replace="common/cabecera :: footer"> </div>
-  <div th:replace="common/cabecera :: body-scripts"> </div>
+  <div th:replace="comun/cabecera :: footer"> </div>
+  <div th:replace="comun/cabecera :: body-scripts"> </div>
   
   <script>    
     var sidebarContent = $('.accordion-sidebar').html()

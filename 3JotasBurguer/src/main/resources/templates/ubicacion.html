@@ -1,6 +1,7 @@
-<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
 
-<head th:replace="common/cabecera :: common-cabecera" />
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
+<head th:replace="comun/cabecera :: comun-cabecera" />
+
 
 <head>
 	<meta charset="utf-8">
@@ -26,15 +27,15 @@
 
 <body>
 	</p>
-	<div th:replace="common/cabecera :: navbar"> </div>
+	<div th:replace="comun/cabecera :: navbar"> </div>
 	<div class="card card-profile card-plain">
 		<div class="row">
 			<div class="col-lg-5">
 				<a href="javascript:;">
 					<div class="position-relative">
 						<div class="blur-shadow-image">
-							<img class="w-100 rounded-2 shadow-lg" src="static/image/Bar3J.jpg"
-								th:src="@{/image/Bar3J.jpg}">
+							<img class="w-100 rounded-2 shadow-lg" src="static/img/Bar3J.jpg"
+								th:src="@{/img/Bar3J.jpg}">
 						</div>
 					</div>
 				</a>
@@ -82,7 +83,7 @@
 	</div>
 
 
-	<div th:replace="common/cabecera :: footer"> </div>
+	<div th:replace="comun/cabecera :: footer"> </div>
 </body>
 
 </html>

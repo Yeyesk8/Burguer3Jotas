@@ -1,6 +1,7 @@
-<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
 
-<head th:replace="common/cabecera :: common-cabecera" />
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
+<head th:replace="comun/cabecera :: comun-cabecera" />
+
 
 <head>
 <!-- Fonts and icons -->
@@ -22,9 +23,9 @@
 </head>
 
 <body class="d-flex flex-column">
-	<div th:replace="common/cabecera :: navbar"> </div>
+	<div th:replace="comun/cabecera :: navbar"> </div>
 	<header class="header-2">
-		<div class="page-header min-vh-75" style="background-image: url('/image/background/Fondo.jpg')">
+		<div class="page-header min-vh-75" style="background-image: url('/img/background/Fondo.jpg')">
 			<div class="container">
 				<div class="row text-left py-5">
 					<div class="col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-3 col-xl-6 offset-xl-6 my-auto">
@@ -71,7 +72,7 @@
 				<div class="card card-product card-featured" th:each="producto : ${productos}">
 					<div class="card-body">
 						<a th:href="@{/detalle-producto?id=}+${producto.id}"><img class="card-img-top"
-								th:src="${producto.imagen} ? '/image/article/pictures/'+${producto.imagen}+'.jpg' : '/image/article/defecto.jpg'"
+								th:src="${producto.imagen} ? '/img/producto/imagenes/'+${producto.imagen}+'.jpg' : '/img/producto/defecto.jpg'"
 								alt="Card image cap"></a>
 						<a th:href="@{/detalle-producto?id=}+${producto.id}" class="card-title"
 							th:text="${producto.nombre}"></a>
@@ -112,13 +113,13 @@
 		<div class="container text-center">
 			<h4 class="font-weight-bold">Mas Vendidos</h4>
 			<div class="mas-vendidos mt-3">
-				<img class="img-fluid py-5 px-5" src="/image/masventas/completa.jpg">
-				<img class="img-fluid py-5 px-5" src="/image/masventas/completo.jpg">
-				<img class="img-fluid py-5 px-5" src="/image/masventas/pequeñas.jpg">
-				<img class="img-fluid py-5 px-5" src="/image/masventas/queso-york-bacon.jpg">
-				<img class="img-fluid py-5 px-5" src="/image/masventas/bacon-queso.jpg">
-				<img class="img-fluid py-5 px-5" src="/image/masventas/normal.jpg">
-				<img class="img-fluid py-5 px-5" src="/image/masventas/Jarra.jpg">
+				<img class="img-fluid py-5 px-5" src="/img/masventas/completa.jpg">
+				<img class="img-fluid py-5 px-5" src="/img/masventas/completo.jpg">
+				<img class="img-fluid py-5 px-5" src="/img/masventas/pequeñas.jpg">
+				<img class="img-fluid py-5 px-5" src="/img/masventas/queso-york-bacon.jpg">
+				<img class="img-fluid py-5 px-5" src="/img/masventas/bacon-queso.jpg">
+				<img class="img-fluid py-5 px-5" src="/img/masventas/normal.jpg">
+				<img class="img-fluid py-5 px-5" src="/img/masventas/Jarra.jpg">
 			</div>
 
 		</div>
@@ -183,8 +184,8 @@
 											<td class="align-middle text-center">
 												<div class="d-flex px-2">
 													<div>
-														<img src="static/image/alergenos/pan.png"
-															th:src="@{/image/alergenos/pan.png}"
+														<img src="static/img/alergenos/pan.png"
+															th:src="@{/img/alergenos/pan.png}"
 															class="avatar avatar-sm rounded-circle me-2">
 													</div>
 													<div class="my-auto">
@@ -212,8 +213,8 @@
 											<td class="align-middle text-center">
 												<div class="d-flex px-2">
 													<div>
-														<img src="static/image/alergenos/panburguer.png"
-															th:src="@{/image/alergenos/panburguer.png}"
+														<img src="static/img/alergenos/panburguer.png"
+															th:src="@{/img/alergenos/panburguer.png}"
 															class="avatar avatar-sm rounded-circle me-2">
 													</div>
 													<div class="my-auto">
@@ -242,8 +243,8 @@
 											<td class="align-middle text-center">
 												<div class="d-flex px-2">
 													<div>
-														<img src="static/image/alergenos/pansandwich.png"
-															th:src="@{/image/alergenos/pansandwich.png}"
+														<img src="static/img/alergenos/pansandwich.png"
+															th:src="@{/img/alergenos/pansandwich.png}"
 															class="avatar avatar-sm rounded-circle me-2">
 													</div>
 													<div class="my-auto">
@@ -268,8 +269,8 @@
 											<td class="align-middle text-center">
 												<div class="d-flex px-2">
 													<div>
-														<img src="static/image/alergenos/carnehamburguesa.png"
-															th:src="@{/image/alergenos/carnehamburguesa.png}"
+														<img src="static/img/alergenos/carnehamburguesa.png"
+															th:src="@{/img/alergenos/carnehamburguesa.png}"
 															class="avatar avatar-sm rounded-circle me-2">
 													</div>
 													<div class="my-auto">
@@ -298,8 +299,8 @@
 											<td class="align-middle text-center">
 												<div class="d-flex px-2">
 													<div>
-														<img src="static/image/alergenos/salchicha.png"
-															th:src="@{/image/alergenos/salchicha.png}"
+														<img src="static/img/alergenos/salchicha.png"
+															th:src="@{/img/alergenos/salchicha.png}"
 															class="avatar avatar-sm rounded-circle me-2">
 													</div>
 													<div class="my-auto">
@@ -322,7 +323,7 @@
 											<td class="align-middle text-center">
 												<div class="d-flex px-2">
 													<div>
-														<img src="static/image/alergenos/bacon.png" th:src="@{/image/alergenos/bacon.png}"
+														<img src="static/img/alergenos/bacon.png" th:src="@{/img/alergenos/bacon.png}"
 															class="avatar avatar-sm rounded-circle me-2">
 													</div>
 													<div class="my-auto">
@@ -351,7 +352,7 @@
 											<td class="align-middle text-center">
 												<div class="d-flex px-2">
 													<div>
-														<img src="static/image/alergenos/lomo.png" th:src="@{/image/alergenos/lomo.png}"
+														<img src="static/img/alergenos/lomo.png" th:src="@{/img/alergenos/lomo.png}"
 															class="avatar avatar-sm rounded-circle me-2">
 													</div>
 													<div class="my-auto">
@@ -374,7 +375,7 @@
 											<td class="align-middle text-center">
 												<div class="d-flex px-2">
 													<div>
-														<img src="static/image/alergenos/salmon.png" th:src="@{/image/alergenos/salmon.png}"
+														<img src="static/img/alergenos/salmon.png" th:src="@{/img/alergenos/salmon.png}"
 															class="avatar avatar-sm rounded-circle me-2">
 													</div>
 													<div class="my-auto">
@@ -397,7 +398,7 @@
 											<td class="align-middle text-center">
 												<div class="d-flex px-2">
 													<div>
-														<img src="static/image/alergenos/anchoa.png" th:src="@{/image/alergenos/anchoa.png}"
+														<img src="static/img/alergenos/anchoa.png" th:src="@{/img/alergenos/anchoa.png}"
 															class="avatar avatar-sm rounded-circle me-2">
 													</div>
 													<div class="my-auto">
@@ -420,7 +421,7 @@
 											<td class="align-middle text-center">
 												<div class="d-flex px-2">
 													<div>
-														<img src="static/image/alergenos/mayonesa.png" th:src="@{/image/alergenos/mayonesa.png}"
+														<img src="static/img/alergenos/mayonesa.png" th:src="@{/img/alergenos/mayonesa.png}"
 															class="avatar avatar-sm rounded-circle me-2">
 													</div>
 													<div class="my-auto">
@@ -447,7 +448,7 @@
 											<td class="align-middle text-center">
 												<div class="d-flex px-2">
 													<div>
-														<img src="static/image/alergenos/ketchup.png" th:src="@{/image/alergenos/ketchup.png}"
+														<img src="static/img/alergenos/ketchup.png" th:src="@{/img/alergenos/ketchup.png}"
 															class="avatar avatar-sm rounded-circle me-2">
 													</div>
 													<div class="my-auto">
@@ -470,7 +471,7 @@
 											<td class="align-middle text-center">
 												<div class="d-flex px-2">
 													<div>
-														<img src="static/image/alergenos/mostaza.png" th:src="@{/image/alergenos/mostaza.png}"
+														<img src="static/img/alergenos/mostaza.png" th:src="@{/img/alergenos/mostaza.png}"
 															class="avatar avatar-sm rounded-circle me-2">
 													</div>
 													<div class="my-auto">
@@ -495,8 +496,8 @@
 											<td class="align-middle text-center">
 												<div class="d-flex px-2">
 													<div>
-														<img src="static/image/alergenos/mantequilla.png"
-															th:src="@{/image/alergenos/mantequilla.png}"
+														<img src="static/img/alergenos/mantequilla.png"
+															th:src="@{/img/alergenos/mantequilla.png}"
 															class="avatar avatar-sm rounded-circle me-2">
 													</div>
 													<div class="my-auto">
@@ -521,7 +522,7 @@
 											<td class="align-middle text-center">
 												<div class="d-flex px-2">
 													<div>
-														<img src="static/image/alergenos/queso.png" th:src="@{/image/alergenos/queso.png}"
+														<img src="static/img/alergenos/queso.png" th:src="@{/img/alergenos/queso.png}"
 															class="avatar avatar-sm rounded-circle me-2">
 													</div>
 													<div class="my-auto">
@@ -548,7 +549,7 @@
 											<td class="align-middle text-center">
 												<div class="d-flex px-2">
 													<div>
-														<img src="static/image/alergenosjamon.png" th:src="@{/image/alergenos/jamon.png}"
+														<img src="static/img/alergenosjamon.png" th:src="@{/img/alergenos/jamon.png}"
 															class="avatar avatar-sm rounded-circle me-2">
 													</div>
 													<div class="my-auto">
@@ -590,8 +591,8 @@
 	
 
 
-	<div th:replace="common/cabecera :: footer"> </div>
-	<div th:replace="common/cabecera :: body-scripts"> </div>
+	<div th:replace="comun/cabecera :: footer"> </div>
+	<div th:replace="comun/cabecera :: body-scripts"> </div>
 
 	<script type="text/javascript">
 		$(document).ready(function () {

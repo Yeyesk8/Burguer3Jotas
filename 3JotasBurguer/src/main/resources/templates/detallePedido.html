@@ -1,6 +1,7 @@
 
 <html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
-<head th:replace="common/cabecera :: common-cabecera" />
+<head th:replace="comun/cabecera :: comun-cabecera" />
+
 
 <head>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -24,7 +25,7 @@
 
 
 <body class="d-flex flex-column">
-  <div th:replace="common/cabecera :: navbar"> </div>
+  <div th:replace="comun/cabecera :: navbar"> </div>
   <div class="container page-content">  
     <div class="row">
       <div class="col-12 col-sm-6 col-lg-4 mb-2 text-center text-left-lg">
@@ -66,7 +67,7 @@
             <div class="row align-items-center">
         
               <div class="col-4">
-                <a th:href="@{/detalle-producto?id=}+${productoCarrito.producto.id}"><img class="img-fluid" th:src="'/image/article/pictures/'+${productoCarrito.producto.imagen}+'.jpg'" alt="${productoCarrito.producto.nombre}"></a>
+                <a th:href="@{/detalle-producto?id=}+${productoCarrito.producto.id}"><img class="img-fluid" th:src="'/img/producto/imagenes/'+${productoCarrito.producto.imagen}+'.jpg'" alt="${productoCarrito.producto.nombre}"></a>
               </div>
               <div class="col-8">
                 <a th:href="@{/detalle-producto?id=}+${productoCarrito.producto.id}" class="h6 bold d-inline-block" th:text=${productoCarrito.producto.nombre}></a>
@@ -95,7 +96,7 @@
     </div>   
   </div> <!--  end container -->
   
-  <div th:replace="common/cabecera :: footer"> </div>
-  <div th:replace="common/cabecera :: body-scripts"> </div>
+  <div th:replace="comun/cabecera :: footer"> </div>
+  <div th:replace="comun/cabecera :: body-scripts"> </div>
 </body>
 </html>

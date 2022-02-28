@@ -1,6 +1,7 @@
-<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
 
-<head th:replace="common/cabecera :: common-cabecera" />
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
+<head th:replace="comun/cabecera :: comun-cabecera" />
+
 
 <head>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -25,14 +26,14 @@
 
 
 <body class="d-flex flex-column">
-	<div th:replace="common/cabecera :: navbar"> </div>
+	<div th:replace="comun/cabecera :: navbar"> </div>
 
 	<div class="container page-content">
 		<div class="row">
 			<div class="col-md-4 col-lg-3">
 				<div class="card">
 					<div class="card-body text-center">
-						<img src="/image/user/user.png" width="100" height="100" alt="User" class="rounded-circle mb-3">
+						<img src="/img/user/user.png" width="100" height="100" alt="User" class="rounded-circle mb-3">
 						<h5 class="bold mb-0" th:text="${#strings.capitalize(user.username)}"></h5>
 						<small class="text-secondary"
 							th:text="'Ultima vez visto '+${#dates.format(#dates.createNow(), 'MMM dd, yyyy')}"></small>
@@ -145,8 +146,8 @@
 
 	</div> <!--  end container -->
 
-	<div th:replace="common/cabecera :: footer"> </div>
-	<div th:replace="common/cabecera :: body-scripts"> </div>
+	<div th:replace="comun/cabecera :: footer"> </div>
+	<div th:replace="comun/cabecera :: body-scripts"> </div>
 
 	<script>
 		function checkPasswordMatch() {
