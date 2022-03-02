@@ -40,7 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/nueva-sugerencia",
 			"/historia",
 			"/metodopago",
-			"/ubicacion"
+			"/ubicacion",
+			"/privacidad"
 			
 	};
 	
