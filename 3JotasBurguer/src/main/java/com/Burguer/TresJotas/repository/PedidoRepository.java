@@ -1,7 +1,6 @@
 package com.Burguer.TresJotas.repository;
 
 import java.util.List;
-
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.repository.CrudRepository;
 
@@ -14,5 +13,7 @@ public interface PedidoRepository extends CrudRepository<Pedido, Long> {
 	
 	@EntityGraph(attributePaths = { "productosCarrito", "pago", "envio" })
 	Pedido findEagerById(Long id);
+	
+	
 
 }

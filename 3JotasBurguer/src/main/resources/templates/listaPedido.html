@@ -15,14 +15,14 @@
 	<div th:replace="admin :: navbarAdmin"> </div>
 
 	<div class="container page-content">
-		<table id="table-article" class="table table-striped table-bordered table-hover">
+		<table id="table-pedido" class="table table-striped table-bordered table-hover">
 			<thead class="thead-dark">
 				<tr>
 					<th>Id</th>
 					<th>Fecha Pedido</th>
 					<th>Estado Pedido</th>
 					<th>Total Pedido</th>
-					<th>Operacion</th>		
+					<th>Operacion</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -30,8 +30,9 @@
 					<td th:text="${user_order.id}"></td>
 					<td th:text="${user_order.fechaPedido}"></td>
 					<td th:text="${user_order.estadoPedido}"></td>
-					<td th:text="${user_order.totalPedido}"></td>					
-					<td><a th:href="@{/pedido/eliminar?id=}+${user_order.id}" class="badge badge-danger"><i
+					<td th:text="${user_order.totalPedido}"></td>
+					<td>
+						<a th:href="@{/pedido/eliminar?id=}+${user_order.id}" class="badge badge-danger"><i
 								class="fas fa-solid fa-trash"></i> </a>
 					</td>
 				</tr>
@@ -45,7 +46,7 @@
 
 	<script>
 		$(document).ready(function () {
-			$('#table-article').DataTable({
+			$('#table-pedido').DataTable({
 				stateSave: true
 			});
 		});

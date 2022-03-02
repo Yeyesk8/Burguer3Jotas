@@ -76,7 +76,7 @@ public class CuentaController {
 			Model model, Principal principal) throws Exception {
 		User UserActual = userService.findByUsername(principal.getName());
 		if(UserActual == null) {
-			throw new Exception ("User not found");
+			throw new Exception ("Usuario no encontrado");
 		}
 		UserActual.setDireccion(direccion);
 		userService.guardar(UserActual);
@@ -115,7 +115,7 @@ public class CuentaController {
 								  Model model, Principal principal) throws Exception {
 		User UserActual = userService.findByUsername(principal.getName());
 		if(UserActual == null) {
-			throw new Exception ("User not found");
+			throw new Exception ("Usuario no encontrado");
 		}
 		/*verifica si el username ya existe*/
 		User existingUser = userService.findByUsername(user.getUsername());

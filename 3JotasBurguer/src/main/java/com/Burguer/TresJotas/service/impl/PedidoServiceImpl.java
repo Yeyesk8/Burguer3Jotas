@@ -26,7 +26,7 @@ import com.Burguer.TresJotas.service.PedidoService;
 public class PedidoServiceImpl implements PedidoService {
 
 	@Autowired
-	PedidoRepository orderRepository;
+	PedidoRepository pedidoRepository;
 	
 	@Autowired
 	ProductoCarritoRepository productoCarritoRepository;
@@ -50,7 +50,7 @@ public class PedidoServiceImpl implements PedidoService {
 		order.setFechaEnvio(Date.from(today.atStartOfDay(ZoneId.systemDefault()).toInstant()));
 		order.setEstadoPedido("Preparando");
 		
-		order = orderRepository.save(order);
+		order = pedidoRepository.save(order);
 		
 		List<ProductoCarrito> productosCarrito = carritoCompra.getProductosCarrito();
 		for (ProductoCarrito item : productosCarrito) {
@@ -65,21 +65,21 @@ public class PedidoServiceImpl implements PedidoService {
 	
 	@Override
 	public Pedido findPedidoDetalles(Long id) {
-		return orderRepository.findEagerById(id);
+		return pedidoRepository.findEagerById(id);
 	}	
 
 	public List<Pedido> findByUser(User user) {
-		return orderRepository.findByUser(user);
+		return pedidoRepository.findByUser(user);
 	}
 
 	@Override
 	public Iterable<Pedido> getAllPedidos() {
-		return orderRepository.findAll();
+		return pedidoRepository.findAll();
 	}
 
 	@Override
 	public void borrarPedidoById(Long id) {
-		orderRepository.deleteById(id);
+		pedidoRepository.deleteById(id);
 		
 	}
 

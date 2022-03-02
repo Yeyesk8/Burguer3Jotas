@@ -28,7 +28,7 @@ public class GlobalControllerAdvice {
 	public static final String DEFAULT_ERROR_VIEW = "error";
 		
 	@Autowired
-	private CarritoService shoppingCartService;
+	private CarritoService carritoCompraService;
 
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder) {
@@ -42,7 +42,7 @@ public class GlobalControllerAdvice {
 		if (auth != null && auth.isAuthenticated() && !(auth instanceof AnonymousAuthenticationToken)) {				
 			User user =  (User) auth.getPrincipal(); 
 			if (user != null) {
-				model.addAttribute("shoppingCartItemNumber", shoppingCartService.getnumeroItems(user) );
+				model.addAttribute("shoppingCartItemNumber", carritoCompraService.getnumeroItems(user) );
 			}
 		} else { 
 			model.addAttribute("shoppingCartItemNumber", 0);

@@ -25,7 +25,7 @@ public class ProductoServiceImpl implements ProductoService {
 	@Autowired
 	private ProductoRepository productoRepositoy;
 
-	@Value("${articleservice.featured-items-number}")
+	@Value("${productoservice.featured-items-number}")
 	private int featuredArticlesNumber;
 
 	@Override

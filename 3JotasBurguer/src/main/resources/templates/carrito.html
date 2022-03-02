@@ -38,7 +38,7 @@
               <div class="row align-items-center">              
                 <div class="col-4">
                   <a th:href="@{/detalle-producto?id=}+${productoCarrito.producto.id}"><img class="img-fluid" 
-                  th:src="'/image/article/pictures/'+${productoCarrito.producto.imagen}+'.jpg'" alt="${productoCarrito.producto.nombre}"></a>
+                  th:src="'/img/producto/imagenes/'+${productoCarrito.producto.imagen}+'.jpg'" alt="${productoCarrito.producto.nombre}"></a>
                 </div>
                 <div class="col-8">
                   <a th:href="@{/detalle-producto?id=}+${productoCarrito.producto.id}" class="h6 bold d-inline-block" th:text=${productoCarrito.producto.nombre}></a>

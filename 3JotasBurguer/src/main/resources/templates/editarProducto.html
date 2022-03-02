@@ -1,9 +1,11 @@
-
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org./1999/xhtml" xmlns:sec="http://www.w3.org./1999/xhtml">
+
 <head th:replace="comun/cabecera :: comun-cabecera" />
+
 <body>
 
-  <div th:replace="adminHome :: navbarAdmin"> </div>
+  <div th:replace="admin :: navbarAdmin"> </div>
 
   <div class="container page-content">
     <form th:action="@{/producto/editar}" method="post" enctype="multipart/form-data">
