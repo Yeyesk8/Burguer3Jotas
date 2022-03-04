@@ -62,6 +62,12 @@ public class InicioController {
 		
 		return "privacidad";
 	}
+	
+	@GetMapping("/condiciones")
+	public String condiciones() {
+		
+		return "condiciones";
+	}
 
 	@GetMapping("/sugerencia/cancelar")
 	public String cancelarSugerencia(Model model) {

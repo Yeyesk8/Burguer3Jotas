@@ -41,7 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/historia",
 			"/metodopago",
 			"/ubicacion",
-			"/privacidad"
+			"/privacidad",
+			"/condiciones"
 			
 	};
 	
