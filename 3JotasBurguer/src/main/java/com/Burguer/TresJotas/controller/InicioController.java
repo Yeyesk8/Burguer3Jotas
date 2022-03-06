@@ -40,6 +40,12 @@ public class InicioController {
 		return "sugerencia";
 	}
 	
+	@GetMapping("/sugerencia/cancelar")
+	public String cancelarSugerencia(Model model) {
+
+		return "redirect:/";
+	}
+	
 	@GetMapping("/historia")
 	public String historia() {
 		
@@ -68,12 +74,14 @@ public class InicioController {
 		
 		return "condiciones";
 	}
-
-	@GetMapping("/sugerencia/cancelar")
-	public String cancelarSugerencia(Model model) {
-
-		return "redirect:/";
+	
+	@GetMapping("/compra")
+	public String compra() {
+		
+		return "comocomprar";
 	}
+
+	
 
 	@PostMapping("/nueva-sugerencia")
 	public String nuevaSugerenciaPost(@Valid @ModelAttribute("sugerencia") Sugerencia sugerencia,
