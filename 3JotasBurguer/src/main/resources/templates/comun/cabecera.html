@@ -1,34 +1,38 @@
-
 <html lang="en" xmlns:th="http://www.w3.org./1999/xhtml" xmlns:sec="http://www.w3.org./1999/xhtml">
+
 <head th:fragment="comun-cabecera">
 
-  
-  <title>Tres Jotas</title>
-  <link rel="icon" href="/img/Logo.jpg">  
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Nunito|Roboto|Roboto+Condensed|Roboto+Slab" rel="stylesheet">  
-  <!-- Bootstrap core CSS -->
-  <link href="/css/bootstrap.min.css" rel="stylesheet">  
-  <!-- Tables plugin -->
-  <link href="/css/datatables.min.css" rel="stylesheet">  
-  <!-- Bootstrap tagsinput -->
-  <link href="/css/tagsinput.css" rel="stylesheet">  
-  <!-- Simple pagination -->
-  <link href="/css/simplePagination.css" rel="stylesheet" />  
-  <!-- Slick carousel -->  
-  <link href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" rel="stylesheet" />      
-  <link href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" rel="stylesheet" />      
-  <!-- Custom styles -->
-  <link href="/css/style.css" rel="stylesheet">
-    <!-- Feather icons -->
-  <script src="https://unpkg.com/feather-icons"></script>  
-  
+
+	<title>Tres Jotas</title>
+	<link rel="icon" href="/img/Logo.png">
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Nunito|Roboto|Roboto+Condensed|Roboto+Slab" rel="stylesheet">
+	<!-- Bootstrap core CSS -->
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Tables plugin -->
+	<link href="/css/datatables.min.css" rel="stylesheet">
+	<!-- Bootstrap tagsinput -->
+	<link href="/css/tagsinput.css" rel="stylesheet">
+	<!-- Simple pagination -->
+	<link href="/css/simplePagination.css" rel="stylesheet" />
+	<!-- Slick carousel -->
+	<link href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" rel="stylesheet" />
+	<link href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" rel="stylesheet" />
+	<!-- Custom styles -->
+	<link href="/css/style.css" rel="stylesheet">
+	<!-- Feather icons -->
+	<script src="https://unpkg.com/feather-icons"></script>
+
 </head>
 
 
 <body>
-  <div th:fragment="navbar">
-    <nav class="navbar navbar-expand-lg navbar-Warning bg-Warning fixed-top shadow-sm  border-radius-md">
+	<div th:fragment="navbar">
+		<div class="container position-sticky z-index-sticky top-0">
+			<div class="row">
+				<div class="col-12">
+				
+					<!--<nav class="navbar navbar-expand-lg navbar-Warning bg-Warning fixed-top shadow-sm  border-radius-md">
       <a class="navbar-brand" th:href="@{/}"><image width="150" height="50" src="/img/LogoTres-Jotas.png"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse"
         data-target="#navbarCollapse" aria-controls="navbarCollapse"
@@ -66,85 +70,167 @@
           </li>
         </ul>
       </div>
-    </nav>
-  </div>
-  
-   
+    </nav>-->
 
-  
-  <div th:fragment="footer">
-    <div class="footer mt-5">
-      <div class="container mt-4">
-        <div class="row">         
-          <div class="col-6 col-lg-3 pl-3">
-            <h6 class="font-weight-bold">Servicio al Cliente</h6>
-            <div class="list-group list-group-flush list-group-no-border list-group-sm">
-              <a href="sugerencia" class="list-group-item list-group-item-action">Necesitas Ayuda?</a>
-              <a href="compra" class="list-group-item list-group-item-action">Como Comprar</a>
-              <a href="metodopago" class="list-group-item list-group-item-action">Métodos de Pago</a>
-            </div>
-          </div>
-          <div class="col-6 col-lg-3 pl-3">
-            <h6 class="font-weight-bold">Tres Jotas</h6>
-            <div class="list-group list-group-flush list-group-no-border list-group-sm">
-              <a href="ubicacion" class="list-group-item list-group-item-action">Donde Estamos</a>
-               <a href="historia" class="list-group-item list-group-item-action">Nuestra Historia</a>
-              <a href="condiciones" class="list-group-item list-group-item-action">Términos y Condiciones</a>
-              <a href="privacidad" class="list-group-item list-group-item-action">Políticas de Privacidad</a>             
-             
-            </div>
-          </div>  
-          <div class="col-sm-6 col-lg-3 pl-3">
-            <h6 class="font-weight-bold ">Contacto</h6>
-            <div class="list-group list-group-flush list-group-no-border list-group-sm">
-             <a href="sugerencia" class="list-group-item list-group-item-action">Formulario</a>
-              <span class="list-group-item"><strong>Teléfono:</strong>+34 639 940 662</span>
-              <span class="list-group-item"><strong>Email:</strong> Restaurante3J@gmail.com</span>              
-              <span class="list-group-item"><strong>Lunes-Domingo:</strong> 9.00 pm - 1.00 am</span>           
-              
-            </div>    
-          </div>
-          <div class="col-sm-6 col-lg-3 pl-3">
-            <h6 class="font-weight-bold ">Horario</h6>
-            <div class="list-group list-group-flush list-group-no-border list-group-sm">        
-              <span class="list-group-item"><strong>Abrimos solo en Verano</strong></span>                      
-              <span class="list-group-item"><strong>Lunes-Domingo:</strong> 9.00 pm - 1.00 am</span>           
-              
-            </div>    
-          </div>            
-        </div>
-      </div>
-    </div>
-  </div>
+					<nav
+						class="navbar navbar-expand-lg navbar-Warning bg-Warning fixed-top shadow-sm  border-radius-md">
+						<div class="container-fluid">
+							<a class="navbar-brand" th:href="@{/}">
+								<image width="150" height="50" src="/img/LogoTres-Jotas.png">
+							</a>
+							<button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
+								data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
+								aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon mt-2">
+									<span class="navbar-toggler-bar bar1"></span>
+									<span class="navbar-toggler-bar bar2"></span>
+									<span class="navbar-toggler-bar bar3"></span>
+								</span>
+							</button>
+
+							<div class="collapse navbar-collapse pt-3 pb-2 py-lg-0 w-100" id="navigation">
+
+								<ul class="navbar-nav navbar-nav-hover ms-lg-12 ps-lg-5 w-100">
+
+									<li class="nav-item mx-2">
+										<a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center font-weight-bold"
+											th:href="@{/}"> Inicio
+										</a>
+									</li>
+
+									<li class="nav-item mx-2">
+										<a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center font-weight-bold"
+											th:href="@{/tienda}"> Comprar
+										</a>
+									</li>
+
+									<li class="nav-item mx-2">
+										<a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center font-weight-bold"
+											th:href="@{/carrito/carrito}"> Carrito
+											<span class="badge badge-primary badge-pill" style="vertical-align: top;"
+												th:text="${shoppingCartItemNumber} > 0 ? ${shoppingCartItemNumber}"></span>
+										</a>
+									</li>
+
+									<li class="nav-item mx-2">
+										<a class="nav-link font-weight-bold" data-bs-toggle="modal"
+											data-bs-target="#alergias" data-bs-placement="bottom" href="#alergenos">
+											Alérgenos
+										</a>
+									</li>
+
+									<ul class="navbar-nav ml-auto font-weight-bold">
+										<li class="nav-item mx-2">
+											<a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center font-weight-bold"
+												sec:authorize="isAnonymous()" th:href="@{/login}">Mi Cuenta </a>
+										</li>
+										<li class="nav-item mx-2">
+											<a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center font-weight-bold"
+												sec:authorize="isAuthenticated()" th:href="@{/mi-perfil}">Perfil</a>
+										</li>
+										<li class="nav-item mx-2">
+											<a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center font-weight-bold"
+												sec:authorize="isAuthenticated()" th:href="@{/logout}"> Cerrar Sesion
+											</a>
+										</li>
+										<li class="nav-item mx-2">
+											<a class="nav-link text-dark ps-2 d-flex justify-content-between cursor-pointer align-items-center font-weight-bold"
+												sec:authorize="hasRole('ADMIN')" th:href="@{/producto/lista-productos}">
+												ADMINISTRADOR</a>
+										</li>
+									</ul>
 
 
-  <div th:fragment="body-scripts">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script>
-      window.jQuery
-          || document
-              .write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')
-    </script>
-    <script src="/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/datatables.min.js"></script>
-    <script src="/js/tagsinput.js"></script>
-    <script>feather.replace()</script>
-    <script type="text/javascript" src="/js/jquery.simplePagination.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script>
-    
- 
-    $(function() {
-      $('form').submit(function(){
-        $("button[type='submit']", this)
-          .text("Espere por favor...")
-          .attr('disabled', 'disabled');
-        return true;
-      });
-    });
-    </script>
-  
-  </div>
+								</ul>
+							</div>
+						</div>
+					</nav>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<div th:fragment="footer">
+		<div class="footer mt-5">
+			<div class="container mt-4">
+				<div class="row">
+					<div class="col-6 col-lg-3 pl-3">
+						<h6 class="font-weight-bold">Servicio al Cliente</h6>
+						<div class="list-group list-group-flush list-group-no-border list-group-sm">
+							<a href="sugerencia" class="list-group-item list-group-item-action">Necesitas Ayuda?</a>
+							<a href="compra" class="list-group-item list-group-item-action">Como Comprar</a>
+							<a href="metodopago" class="list-group-item list-group-item-action">Métodos de Pago</a>
+						</div>
+					</div>
+					<div class="col-6 col-lg-3 pl-3">
+						<h6 class="font-weight-bold">Tres Jotas</h6>
+						<div class="list-group list-group-flush list-group-no-border list-group-sm">
+							<a href="ubicacion" class="list-group-item list-group-item-action">Donde Estamos</a>
+							<a href="historia" class="list-group-item list-group-item-action">Nuestra Historia</a>
+							<a href="condiciones" class="list-group-item list-group-item-action">Términos y
+								Condiciones</a>
+							<a href="privacidad" class="list-group-item list-group-item-action">Políticas de
+								Privacidad</a>
+
+						</div>
+					</div>
+					<div class="col-sm-6 col-lg-3 pl-3">
+						<h6 class="font-weight-bold ">Contacto</h6>
+						<div class="list-group list-group-flush list-group-no-border list-group-sm">
+							<a href="sugerencia" class="list-group-item list-group-item-action">Formulario</a>
+							<span class="list-group-item"><strong>Teléfono:</strong>+34 639 940 662</span>
+							<span class="list-group-item"><strong>Email:</strong> Restaurante3J@gmail.com</span>
+							<span class="list-group-item"><strong>Lunes-Domingo:</strong> 9.00 pm - 1.00 am</span>
+
+						</div>
+					</div>
+					<div class="col-sm-6 col-lg-3 pl-3">
+						<h6 class="font-weight-bold ">Horario</h6>
+						<div class="list-group list-group-flush list-group-no-border list-group-sm">
+							<span class="list-group-item"><strong>Abrimos solo en Verano</strong></span>
+							<span class="list-group-item"><strong>Lunes-Domingo:</strong> 9.00 pm - 1.00 am</span>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div th:fragment="body-scripts">
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+			crossorigin="anonymous"></script>
+		<script>
+			window.jQuery
+				|| document
+					.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')
+		</script>
+		<script src="/js/bootstrap.bundle.min.js"></script>
+		<script src="/js/datatables.min.js"></script>
+		<script src="/js/tagsinput.js"></script>
+		<script>feather.replace()</script>
+		<script type="text/javascript" src="/js/jquery.simplePagination.js"></script>
+		<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+		<script>
+
+
+			$(function () {
+				$('form').submit(function () {
+					$("button[type='submit']", this)
+						.text("Espere por favor...")
+						.attr('disabled', 'disabled');
+					return true;
+				});
+			});
+		</script>
+
+	</div>
 
 </body>
 
