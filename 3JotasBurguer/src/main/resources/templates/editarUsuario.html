@@ -1,0 +1,68 @@
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml" xmlns:sec="http://www.w3.org./1999/xhtml">
+
+<head th:replace="comun/cabecera :: comun-cabecera" />
+
+<body>
+
+	<div th:replace="admin :: navbarAdmin"> </div>
+
+	<div class="container page-content">
+		<form th:action="@{/usuario/editar}" method="post">
+			<fieldset>
+				<legend class="center-block">
+					Editar Información Usuario
+				</legend>
+
+				<input hidden="hidden" name="id" th:value="${user.id}">
+
+				<div class="form-group row">
+					<label for="nombre" class="col-2 col-form-label text-right">Nombre</label>
+					<div class="col-6">
+						<input th:value="${user.nombre}" type="text" class="form-control" id="nombre" name="nombre">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="apellido" class="col-2 col-form-label text-right">Apellido</label>
+					<div class="col-6">
+						<input th:value="${user.apellido}" type="text" class="form-control" id="apellido"
+							name="apellido">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="email" class="col-2 col-form-label text-right">E-mail</label>
+					<div class="col-6">
+						<input th:value="${user.email}" type="text" class="form-control" id="email"
+							name="email">
+					</div>
+				</div>
+				
+					<div class="form-group row">
+					<label for="username" class="col-2 col-form-label text-right">Usuario</label>
+					<div class="col-6">
+						<input th:value="${user.username}" type="text" class="form-control" id="username"
+							name="username">
+					</div>
+				</div>
+				
+
+				<div class="form-group row">
+					<div class="offset-2 col-6">
+						<button type="submit" class="btn btn-success">Editar Usuario</button>
+						<a class="btn btn-danger" th:href="@{/usuario/lista-usuarios}">Cancelar</a>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+
+
+
+	<div th:replace="comun/cabecera :: body-scripts"> </div>
+	<script src="/js/tagsinput-custom.js"></script>
+
+
+</body>
+
+</html>
