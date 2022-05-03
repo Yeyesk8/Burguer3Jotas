@@ -65,4 +65,10 @@ public class UserController {
 		return "redirect:lista-usuarios";
 	}
 	
+	@GetMapping("/eliminar/cancel")
+	public String cancelBorrarUsuario(Model model) {
+
+		return "redirect:lista-usuarios";
+	}
+	
 }

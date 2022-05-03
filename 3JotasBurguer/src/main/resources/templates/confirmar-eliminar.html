@@ -1,0 +1,180 @@
+
+<!-- Modal Confirmacion de eliminar usuario -->
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Confirmar eliminación</h5>				
+					<a th:href="@{'/usuario/lista-usuarios/'}" type="button" class="close" data-dismiss="modal"
+						aria-label="Close">x</a>
+			</div>
+			<div class="modal-body">
+				¿Está seguro de que desea eliminar este usuario?
+				<input type="hidden" id="userIdHiddenInput" name="userIdHiddenInput" />
+			</div>
+			<div class="modal-footer">
+				<a th:href="@{'/usuario/lista-usuarios'}" class="btn bg-gradient-warning">Cancelar</a>
+				<button type="button" class="btn btn bg-gradient-danger" th:onclick="eliminar()">Borrar</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Fin Modal Confirmacion de eliminar usuario -->
+
+<!-- Modal Confirmacion de eliminar burguer -->
+
+<div class="modal fade" id="deleteModalBurguer" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Eliminar Burguer</h5>
+				<a th:href="@{'/borrarBurguer/cancel/'}" type="button" class="close" data-dismiss="modal"
+					aria-label="Close">x</a>
+			</div>
+			<div class="modal-body">
+				¿Está seguro de desea eliminar esta Hamburguesa?
+				<input type="hidden" id="burguerIdHiddenInput" name="burguerIdHiddenInput" />
+			</div>
+			<div class="modal-footer">
+				<a th:href="@{'/borrarBurguer/cancel/'}" class="btn bg-gradient-warning">Cancelar</a>
+				<button type="button" class="btn btn bg-gradient-danger" th:onclick="borrarBurguer()">Borrar</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Fin Modal Confirmacion de eliminar burguer -->
+
+<!-- Modal Confirmacion de eliminar sandwich -->
+
+<div class="modal fade" id="deleteModalSandwich" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Eliminar Sandwich</h5>
+				<a th:href="@{'/borrarSandwich/cancel/'}" type="button" class="close" data-dismiss="modal"
+					aria-label="Close">x</a>
+				</button>
+			</div>
+			<div class="modal-body">
+				¿Está seguro de desea eliminar este Sandwich?
+				<input type="hidden" id="sandwichIdHiddenInput" name="sandwichIdHiddenInput" />
+			</div>
+			<div class="modal-footer">
+				<a th:href="@{'/borrarSandwich/cancel/'}" class="btn bg-gradient-warning">Cancelar</a>
+				<button type="button" class="btn btn bg-gradient-danger" th:onclick="borrarSandwich()">Borrar</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Fin Modal Confirmacion de eliminar sandwich -->
+
+<!-- Modal Confirmacion de eliminar baguette -->
+
+<div class="modal fade" id="deleteModalBaguette" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Eliminar Baguette</h5>
+				<a th:href="@{'/borrarBaguette/cancel/'}" type="button" class="close" data-dismiss="modal"
+					aria-label="Close">x</a>
+				</button>
+			</div>
+			<div class="modal-body">
+				¿Está seguro de desea eliminar esta Baguette?
+				<input type="hidden" id="baguetteIdHiddenInput" name="baguetteIdHiddenInput" />
+			</div>
+			<div class="modal-footer">
+				<a th:href="@{'/borrarBaguette/cancel/'}" class="btn bg-gradient-warning">Cancelar</a>
+				<button type="button" class="btn btn bg-gradient-danger" th:onclick="borrarBaguette()">Borrar</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Fin Modal Confirmacion de eliminar baguette -->
+
+<!-- Modal Confirmacion de eliminar patatas -->
+
+<div class="modal fade" id="deleteModalPatatas" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Eliminar Patatas</h5>
+				<a th:href="@{'/borrarPatata/cancel/'}" type="button" class="close" data-dismiss="modal"
+					aria-label="Close">x</a>
+				</button>
+			</div>
+			<div class="modal-body">
+				¿Está seguro de desea eliminar estas Patatas?
+				<input type="hidden" id="patataIdHiddenInput" name="patataIdHiddenInput" />
+			</div>
+			<div class="modal-footer">
+				<a th:href="@{'/borrarPatata/cancel/'}" class="btn bg-gradient-warning">Cancelar</a>
+				<button type="button" class="btn btn bg-gradient-danger" th:onclick="borrarPatata()">Borrar</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Fin Modal Confirmacion de eliminar patatas -->
+
+<!-- Modal Confirmacion de eliminar bebidas -->
+
+<div class="modal fade" id="deleteModalBebida" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Eliminar Bebida</h5>
+				<a th:href="@{'/borrarBebida/cancel/'}" type="button" class="close" data-dismiss="modal"
+					aria-label="Close">x</a>
+				</button>
+			</div>
+			<div class="modal-body">
+				¿Está seguro de desea eliminar esta Bebida?
+				<input type="hidden" id="bebidaIdHiddenInput" name="bebidaIdHiddenInput" />
+			</div>
+			<div class="modal-footer">
+				<a th:href="@{'/borrarBebida/cancel/'}" class="btn bg-gradient-warning">Cancelar</a>
+				<button type="button" class="btn btn bg-gradient-danger" th:onclick="borrarBebida()">Borrar</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Fin Modal Confirmacion de eliminar bebidas -->
+
+<!-- Modal Confirmacion de eliminar sugerencias -->
+
+<div class="modal fade" id="deleteModalSugerencias" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Eliminar Sugerencias</h5>
+				<a th:href="@{'/borrarSugerencia/cancelar/'}" type="button" class="close" data-dismiss="modal"
+					aria-label="Close">x</a>
+				</button>
+			</div>
+			<div class="modal-body">
+				¿Está seguro de desea eliminar esta Sugerencia?
+				<input type="hidden" id="sugerenciaIdHiddenInput" name="sugerenciaIdHiddenInput" />
+			</div>
+			<div class="modal-footer">
+				<a th:href="@{'/borrarSugerencia/cancelar/'}" class="btn bg-gradient-warning">Cancelar</a>
+				<button type="button" class="btn btn bg-gradient-danger" th:onclick="borrarSugerencia()">Borrar</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Fin Modal Confirmacion de eliminar sugerencias -->
