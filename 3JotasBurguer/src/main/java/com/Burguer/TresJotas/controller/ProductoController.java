@@ -100,4 +100,9 @@ public class ProductoController {
 		return "redirect:lista-productos";
 	}
 	
+	@GetMapping("/eliminar/cancel")
+	public String cancelborrarProducto(Model model) {
+
+		return "redirect:lista-productos";
+	}
 }

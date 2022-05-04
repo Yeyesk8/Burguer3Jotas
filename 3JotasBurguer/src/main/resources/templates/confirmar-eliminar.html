@@ -24,30 +24,30 @@
 
 <!-- Fin Modal Confirmacion de eliminar usuario -->
 
-<!-- Modal Confirmacion de eliminar burguer -->
+<!-- Modal Confirmacion de eliminar producto -->
 
-<div class="modal fade" id="deleteModalBurguer" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle"
+<div class="modal fade" id="deleteModalProducto" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle"
 	aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLongTitle">Eliminar Burguer</h5>
-				<a th:href="@{'/borrarBurguer/cancel/'}" type="button" class="close" data-dismiss="modal"
+				<h5 class="modal-title" id="exampleModalLongTitle">Eliminar Producto</h5>
+				<a th:href="@{'/producto/lista-productos/'}" type="button" class="close" data-dismiss="modal"
 					aria-label="Close">x</a>
 			</div>
 			<div class="modal-body">
-				¿Está seguro de desea eliminar esta Hamburguesa?
-				<input type="hidden" id="burguerIdHiddenInput" name="burguerIdHiddenInput" />
+				¿Está seguro de desea eliminar este Producto?
+				<input type="hidden" id="productoIdHiddenInput" name="productoIdHiddenInput" />
 			</div>
 			<div class="modal-footer">
-				<a th:href="@{'/borrarBurguer/cancel/'}" class="btn bg-gradient-warning">Cancelar</a>
-				<button type="button" class="btn btn bg-gradient-danger" th:onclick="borrarBurguer()">Borrar</button>
+				<a th:href="@{'/producto/lista-productos'}" class="btn bg-gradient-warning">Cancelar</a>
+				<button type="button" class="btn btn bg-gradient-danger" th:onclick="eliminar()">Borrar</button>
 			</div>
 		</div>
 	</div>
 </div>
 
-<!-- Fin Modal Confirmacion de eliminar burguer -->
+<!-- Fin Modal Confirmacion de eliminar producto -->
 
 <!-- Modal Confirmacion de eliminar sandwich -->
 

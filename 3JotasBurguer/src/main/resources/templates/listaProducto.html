@@ -45,8 +45,10 @@
 					<td th:text="${producto.stock}"></td>
 					<td><a th:href="@{/producto/editar?id=}+${producto.id}" class="badge badge-primary"><i
 												class="fas fa-edit"></i></a>
-						<a th:href="@{/producto/eliminar?id=}+${producto.id}" class="badge badge-danger"><i
-								class="fas fa-solid fa-trash"></i> </a>
+						<!--<a th:href="@{/producto/eliminar?id=}+${producto.id}" class="badge badge-danger"><i
+								class="fas fa-solid fa-trash"></i> </a>-->
+								<a th:onclick="'javascript:confirmDelete(\''+ ${producto.id} +'\');'" class="badge badge-danger"><i
+													class="fas fa-solid fa-trash"></i></a>
 					</td>
 				</tr>
 			</tbody>
@@ -55,7 +57,7 @@
 
 
 
-	<div th:replace="comun/cabecera :: body-scripts"> </div>
+	
 
 	<script>
 		$(document).ready(function () {
@@ -64,6 +66,22 @@
 			});
 		});
 	</script>
+	
+	<!-- script eliminar y confirmar eliminar usuarios -->
+		<script type="text/javascript">
+			function confirmDelete(id) {
+				$('#deleteModalProducto').modal('show');
+				$("#productoIdHiddenInput").val(id);
+			}
+
+			function eliminar() {
+				var id = $("#productoIdHiddenInput").val();
+				window.location = "/producto/eliminar?id=" + id;
+			}
+		</script>
+		
+		<div th:include="confirmar-eliminar" th:remove="tag"></div>
+		<div th:replace="comun/cabecera :: body-scripts"> </div>
 
 </body>
 
