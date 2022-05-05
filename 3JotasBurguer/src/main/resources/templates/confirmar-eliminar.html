@@ -49,31 +49,31 @@
 
 <!-- Fin Modal Confirmacion de eliminar producto -->
 
-<!-- Modal Confirmacion de eliminar sandwich -->
+<!-- Modal Confirmacion de eliminar sugerencia -->
 
-<div class="modal fade" id="deleteModalSandwich" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle"
+<div class="modal fade" id="deleteModalSugerencia" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle"
 	aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLongTitle">Eliminar Sandwich</h5>
-				<a th:href="@{'/borrarSandwich/cancel/'}" type="button" class="close" data-dismiss="modal"
+				<h5 class="modal-title" id="exampleModalLongTitle">Eliminar Sugerencia</h5>
+				<a th:href="@{'/sugerencia/lista-sugerencias/'}" type="button" class="close" data-dismiss="modal"
 					aria-label="Close">x</a>
 				</button>
 			</div>
 			<div class="modal-body">
-				¿Está seguro de desea eliminar este Sandwich?
-				<input type="hidden" id="sandwichIdHiddenInput" name="sandwichIdHiddenInput" />
+				¿Está seguro de desea eliminar esta Sugerencia?
+				<input type="hidden" id="sugerenciaIdHiddenInput" name="sugerenciaIdHiddenInput" />
 			</div>
 			<div class="modal-footer">
-				<a th:href="@{'/borrarSandwich/cancel/'}" class="btn bg-gradient-warning">Cancelar</a>
-				<button type="button" class="btn btn bg-gradient-danger" th:onclick="borrarSandwich()">Borrar</button>
+				<a th:href="@{'/sugerencia/lista-sugerencias'}" class="btn bg-gradient-warning">Cancelar</a>
+				<button type="button" class="btn btn bg-gradient-danger" th:onclick="eliminar()">Borrar</button>
 			</div>
 		</div>
 	</div>
 </div>
 
-<!-- Fin Modal Confirmacion de eliminar sandwich -->
+<!-- Fin Modal Confirmacion de eliminar sugerencia -->
 
 <!-- Modal Confirmacion de eliminar baguette -->
 

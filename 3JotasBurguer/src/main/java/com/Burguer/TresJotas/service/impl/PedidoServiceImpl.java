@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -71,6 +72,17 @@ public class PedidoServiceImpl implements PedidoService {
 	public List<Pedido> findByUser(User user) {
 		return pedidoRepository.findByUser(user);
 	}
+	
+	@Override
+	public Pedido findPedidoById(Long id) {
+		Optional<Pedido> opt = pedidoRepository.findById(id);
+		return opt.get();
+	}
+	@Override
+	public void guardar(Pedido pedido) {
+		pedidoRepository.save(pedido);
+	}
+
 
 	@Override
 	public Iterable<Pedido> getAllPedidos() {

@@ -1,5 +1,5 @@
-
 <html lang="en" xmlns:th="http://www.w3.org./1999/xhtml" xmlns:sec="http://www.w3.org./1999/xhtml">
+
 <head th:replace="comun/cabecera :: comun-cabecera" />
 
 
@@ -35,8 +35,13 @@
 					<td th:text="${sugerencia.email}"></td>
 					<td th:text="${sugerencia.asunto}"></td>
 					<td th:text="${sugerencia.mensaje}"></td>
-					<td><a th:href="@{/sugerencia/eliminar?id=}+${sugerencia.id}" class="badge badge-danger"><i
-								class="fas fa-solid fa-trash"></i> </a>
+					<td>
+						<!--<a th:href="@{/sugerencia/eliminar?id=}+${sugerencia.id}" class="badge badge-danger"><i
+								class="fas fa-solid fa-trash"></i> </a>-->
+						<a th:href="@{/sugerencia/editar?id=}+${sugerencia.id}" class="badge badge-primary"><i
+								class="fas fa-edit"></i></a>
+						<a th:onclick="'javascript:confirmDelete(\''+ ${sugerencia.id} +'\');'"
+							class="badge badge-danger"><i class="fas fa-solid fa-trash"></i></a>
 					</td>
 				</tr>
 			</tbody>
@@ -45,7 +50,7 @@
 
 
 
-	<div th:replace="comun/cabecera :: body-scripts"> </div>
+
 
 	<script>
 		$(document).ready(function () {
@@ -54,6 +59,23 @@
 			});
 		});
 	</script>
+
+	<!-- script eliminar y confirmar eliminar sugerencias -->
+	<script type="text/javascript">
+		function confirmDelete(id) {
+			$('#deleteModalSugerencia').modal('show');
+			$("#sugerenciaIdHiddenInput").val(id);
+		}
+
+		function eliminar() {
+			var id = $("#sugerenciaIdHiddenInput").val();
+			window.location = "/sugerencia/eliminar?id=" + id;
+		}
+	</script>
+
+
+	<div th:include="confirmar-eliminar" th:remove="tag"></div>
+	<div th:replace="comun/cabecera :: body-scripts"> </div>
 
 </body>
 

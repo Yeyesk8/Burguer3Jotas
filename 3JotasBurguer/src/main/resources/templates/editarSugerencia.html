@@ -1,0 +1,76 @@
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml" xmlns:sec="http://www.w3.org./1999/xhtml">
+
+<head th:replace="comun/cabecera :: comun-cabecera" />
+
+<body>
+
+	<div th:replace="admin :: navbarAdmin"> </div>
+
+	<div class="container page-content">
+		<form th:action="@{/sugerencia/editar}" method="post">
+			<fieldset>
+				<legend class="center-block">
+					Editar Información Sugerencia
+				</legend>
+
+				<input hidden="hidden" name="id" th:value="${sugerencia.id}">
+
+				<div class="form-group row">
+					<label for="nombre" class="col-2 col-form-label text-right">Nombre</label>
+					<div class="col-6">
+						<input th:value="${sugerencia.nombre}" type="text" readonly=»readonly» class="form-control" id="nombre" name="nombre">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="apellido" class="col-2 col-form-label text-right">Apellido</label>
+					<div class="col-6">
+						<input th:value="${sugerencia.apellido}" type="text" readonly=»readonly» class="form-control" id="apellido"
+							name="apellido">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="email" class="col-2 col-form-label text-right">E-mail</label>
+					<div class="col-6">
+						<input th:value="${sugerencia.email}" type="text" readonly=»readonly» class="form-control" id="email"
+							name="email">
+					</div>
+				</div>
+				
+					<div class="form-group row">
+					<label for="asunto" class="col-2 col-form-label text-right">Asunto</label>
+					<div class="col-6">
+						<input th:value="${sugerencia.asunto}" type="text" class="form-control" id="asunto"
+							name="asunto">
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label for="mensaje" class="col-2 col-form-label text-right">Mensaje</label>
+					<div class="col-6">
+						<input th:value="${sugerencia.mensaje}" type="text" class="form-control" id="mensaje"
+							name="mensaje">
+					</div>
+				</div>
+				
+
+				<div class="form-group row">
+					<div class="offset-2 col-6">
+						<button type="submit" class="btn btn-success">Editar Sugerencia</button>
+						<a class="btn btn-danger" th:href="@{/sugerencia/lista-sugerencias}">Cancelar</a>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+
+
+
+	<div th:replace="comun/cabecera :: body-scripts"> </div>
+	<script src="/js/tagsinput-custom.js"></script>
+
+
+</body>
+
+</html>

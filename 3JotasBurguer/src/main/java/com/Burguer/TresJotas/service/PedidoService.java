@@ -14,9 +14,13 @@ public interface PedidoService {
 	
 	List<Pedido> findByUser(User user);
 	
+	Pedido findPedidoById(Long id);
+	
 	Pedido findPedidoDetalles(Long id);
 	
 	 Iterable<Pedido> getAllPedidos();
+	 
+	 void guardar(Pedido pedido);
 	 
 	 void borrarPedidoById(Long id);
 	 

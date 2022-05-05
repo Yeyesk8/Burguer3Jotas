@@ -1,0 +1,60 @@
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml" xmlns:sec="http://www.w3.org./1999/xhtml">
+
+<head th:replace="comun/cabecera :: comun-cabecera" />
+
+<body>
+
+	<div th:replace="admin :: navbarAdmin"> </div>
+
+	<div class="container page-content">
+		<form th:action="@{/pedido/editar}" method="post">
+			<fieldset>
+				<legend class="center-block">
+					Editar Información Pedido
+				</legend>
+
+				<input hidden="hidden" name="id" th:value="${user_order.id}">
+
+				<div class="form-group row">
+					<label for="fechaPedido" class="col-2 col-form-label text-right">Fecha de Pedido</label>
+					<div class="col-6">
+						<input th:value="${user_order.fechaPedido}" type="date" readonly=»readonly» class="form-control" id="fechaPedido" name="fechaPedido">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="estadoPedido" class="col-2 col-form-label text-right">Estado del Pedido</label>
+					<div class="col-6">
+						<input th:value="${user_order.estadoPedido}" type="text" class="form-control" id="estadoPedido"
+							name="estadoPedido">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="totalPedido" class="col-2 col-form-label text-right">Total del Pedido</label>
+					<div class="col-6">
+						<input th:value="${user_order.totalPedido}" type="number" min="0.5" step="0.5" max="6.0" class="form-control" id="totalPedido"
+							name="totalPedido">
+					</div>
+				</div>
+									
+			
+				<div class="form-group row">
+					<div class="offset-2 col-6">
+						<button type="submit" class="btn btn-success">Editar Pedido</button>
+						<a class="btn btn-danger" th:href="@{/pedido/lista-pedidos}">Cancelar</a>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+
+
+
+	<div th:replace="comun/cabecera :: body-scripts"> </div>
+	<script src="/js/tagsinput-custom.js"></script>
+
+
+</body>
+
+</html>
