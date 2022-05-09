@@ -33,8 +33,10 @@
 					<td th:text="${user_order.totalPedido}"></td>
 					<td><a th:href="@{/pedido/editar?id=}+${user_order.id}" class="badge badge-primary"><i
 								class="fas fa-edit"></i></a>
-						<a th:href="@{/pedido/eliminar?id=}+${user_order.id}" class="badge badge-danger"><i
-								class="fas fa-solid fa-trash"></i> </a>
+						<!--<a th:href="@{/pedido/eliminar?id=}+${user_order.id}" class="badge badge-danger"><i
+								class="fas fa-solid fa-trash"></i> </a>-->
+						<a th:onclick="'javascript:confirmDelete(\''+ ${user_order.id} +'\');'"
+							class="badge badge-danger"><i class="fas fa-solid fa-trash"></i></a>
 					</td>
 				</tr>
 			</tbody>
@@ -43,8 +45,7 @@
 
 
 
-	<div th:replace="comun/cabecera :: body-scripts"> </div>
-
+	
 	<script>
 		$(document).ready(function () {
 			$('#table-pedido').DataTable({
@@ -52,6 +53,22 @@
 			});
 		});
 	</script>
+	
+	<!-- script eliminar y confirmar eliminar pedidos -->
+		<script type="text/javascript">
+			function confirmDelete(id) {
+				$('#deleteModalPedido').modal('show');
+				$("#pedidoIdHiddenInput").val(id);
+			}
+
+			function eliminar() {
+				var id = $("#pedidoIdHiddenInput").val();
+				window.location = "/pedido/eliminar?id=" + id;
+			}
+		</script>
+		
+		<div th:include="confirmar-eliminar" th:remove="tag"></div>
+		<div th:replace="comun/cabecera :: body-scripts"> </div>
 
 </body>
 

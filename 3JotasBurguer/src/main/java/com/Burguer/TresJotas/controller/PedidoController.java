@@ -68,4 +68,10 @@ public class PedidoController {
 		return "redirect:lista-pedidos";
 	}
 	
+	@GetMapping("/eliminar/cancel")
+	public String cancelBorrarPedido(Model model) {
+
+		return "redirect:lista-pedidos";
+	}
+	
 }
