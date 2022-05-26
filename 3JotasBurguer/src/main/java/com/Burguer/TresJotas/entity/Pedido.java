@@ -44,6 +44,9 @@ public class Pedido {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	private User user;
+	
+	public Pedido() {
+	}
 
 	public Long getId() {
 		return id;
