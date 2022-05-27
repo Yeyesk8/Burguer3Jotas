@@ -37,8 +37,6 @@
 					<td th:text="${user.password}"></td>
 					<td> <a th:href="@{/usuario/editar?id=}+${user.id}" class="badge badge-primary"><i
 								class="fas fa-edit"></i></a>
-						<!--<a th:href="@{/usuario/eliminar?id=}+${user.id}" class="badge badge-danger"><i
-								class="fas fa-solid fa-trash"></i> </a>-->
 								<a th:onclick="'javascript:confirmDelete(\''+ ${user.id} +'\');'" class="badge badge-danger"><i
 													class="fas fa-solid fa-trash"></i></a>
 					</td>

@@ -45,8 +45,6 @@
 					<td th:text="${producto.stock}"></td>
 					<td><a th:href="@{/producto/editar?id=}+${producto.id}" class="badge badge-primary"><i
 												class="fas fa-edit"></i></a>
-						<!--<a th:href="@{/producto/eliminar?id=}+${producto.id}" class="badge badge-danger"><i
-								class="fas fa-solid fa-trash"></i> </a>-->
 								<a th:onclick="'javascript:confirmDelete(\''+ ${producto.id} +'\');'" class="badge badge-danger"><i
 													class="fas fa-solid fa-trash"></i></a>
 					</td>

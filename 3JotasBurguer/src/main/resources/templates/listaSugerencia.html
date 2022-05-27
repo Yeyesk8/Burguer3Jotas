@@ -36,8 +36,6 @@
 					<td th:text="${sugerencia.asunto}"></td>
 					<td th:text="${sugerencia.mensaje}"></td>
 					<td>
-						<!--<a th:href="@{/sugerencia/eliminar?id=}+${sugerencia.id}" class="badge badge-danger"><i
-								class="fas fa-solid fa-trash"></i> </a>-->
 						<a th:href="@{/sugerencia/editar?id=}+${sugerencia.id}" class="badge badge-primary"><i
 								class="fas fa-edit"></i></a>
 						<a th:onclick="'javascript:confirmDelete(\''+ ${sugerencia.id} +'\');'"
