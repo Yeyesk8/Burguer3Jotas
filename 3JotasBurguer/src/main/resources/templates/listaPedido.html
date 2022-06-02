@@ -22,15 +22,17 @@
 					<th>Fecha Pedido</th>
 					<th>Estado Pedido</th>
 					<th>Total Pedido</th>
+					<th>Ver Detalles</th>
 					<th>Operacion</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr data-th-each="user_order : ${pedidos}">
+				<tr data-th-each="user_order : ${pedidos}""order : ${orders}">
 					<td th:text="${user_order.id}"></td>
 					<td th:text="${user_order.fechaPedido}"></td>
 					<td th:text="${user_order.estadoPedido}"></td>
 					<td th:text="${user_order.totalPedido}"></td>
+					<td><a th:href="@{/detalle-pedido?order=}+${user_order.id}" class="text-danger">PED<span th:text="${user_order.id}"></span></a></td>
 					<td><a th:href="@{/pedido/editar?id=}+${user_order.id}" class="badge badge-primary"><i
 								class="fas fa-edit"></i></a>
 						<a th:onclick="'javascript:confirmDelete(\''+ ${user_order.id} +'\');'"

@@ -18,27 +18,32 @@
 				<div class="form-group row">
 					<label for="fechaPedido" class="col-2 col-form-label text-right">Fecha de Pedido</label>
 					<div class="col-6">
-						<input th:value="${user_order.fechaPedido}" type="date" readonly=»readonly» class="form-control" id="fechaPedido" name="fechaPedido">
+						<input th:value="${user_order.fechaPedido}" type="date" readonly=»readonly» class="form-control"
+							id="fechaPedido" name="fechaPedido">
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label for="estadoPedido" class="col-2 col-form-label text-right">Estado del Pedido</label>
 					<div class="col-6">
-						<input th:value="${user_order.estadoPedido}" type="text" class="form-control" id="estadoPedido"
+						<select th:value="${user_order.estadoPedido}" type="text" class="form-control" id="estadoPedido"
 							name="estadoPedido">
+							<option th:value="${user_order.estadoPedido='Preparando'}">Preparando</option>
+							<option th:value="${user_order.estadoPedido='Hecho'}">Hecho</option>
+							<option th:value="${user_order.estadoPedido='Entregado'}">Entregado</option>
+						</select>
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label for="totalPedido" class="col-2 col-form-label text-right">Total del Pedido</label>
 					<div class="col-6">
-						<input th:value="${user_order.totalPedido}" type="number" min="0.5" step="0.5" max="100.0" class="form-control" id="totalPedido"
-							name="totalPedido">
+						<input th:value="${user_order.totalPedido}" type="number" min="0.5" step="0.5" max="100.0"
+							class="form-control" id="totalPedido" name="totalPedido">
 					</div>
 				</div>
-									
-			
+
+
 				<div class="form-group row">
 					<div class="offset-2 col-6">
 						<button type="submit" class="btn btn-success">Editar Pedido</button>
