@@ -84,7 +84,7 @@ public class CuentaController {
 	}
 	
 	@PostMapping("/nuevo-usuario")
-	public String newUserPost(@Valid @ModelAttribute("user") User user, BindingResult bindingResults,
+	public String nuevoUsuarioPost(@Valid @ModelAttribute("user") User user, BindingResult bindingResults,
 							  @ModelAttribute("new-password") String password, 
 							  RedirectAttributes redirectAttributes, Model model) {
 		model.addAttribute("email", user.getEmail());

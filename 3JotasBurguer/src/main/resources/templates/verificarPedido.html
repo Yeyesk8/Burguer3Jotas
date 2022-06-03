@@ -1,258 +1,294 @@
-
 <html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
+
 <head th:replace="comun/cabecera :: comun-cabecera" />
 
 
 <head>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<!--     Fonts and icons     -->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+	<!--     Fonts and icons     -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 
-<!-- Nucleo Icons -->
-<link href="static/css/soft-ui/nucleo-icons.css" th:href="@{/css/soft-ui/nucleo-icons.css}" rel="stylesheet" />
-<link href="static/css/soft-ui/nucleo-svg.css" th:href="@{/css/soft-ui/nucleo-svg.css}" rel="stylesheet" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<!-- Nucleo Icons -->
+	<link href="static/css/soft-ui/nucleo-icons.css" th:href="@{/css/soft-ui/nucleo-icons.css}" rel="stylesheet" />
+	<link href="static/css/soft-ui/nucleo-svg.css" th:href="@{/css/soft-ui/nucleo-svg.css}" rel="stylesheet" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 
-<!-- Font Awesome Icons -->
-<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-<!-- CSS Files -->
-<link id="pagestyle" href="static/css/soft-ui/soft-design-system.css?v=1.0.5"
-	th:href="@{/css/soft-ui/soft-design-system.css?v=1.0.5}" rel="stylesheet" />
-  
+	<!-- Font Awesome Icons -->
+	<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+	<!-- CSS Files -->
+	<link id="pagestyle" href="static/css/soft-ui/soft-design-system.css?v=1.0.5"
+		th:href="@{/css/soft-ui/soft-design-system.css?v=1.0.5}" rel="stylesheet" />
+
 </head>
 
 
 <body class="d-flex flex-column">
-  <div th:replace="comun/cabecera :: navbar"> </div>
+	<div th:replace="comun/cabecera :: navbar"> </div>
 
-  <div class="container page-content">   
-    <form th:action="@{/verificar}" method="post">
-      <div class="row">      
+	<div class="container page-content">
+		<form th:action="@{/verificar}" method="post">
+			<div class="row">
 
-        <!-- Checkout Info -->                         
-        <div class="col-lg-8 mb-3" >
-          <div th:if="${missingRequiredField}">
-            <h5 class="alert alert-warning">Faltan algunos campos obligatorios.</h5>
-          </div>          
-          <div id="accordion">
-            <div class="card">
-              <div class="card-header bg-white" id="headingOne">
-                <h5 class="mb-0">
-                  <button class="btn btn-link text-dark checkout-header" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                   Productos <i data-feather="chevron-down" class="mb-1"></i>
-                  </button>
-                </h5>
-              </div>
-              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                <div class="card-body border-bottom">                
-                  <div class="row align-items-center border-bottom  pb-2 pt-2" th:each="productoCarrito : ${ListaProductosCarrito}">
-                    <div class="col-12 col-md-6 mb-2">
-                      <div class="row align-items-center">                      
-                        <div class="col-4">
-                          <a th:href="@{/detalle-producto?id=}+${productoCarrito.producto.id}"><img class="img-fluid" th:src="'/img/producto/imagenes/'+${productoCarrito.producto.imagen}+'.jpg'" alt="${productoCarrito.producto.nombre}"></a>
-                        </div>
-                        <div class="col-8">
-                          <a th:href="@{/detalle-producto?id=}+${productoCarrito.producto.id}" class="h6 bold d-inline-block" th:text=${productoCarrito.producto.nombre}></a>
-                            <div><i data-feather="check-circle" class="text-success"></i>Disponible</div>                                                             
-                            <small><b>Precio/Ud.</b>: €<span th:text="${#numbers.formatDecimal(productoCarrito.producto.precio, 0, 'COMMA', 2, 'POINT')}"></span></small>
-                        </div>
-                      </div> 
-                    </div>  
-                    <div class="col-12 col-md-6 text-right">
-                      <span>x<span th:text="${productoCarrito.cantidad}"></span> unidad: </span>                           
-                      <span class="font-weight-bold text-info">€ <span th:id="'precio'+${productoCarrito.id}" th:text="${#numbers.formatDecimal(productoCarrito.subtotal, 0, 'COMMA', 2, 'POINT')}"></span></span>
-                    </div>                  
-                  </div>                  
-                  <div class="text-center mx-auto">
-                    <small class="counter">TOTAL</small>
-                    <h3 class="font-weight-bold">€ <span th:text="${#numbers.formatDecimal(carritoCompra.getGrandTotal(), 0, 'COMMA', 2, 'POINT')}"></span></h3>
-                  </div>                    
-                  <div class="d-flex flex-wrap justify-content-between align-items-center mt-3">      
-                    <a th:href="@{/carrito/carrito}" class="btn btn-info rounded-pill  "><i data-feather="arrow-left"></i> Editar Carrito</a>           
-                    <a data-toggle="collapse" data-parent="#accordion"
-                        class="btn btn-danger rounded-pill " href="#collapseTwo">Siguiente <i data-feather="arrow-right"></i></a>
-                  </div>
-                </div>                 
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header bg-white" id="headingTwo">
-                <h5 class="mb-0">
-                  <button class="btn btn-link text-dark checkout-header" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    ENVÍO <i data-feather="chevron-down" class="mb-1"></i>
-                  </button>
-                </h5>
-              </div>    
-              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                <div class="card-body border-bottom">
-                  <div class="form-row">
-                    <div class="form-group col-12">
-                      <label for="destinatario">Nombre del destinatario</label> 
-                      <input type="text" class="form-control" id="destinatario" name="destinatario" required="required"/>
-                    </div>  
-                    <div class="form-group col-12">
-                      <label for="calle">Dirección</label> 
-                      <input type="text" class="form-control" id="calle" name="calle" required="required" />
-                    </div>
-                    <div class="form-group col-4">
-                      <label for="pueblo">Pueblo</label> <input type="text"
-                        class="form-control" id="pueblo" th:name="pueblo"
-                        required="required"/>
-                    </div>
-                    <div class="form-group col-4">
-                      <label for="ciudad">Ciudad</label> <input type="text"
-                        class="form-control" id="ciudad" th:name="ciudad"
-                        required="required"/>
-                    </div>
-                    <div class="form-group col-4">
-                      <label for="codigoPostal">Código postal</label> <input
-                        type="text" class="form-control" id="codigoPostal"
-                        th:name="codigoPostal" required="required" />
-                    </div>                                       
-                  </div>
-                  <div class="mt-2 text-right">
-                    <a data-toggle="collapse" data-parent="#accordion"
-                      class="btn btn-danger rounded-pill" href="#collapseThree">Siguiente <i data-feather="arrow-right"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header bg-white" id="headingThree">
-                <h5 class="mb-0">
-                  <button class="btn btn-link text-dark checkout-header collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    PAGO  <i data-feather="chevron-down" class="mb-1"></i>
-                  </button>
-                </h5>
-              </div>
-              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                <div class="card-body border-bottom">
-                  <div class="row">
-                    <div class="col-12">
-                      <img src="/img/creditcard.png" class="img-fluid mb-2" /><br />
-                      <div class="form-group">
-                        <label for="tipoTarjeta">Seleccionar tipo de tarjeta: </label> <select
-                          class="form-control" id="tipoTarjeta" name="tipoTarjeta">
-                          <option value="visa">Visa</option>
-                          <option value="mastercard">Mastercard</option>
-                          <option value="discover">Discover</option>
-                          <option value="amex">American Express</option>
-                        </select>
-                      </div>
+				<!-- Checkout Info -->
+				<div class="col-lg-8 mb-3">
+					<div th:if="${missingRequiredField}">
+						<h5 class="alert alert-warning">Faltan algunos campos obligatorios.</h5>
+					</div>
+					<div id="accordion">
+						<div class="card">
+							<div class="card-header bg-white" id="headingOne">
+								<h5 class="mb-0">
+									<button class="btn btn-link text-dark checkout-header" data-toggle="collapse"
+										data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+										Productos <i data-feather="chevron-down" class="mb-1"></i>
+									</button>
+								</h5>
+							</div>
+							<div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+								data-parent="#accordion">
+								<div class="card-body border-bottom">
+									<div class="row align-items-center border-bottom  pb-2 pt-2"
+										th:each="productoCarrito : ${ListaProductosCarrito}">
+										<div class="col-12 col-md-6 mb-2">
+											<div class="row align-items-center">
+												<div class="col-4">
+													<a
+														th:href="@{/detalle-producto?id=}+${productoCarrito.producto.id}"><img
+															class="img-fluid"
+															th:src="'/img/producto/imagenes/'+${productoCarrito.producto.imagen}+'.jpg'"
+															alt="${productoCarrito.producto.nombre}"></a>
+												</div>
+												<div class="col-8">
+													<a th:href="@{/detalle-producto?id=}+${productoCarrito.producto.id}"
+														class="h6 bold d-inline-block"
+														th:text=${productoCarrito.producto.nombre}></a>
+													<div><i data-feather="check-circle"
+															class="text-success"></i>Disponible</div>
+													<small><b>Precio/Ud.</b>: €<span
+															th:text="${#numbers.formatDecimal(productoCarrito.producto.precio, 0, 'COMMA', 2, 'POINT')}"></span></small>
+												</div>
+											</div>
+										</div>
+										<div class="col-12 col-md-6 text-right">
+											<span>x<span th:text="${productoCarrito.cantidad}"></span> unidad: </span>
+											<span class="font-weight-bold text-info">€ <span
+													th:id="'precio'+${productoCarrito.id}"
+													th:text="${#numbers.formatDecimal(productoCarrito.subtotal, 0, 'COMMA', 2, 'POINT')}"></span></span>
+										</div>
+									</div>
+									<div class="text-center mx-auto">
+										<small class="counter">TOTAL</small>
+										<h3 class="font-weight-bold">€ <span
+												th:text="${#numbers.formatDecimal(carritoCompra.getGrandTotal(), 0, 'COMMA', 2, 'POINT')}"></span>
+										</h3>
+									</div>
+									<div class="d-flex flex-wrap justify-content-between align-items-center mt-3">
+										<a th:href="@{/carrito/carrito}" class="btn btn-info rounded-pill  "><i
+												data-feather="arrow-left"></i> Editar Carrito</a>
+										<a data-toggle="collapse" data-parent="#accordion"
+											class="btn btn-danger rounded-pill " href="#collapseTwo">Siguiente <i
+												data-feather="arrow-right"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header bg-white" id="headingTwo">
+								<h5 class="mb-0">
+									<button class="btn btn-link text-dark checkout-header" data-toggle="collapse"
+										data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+										ENVÍO <i data-feather="chevron-down" class="mb-1"></i>
+									</button>
+								</h5>
+							</div>
+							<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+								data-parent="#accordion">
+								<div class="card-body border-bottom">
+									<div class="form-row">
+										<div class="form-group col-12">
+											<label for="destinatario">Nombre del destinatario</label>
+											<input type="text" class="form-control" id="destinatario"
+												name="destinatario" required="required" />
+										</div>
+										<div class="form-group col-12">
+											<label for="calle">Dirección</label>
+											<input type="text" class="form-control" id="calle" name="calle"
+												required="required" />
+										</div>
+										<div class="form-group col-4">
+											<label for="pueblo">Pueblo</label> <select type="text" class="form-control"
+												id="pueblo" th:name="pueblo" required="required">												
+												<option value="Navarrevisca" selected>Navarrevisca</option>
+												<option value="Serranillos">Serranillos</option>
+											</select>
+										</div>
+										<div class="form-group col-4">
+											<label for="ciudad">Ciudad</label> <select type="text" class="form-control"
+												id="ciudad" th:name="ciudad" required="required">
+												<option value="Ávila" selected>Ávila</option>
+												</select>
+										</div>
+										<div class="form-group col-4">
+											<label for="codigoPostal">Código postal</label> <select type="text"
+												class="form-control" id="codigoPostal" th:name="codigoPostal"
+												required="required">
+												<option value="05115" selected>05115</option>											
+												</select>
+										</div>
+									</div>
+									<div class="mt-2 text-right">
+										<a data-toggle="collapse" data-parent="#accordion"
+											class="btn btn-danger rounded-pill" href="#collapseThree">Siguiente <i
+												data-feather="arrow-right"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header bg-white" id="headingThree">
+								<h5 class="mb-0">
+									<button class="btn btn-link text-dark checkout-header collapsed"
+										data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+										aria-controls="collapseThree">
+										PAGO <i data-feather="chevron-down" class="mb-1"></i>
+									</button>
+								</h5>
+							</div>
+							<div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+								data-parent="#accordion">
+								<div class="card-body border-bottom">
+									<div class="row">
+										<div class="col-12">
+											<img src="/img/creditcard.png" class="img-fluid mb-2" /><br />
+											<div class="form-group">
+												<label for="tipoTarjeta">Seleccionar tipo de tarjeta: </label> <select
+													class="form-control" id="tipoTarjeta" name="tipoTarjeta">
+													<option value="visa">Visa</option>
+													<option value="mastercard">Mastercard</option>
+													<option value="discover">Discover</option>
+													<option value="amex">American Express</option>
+												</select>
+											</div>
 
-                      <div class="form-group">
-                        <label for="titular">Nombre del titular de la tarjeta:</label> <input
-                          type="text" class="form-control" id="titular"
-                          required="required" th:name="titular">
-                      </div>
-                      <div class="form-group">
-                        <label for="numeroTarjeta">Número de tarjeta:</label>
-                        <div class="input-group">
-                          <input type="tel" class="form-control" id="numeroTarjeta"
-                            required="required" th:name="numeroTarjeta">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+											<div class="form-group">
+												<label for="titular">Nombre del titular de la tarjeta:</label> <input
+													type="text" class="form-control" id="titular" required="required"
+													th:name="titular">
+											</div>
+											<div class="form-group">
+												<label for="numeroTarjeta">Número de tarjeta:</label>
+												<div class="input-group">
+													<input type="tel" class="form-control" id="numeroTarjeta"
+														required="required" th:name="numeroTarjeta">
+												</div>
+											</div>
+										</div>
+									</div>
 
-                  <div class="row">
-                    <div class="col-7">
-                      <div class="form-group">
-                        <label>Fecha de caducidad</label>
-                        <div class="row">
-                          <div class="col-6">
-                            <select class="form-control" name="mesVencimiento"
-                              required="required">
-                              <option disabled="disabled">-- Mes --</option>
-                              <option value="1">EN  (01)</option>
-                              <option value="2">FE  (02)</option>
-                              <option value="3">MA  (03)</option>
-                              <option value="4">AB  (04)</option>
-                              <option value="5">MY (05)</option>
-                              <option value="6">JN (06)</option>
-                              <option value="7">JL (07)</option>
-                              <option value="8">AG (08)</option>
-                              <option value="9">SE (09)</option>
-                              <option value="10">OC (10)</option>
-                              <option value="11">NO (11)</option>
-                              <option value="12">DI (12)</option>
-                            </select>
-                          </div>
-                          <div class="col-6">
-                            <select class="form-control" name="anioVencimiento">
-                              <option disabled="disabled">-- Año --</option>
-                              <option value="2020">2020</option>
-                              <option value="2021">2021</option>
-                              <option value="2022">2022</option>
-                              <option value="2023">2023</option>
-                              <option value="2024">2024</option>
-                              <option value="2025">2025</option>
-                              <option value="2026">2026</option>
-                              <option value="2027">2027</option>
-                              <option value="2028">2028</option>
-                              <option value="2029">2029</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-5">
-                      <div class="form-group">
-                        <label for="cardCVC">Código CV</label> <input id="cvc"
-                          type="tel" class="form-control" name="cvc"/>
-                      </div>
-                    </div>
-                  </div>  
-                  <div class="mt-2 text-right">
-                    <a data-toggle="collapse" data-parent="#accordion"
-                      class="btn btn-danger rounded-pill" href="#collapseThree">Siguiente <i data-feather="arrow-right"></i></a>
-                  </div>                
-                </div>                
-              </div>
-            </div>            
-          </div> <!--  end accordion -->          
-        </div>
-        
-        
-        <!-- Summary Panel -->
-        <div class="col-lg-4">
-          <div class="card">
-            <div class="card-header bg-white checkout-header">RESUMEN DEL PEDIDO</div>
-            <div class="card-body">
-              <div class="d-flex justify-content-between">
-                <span>Subtotal del carrito</span>
-                <span>€ <span th:text="${#numbers.formatDecimal(carritoCompra.getGrandTotal(), 0, 'COMMA', 2, 'POINT')}"> </span></span>
-              </div>
-              <div class="d-flex justify-content-between">
-                <span>Transporte</span>
-                <span>€0.00</span>
-              </div>
-              <hr>
-              <div class="d-flex justify-content-between">
-                <span>Total</span>
-                <span class="font-weight-bold">€<span th:text="${#numbers.formatDecimal(carritoCompra.getGrandTotal(), 0, 'COMMA', 2, 'POINT')}"> </span></span>
-              </div>
-            </div>
-            <div class="card-footer bg-white border-top-0">
-              <button type="submit" class="btn btn-danger rounded-pill btn-lg btn-block mt-2 mb-3">
-             Haga su pedido
-              </button>            
-              <p style="font-size: smaller;">
-               Al realizar tu pedido, aceptas el aviso de <a href="privacidad">privacidad</a>
-                y las <a href="condiciones">condiciones</a> de TresJotas.</p>                   
-            </div>
-          </div>       
-        </div>        
-      </div>
-    </form>             
-    
-  </div> <!--  end container -->
-  
-  <div th:replace="comun/cabecera :: footer"> </div>  
-  <div th:replace="comun/cabecera :: body-scripts"> </div>
- 
-  
+									<div class="row">
+										<div class="col-7">
+											<div class="form-group">
+												<label>Fecha de caducidad</label>
+												<div class="row">
+													<div class="col-6">
+														<select class="form-control" name="mesVencimiento"
+															required="required">
+															<option disabled="disabled">-- Mes --</option>
+															<option value="1">EN (01)</option>
+															<option value="2">FE (02)</option>
+															<option value="3">MA (03)</option>
+															<option value="4">AB (04)</option>
+															<option value="5">MY (05)</option>
+															<option value="6">JN (06)</option>
+															<option value="7">JL (07)</option>
+															<option value="8">AG (08)</option>
+															<option value="9">SE (09)</option>
+															<option value="10">OC (10)</option>
+															<option value="11">NO (11)</option>
+															<option value="12">DI (12)</option>
+														</select>
+													</div>
+													<div class="col-6">
+														<select class="form-control" name="anioVencimiento">
+															<option disabled="disabled">-- Año --</option>
+															<option value="2020">2022</option>
+															<option value="2021">2023</option>
+															<option value="2022">2024</option>
+															<option value="2023">2025</option>
+															<option value="2024">2026</option>
+															<option value="2025">2027</option>
+															<option value="2026">2028</option>
+															<option value="2027">2029</option>
+															<option value="2028">2030</option>
+															<option value="2029">2031</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-5">
+											<div class="form-group">
+												<label for="cardCVC">Código CV</label> <input id="cvc" type="tel"
+													class="form-control" name="cvc" />
+											</div>
+										</div>
+									</div>
+									<div class="mt-2 text-right">
+										<a data-toggle="collapse" data-parent="#accordion"
+											class="btn btn-danger rounded-pill" href="#collapseThree">Siguiente <i
+												data-feather="arrow-right"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> 
+				</div>
+
+
+				
+				<div class="col-lg-4">
+					<div class="card">
+						<div class="card-header bg-white checkout-header">RESUMEN DEL PEDIDO</div>
+						<div class="card-body">
+							<div class="d-flex justify-content-between">
+								<span>Subtotal del carrito</span>
+								<span>€ <span
+										th:text="${#numbers.formatDecimal(carritoCompra.getGrandTotal(), 0, 'COMMA', 2, 'POINT')}">
+									</span></span>
+							</div>
+							<div class="d-flex justify-content-between">
+								<span>Transporte</span>
+								<span>€0.00</span>
+							</div>
+							<hr>
+							<div class="d-flex justify-content-between">
+								<span>Total</span>
+								<span class="font-weight-bold">€<span
+										th:text="${#numbers.formatDecimal(carritoCompra.getGrandTotal(), 0, 'COMMA', 2, 'POINT')}">
+									</span></span>
+							</div>
+						</div>
+						<div class="card-footer bg-white border-top-0">
+							<button type="submit" class="btn btn-danger rounded-pill btn-lg btn-block mt-2 mb-3">
+								Haga su pedido
+							</button>
+							<p style="font-size: smaller;">
+								Al realizar tu pedido, aceptas el aviso de <a href="privacidad">privacidad</a>
+								y las <a href="condiciones">condiciones</a> de TresJotas.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+
+	</div> 
+
+	<div th:replace="comun/cabecera :: footer"> </div>
+	<div th:replace="comun/cabecera :: body-scripts"> </div>
+
+
 </body>
+
 </html>

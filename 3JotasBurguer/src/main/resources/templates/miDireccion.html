@@ -1,90 +1,108 @@
-
 <html lang="en" xmlns:th="http://www.w3.org./1999/xhtml">
-<head th:replace="comun/cabecera :: comun-cabecera"/>
+
+<head th:replace="comun/cabecera :: comun-cabecera" />
 
 
 <head>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<!--     Fonts and icons     -->
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+	<!--     Fonts and icons     -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 
-<!-- Nucleo Icons -->
-<link href="static/css/soft-ui/nucleo-icons.css" th:href="@{/css/soft-ui/nucleo-icons.css}" rel="stylesheet" />
-<link href="static/css/soft-ui/nucleo-svg.css" th:href="@{/css/soft-ui/nucleo-svg.css}" rel="stylesheet" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<!-- Nucleo Icons -->
+	<link href="static/css/soft-ui/nucleo-icons.css" th:href="@{/css/soft-ui/nucleo-icons.css}" rel="stylesheet" />
+	<link href="static/css/soft-ui/nucleo-svg.css" th:href="@{/css/soft-ui/nucleo-svg.css}" rel="stylesheet" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 
-<!-- Font Awesome Icons -->
-<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-<!-- CSS Files -->
-<link id="pagestyle" href="static/css/soft-ui/soft-design-system.css?v=1.0.5"
-	th:href="@{/css/soft-ui/soft-design-system.css?v=1.0.5}" rel="stylesheet" />
-  
+	<!-- Font Awesome Icons -->
+	<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+	<!-- CSS Files -->
+	<link id="pagestyle" href="static/css/soft-ui/soft-design-system.css?v=1.0.5"
+		th:href="@{/css/soft-ui/soft-design-system.css?v=1.0.5}" rel="stylesheet" />
+
 </head>
 
 
 <body class="d-flex flex-column">
-  <div th:replace="comun/cabecera :: navbar"> </div>
+	<div th:replace="comun/cabecera :: navbar"> </div>
 
-  <div class="container page-content">
-    <div class="row">
-      
-       <div class="col-md-4 col-lg-3">
-        <div class="card">
-          <div class="card-body text-center">
-            <img src="/img/user/user.png" width="100" height="100" alt="User" class="rounded-circle mb-3">
-            <h5 class="bold mb-0" th:text="${#strings.capitalize(user.username)}"></h5>
-            <small class="text-secondary" th:text="'Ultima vez visto '+${#dates.format(#dates.createNow(), 'MMM dd, yyyy')}"></small>       
-          </div>
-          <div class="list-group list-group-flush">
-            <a th:href="@{/mi-perfil}" class="list-group-item list-group-item-action"><i data-feather="user" class="mr-3"></i> Perfil</a>
-            <a th:href="@{/mis-pedidos}" class="list-group-item list-group-item-action"><i data-feather="shopping-bag" class="mr-3"></i> Pedidos</a>
-            <a th:href="@{/mi-direccion}" class="list-group-item list-group-item-danger"><i data-feather="map" class="mr-3"></i> Dirección</a>
-            <a th:href="@{/logout}" class="list-group-item list-group-item-action text-danger"><i data-feather="log-out" class="mr-3"></i> Salir</a>
-          </div>
-        </div>
-      </div>
-      
-       <div class="col mt-3 mt-md-0">
-          <div class="card">
-            <div class="card-body">
-              <h3>Mi Dirección</h3><hr>
-              <form th:action="@{/actualizar-direccion}" method="post">
-                <div class="form-row">
-                  <div class="form-group col-12">
-                    <label for="calle">Calle</label>
-                    <input type="text" class="form-control" th:name="calle" th:value="${user?.direccion?.calle}">
-                  </div>
-                  <div class="form-group col-6 col-sm-5">
-                    <label for="pueblo">Pueblo</label>
-                    <input type="text" class="form-control" th:name="pueblo" th:value="${user?.direccion?.pueblo}">
-                    
-                  </div>
-                  <div class="form-group col-6 col-sm-5">
-                    <label for="ciudad">Ciudad</label>
-                    <input type="text" class="form-control"   th:name="ciudad" th:value="${user?.direccion?.ciudad}">
-                  </div>
-                  <div class="form-group col-3 col-sm-2">
-                    <label for="codigoPostal">Código postal</label>
-                    <input type="text" class="form-control" th:name="codigoPostal" th:value="${user?.direccion?.codigoPostal}">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <button type="submit" class="btn btn-danger">ACTUALIZAR DIRECCIÓN</button>
-                </div>
-              </form>
-             
-            </div>
-          </div>
-        </div>
-        
-    </div>
-  </div> <!--  end container -->
-  
-  <div th:replace="comun/cabecera :: footer"> </div>
-  
-  
-  <div th:replace="comun/cabecera :: body-scripts"> </div>
+	<div class="container page-content">
+		<div class="row">
+
+			<div class="col-md-4 col-lg-3">
+				<div class="card">
+					<div class="card-body text-center">
+						<img src="/img/user/user.png" width="100" height="100" alt="User" class="rounded-circle mb-3">
+						<h5 class="bold mb-0" th:text="${#strings.capitalize(user.username)}"></h5>
+						<small class="text-secondary"
+							th:text="'Ultima vez visto '+${#dates.format(#dates.createNow(), 'MMM dd, yyyy')}"></small>
+					</div>
+					<div class="list-group list-group-flush">
+						<a th:href="@{/mi-perfil}" class="list-group-item list-group-item-action"><i data-feather="user"
+								class="mr-3"></i> Perfil</a>
+						<a th:href="@{/mis-pedidos}" class="list-group-item list-group-item-action"><i
+								data-feather="shopping-bag" class="mr-3"></i> Pedidos</a>
+						<a th:href="@{/mi-direccion}" class="list-group-item list-group-item-danger"><i
+								data-feather="map" class="mr-3"></i> Dirección</a>
+						<a th:href="@{/logout}" class="list-group-item list-group-item-action text-danger"><i
+								data-feather="log-out" class="mr-3"></i> Salir</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="col mt-3 mt-md-0">
+				<div class="card">
+					<div class="card-body">
+						<h3>Mi Dirección</h3>
+						<hr>
+						<form th:action="@{/actualizar-direccion}" method="post">
+							<div class="form-row">
+								<div class="form-group col-12">
+									<label for="calle">Calle</label>
+									<input type="text" class="form-control" th:name="calle"
+										th:value="${user?.direccion?.calle}">
+								</div>
+								<div class="form-group col-6 col-sm-5">
+									<label for="pueblo">Pueblo</label>
+									<select type="text" class="form-control" th:name="pueblo"
+										th:value="${user?.direccion?.pueblo}">
+										<option value="Navarrevisca" selected>Navarrevisca</option>
+										<option value="Serranillos">Serranillos</option>
+									</select>
+
+								</div>
+								<div class="form-group col-6 col-sm-5">
+									<label for="ciudad">Ciudad</label>
+									<select type="text" class="form-control" th:name="ciudad"
+										th:value="${user?.direccion?.ciudad}">
+										<option value="Ávila" selected>Ávila</option>										
+									</select>
+								</div>
+								<div class="form-group col-3 col-sm-2">
+									<label for="codigoPostal">Código postal</label>
+									<select type="text" class="form-control" th:name="codigoPostal"
+										th:value="${user?.direccion?.codigoPostal}">
+										<option value="05115" selected>05115</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-danger">ACTUALIZAR DIRECCIÓN</button>
+							</div>
+						</form>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div> 
+
+	<div th:replace="comun/cabecera :: footer"> </div>
+	<div th:replace="comun/cabecera :: body-scripts"> </div>
+	
+	
 </body>
+
 </html>

@@ -1,5 +1,5 @@
-<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml" xmlns:sec="http://www.w3.org./1999/xhtml">
 
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml" xmlns:sec="http://www.w3.org./1999/xhtml">
 <head th:replace="comun/cabecera :: comun-cabecera" />
 
 
@@ -15,7 +15,7 @@
 	<div th:replace="admin :: navbarAdmin"> </div>
 
 	<div class="container page-content">
-		<table id="table-article" class="table table-striped table-bordered table-hover">
+		<table id="table-usuario" class="table table-striped table-bordered table-hover">
 			<thead class="thead-dark">
 				<tr>
 					<th>Id</th>
@@ -37,8 +37,8 @@
 					<td th:text="${user.password}"></td>
 					<td> <a th:href="@{/usuario/editar?id=}+${user.id}" class="badge badge-primary"><i
 								class="fas fa-edit"></i></a>
-								<a th:onclick="'javascript:confirmDelete(\''+ ${user.id} +'\');'" class="badge badge-danger"><i
-													class="fas fa-solid fa-trash"></i></a>
+						<a th:onclick="'javascript:confirmDelete(\''+ ${user.id} +'\');'" class="badge badge-danger"><i
+								class="fas fa-solid fa-trash"></i></a>
 					</td>
 				</tr>
 			</tbody>
@@ -47,31 +47,31 @@
 
 
 
-	
+
 
 	<script>
 		$(document).ready(function () {
-			$('#table-article').DataTable({
+			$('#table-usuario').DataTable({
 				stateSave: true
 			});
 		});
 	</script>
-	
+
 	<!-- script eliminar y confirmar eliminar usuarios -->
-		<script type="text/javascript">
-			function confirmDelete(id) {
-				$('#deleteModal').modal('show');
-				$("#userIdHiddenInput").val(id);
-			}
+	<script type="text/javascript">
+		function confirmDelete(id) {
+			$('#deleteModal').modal('show');
+			$("#userIdHiddenInput").val(id);
+		}
 
-			function eliminar() {
-				var id = $("#userIdHiddenInput").val();
-				window.location = "/usuario/eliminar?id=" + id;
-			}
-		</script>
+		function eliminar() {
+			var id = $("#userIdHiddenInput").val();
+			window.location = "/usuario/eliminar?id=" + id;
+		}
+	</script>
 
-		<div th:include="confirmar-eliminar" th:remove="tag"></div>
-		<div th:replace="comun/cabecera :: body-scripts"> </div>
+	<div th:include="confirmar-eliminar" th:remove="tag"></div>
+	<div th:replace="comun/cabecera :: body-scripts"> </div>
 
 </body>
 

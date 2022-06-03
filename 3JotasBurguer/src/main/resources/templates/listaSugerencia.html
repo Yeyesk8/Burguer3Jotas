@@ -1,5 +1,5 @@
-<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml" xmlns:sec="http://www.w3.org./1999/xhtml">
 
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml" xmlns:sec="http://www.w3.org./1999/xhtml">
 <head th:replace="comun/cabecera :: comun-cabecera" />
 
 
@@ -15,7 +15,7 @@
 	<div th:replace="admin :: navbarAdmin"> </div>
 
 	<div class="container page-content">
-		<table id="table-article" class="table table-striped table-bordered table-hover">
+		<table id="table-sugerencia" class="table table-striped table-bordered table-hover">
 			<thead class="thead-dark">
 				<tr>
 					<th>Id</th>
@@ -52,7 +52,7 @@
 
 	<script>
 		$(document).ready(function () {
-			$('#table-article').DataTable({
+			$('#table-sugerencia').DataTable({
 				stateSave: true
 			});
 		});
