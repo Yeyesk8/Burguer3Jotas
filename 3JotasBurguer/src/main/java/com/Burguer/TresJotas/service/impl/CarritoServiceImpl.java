@@ -39,7 +39,7 @@ public class CarritoServiceImpl implements CarritoService {
 
 	@Override
 	@CacheEvict(value = "itemcount", allEntries = true)
-	public ProductoCarrito addProductoCarrito(Producto producto, User user, int cantidad) {
+	public ProductoCarrito aniadirProductoCarrito(Producto producto, User user, int cantidad) {
 		CarritoCompra carritoCompra = this.getCarrito(user);
 		ProductoCarrito productoCarrito = carritoCompra.findCartItemByArticle(producto.getId());
 		if (productoCarrito != null) {

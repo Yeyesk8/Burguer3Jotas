@@ -14,7 +14,7 @@ public interface CarritoService {
 	
 	ProductoCarrito findProductoCarritoById(Long productoCarritoId);
 	
-	ProductoCarrito addProductoCarrito(Producto producto, User user, int cantidad);
+	ProductoCarrito aniadirProductoCarrito(Producto producto, User user, int cantidad);
 		
 	void vaciarCarrito(User user);
 	

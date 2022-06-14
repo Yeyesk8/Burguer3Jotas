@@ -47,7 +47,7 @@ public class CarritoController {
 			return "redirect:/detalle-producto?id="+producto.getId();
 		}		
 		User user = (User) authentication.getPrincipal();		
-		carritoCompraService.addProductoCarrito(producto, user, Integer.parseInt(cantidad));
+		carritoCompraService.aniadirProductoCarrito(producto, user, Integer.parseInt(cantidad));
 		attributes.addFlashAttribute("addArticleSuccess", true);
 		return "redirect:/detalle-producto?id="+producto.getId();
 	}
