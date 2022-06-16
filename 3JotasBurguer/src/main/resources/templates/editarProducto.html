@@ -1,99 +1,105 @@
-
 <html lang="en" xmlns:th="http://www.w3.org./1999/xhtml" xmlns:sec="http://www.w3.org./1999/xhtml">
+
 <head th:replace="comun/cabecera :: comun-cabecera" />
 
 <body>
 
-  <div th:replace="admin :: navbarAdmin"> </div>
+	<div th:replace="admin :: navbarAdmin"> </div>
 
-  <div class="container page-content">
-    <form th:action="@{/producto/editar}" method="post" enctype="multipart/form-data">
-      <fieldset>
-        <legend class="center-block">
-          Editar Información Producto
-        </legend>
-        
-        <input hidden="hidden" name="id" th:value="${producto.id}">
-              
-        <div class="form-group row">
-          <label for="nombre" class="col-2 col-form-label text-right">Nombre</label>
-          <div class="col-6">
-            <input th:value="${producto.nombre}" type="text" class="form-control" id="nombre" name="nombre" >
-          </div>
-        </div>
-        
-        <div class="form-group row">
-          <label for="descripcion" class="col-2 col-form-label text-right">Descripción</label>
-          <div class="col-6">
-            <textarea th:value="${producto.descripcion}" type="text" class="form-control" id="descripcion" name="descripcion" rows="3" ></textarea>
-          </div>
-        </div>
-        
-        <div class="form-group row">
-          <label for="categoria" class="col-2 col-form-label text-right">Categoria</label>
-          <div class="col-6">
-            <input type="text" class="form-control" id="categorias" name="categoria" data-role="tagsinput" th:value="${preselectedCategorias}">
-          </div>
-          <div class="col-4">
-            <button type=button class="btn btn-primary btn-category badge badge-pill badge-primary mr-1 mb-1" th:each="item : ${allCategorias}" 
-            th:text="${item}" th:id="item+${categoria}"></button>           
-          </div>          
-        </div>
-                   
-         <div class="form-group row">
-          <label for="ingrediente" class="col-2 col-form-label text-right">Ingrediente</label>
-          <div class="col-6">
-            <input type="text" class="form-control" id="ingredientes" name="ingrediente" data-role="tagsinput" th:value="${preselectedIngredientes}">
-          </div>
-          <div class="col-4">
-            <button type=button class="btn btn-primary btn-ingrediente badge badge-pill badge-primary mr-1 mb-1" th:each="item : ${allIngredientes}" 
-            th:text="${#strings.capitalize(item)}" th:id="ingrediente+${item}"></button>           
-          </div>
-        </div>
-                             
-        <div class="form-group row">
-          <label for="precio" class="col-2 col-form-label text-right">Precio</label>
-          <div class="col-6 input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">€</span>
-            </div>
-            <input th:value="${producto.precio}" type="number" name="precio" step="0.1"
-          class="form-control" id="precio" placeholder="List Price" />
-          </div>
-        </div>
-        
-        <div class="form-group row">
-          <label for="stock" class="col-2 col-form-label text-right">Stock disponible</label>
-          <div class="col-6">
-            <input th:value="${producto.stock}" type="number"
-                        name="stock" class="form-control" id="stock"
-                        placeholder="Number of in-stock" />
-          </div>
-        </div>
-        
-        
-        <div class="form-group row">
-          <label for="imagen" class="col-2 col-form-label text-right">Link imagen Producto</label>
-          <div class="col-6">
-            <input th:value="${producto.imagen}" type="text" class="form-control" id="imagen" name="imagen" >
-          </div>
-        </div>
-        
-        <div class="form-group row">
-          <div class="offset-2 col-6">
-          	<button type="submit" class="btn btn-success">Editar Producto</button>
-              <a class="btn btn-danger" th:href="@{/producto/lista-productos}">Cancelar</a>
-          </div>
-        </div>
-    </fieldset>
-  </form>
-  </div>
+	<div class="container page-content">
+		<form th:action="@{/producto/editar}" method="post" enctype="multipart/form-data">
+			<fieldset>
+				<legend class="center-block">
+					Editar Información Producto
+				</legend>
+
+				<input hidden="hidden" name="id" th:value="${producto.id}">
+
+				<div class="form-group row">
+					<label for="nombre" class="col-2 col-form-label text-right">Nombre</label>
+					<div class="col-6">
+						<input th:value="${producto.nombre}" type="text" class="form-control" id="nombre" name="nombre">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="descripcion" class="col-2 col-form-label text-right">Descripción</label>
+					<div class="col-6">
+						<input th:value="${producto.descripcion}" type="text" class="form-control" id="descripcion"
+							name="descripcion" rows="3">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="categoria" class="col-2 col-form-label text-right">Categoria</label>
+					<div class="col-6">
+						<input type="text" class="form-control" id="categorias" name="categoria" data-role="tagsinput"
+							th:value="${preselectedCategorias}">
+					</div>
+					<div class="col-4">
+						<button type=button
+							class="btn btn-primary btn-categoria badge badge-pill badge-primary mr-1 mb-1"
+							th:each="item : ${allCategorias}" th:text="${item}" th:id="item+${categoria}"></button>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="ingrediente" class="col-2 col-form-label text-right">Ingrediente</label>
+					<div class="col-6">
+						<input type="text" class="form-control" id="ingredientes" name="ingrediente"
+							data-role="tagsinput" th:value="${preselectedIngredientes}">
+					</div>
+					<div class="col-4">
+						<button type=button
+							class="btn btn-primary btn-ingrediente badge badge-pill badge-primary mr-1 mb-1"
+							th:each="item : ${allIngredientes}" th:text="${#strings.capitalize(item)}"
+							th:id="ingrediente+${item}"></button>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="precio" class="col-2 col-form-label text-right">Precio</label>
+					<div class="col-6 input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">€</span>
+						</div>
+						<input th:value="${producto.precio}" type="number" name="precio" step="0.1" class="form-control"
+							id="precio" placeholder="List Price" />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="stock" class="col-2 col-form-label text-right">Stock disponible</label>
+					<div class="col-6">
+						<input th:value="${producto.stock}" type="number" name="stock" class="form-control" id="stock"
+							placeholder="Number of in-stock" />
+					</div>
+				</div>
 
 
+				<div class="form-group row">
+					<label for="imagen" class="col-2 col-form-label text-right">Link imagen Producto</label>
+					<div class="col-6">
+						<input th:value="${producto.imagen}" type="text" class="form-control" id="imagen" name="imagen">
+					</div>
+				</div>
 
-  <div th:replace="comun/cabecera :: body-scripts"> </div>
-  <script src="/js/tagsinput-custom.js"></script>
-  
+				<div class="form-group row">
+					<div class="offset-2 col-6">
+						<button type="submit" class="btn btn-success">Editar Producto</button>
+						<a class="btn btn-danger" th:href="@{/producto/lista-productos}">Cancelar</a>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+
+
+
+	<div th:replace="comun/cabecera :: body-scripts"> </div>
+	<script src="/js/tagsinput-custom.js"></script>
+
 
 </body>
+
 </html>

@@ -4,17 +4,13 @@
 
 $(document).ready(function(){	
 		
-	$(".btn-size").click(function() {	
-		var val = $(this).text();		
-		$("#sizes").tagsinput('add', val);
-	});
-	$(".btn-brand").click(function() {
+	$(".btn-ingrediente").click(function() {
 		var val = $(this).text();
-		$("#brands").tagsinput('add', val);
+		$("#ingredientes").tagsinput('add', val);
 	});
-	$(".btn-category").click(function() {
+	$(".btn-categoria").click(function() {
 		var val = $(this).text();
-		$("#categories").tagsinput('add', val);
+		$("#categorias").tagsinput('add', val);
 	});
 	
 });
