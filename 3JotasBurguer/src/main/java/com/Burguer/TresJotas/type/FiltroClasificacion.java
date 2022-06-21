@@ -4,17 +4,17 @@ import org.springframework.data.domain.Sort;
 
 public class FiltroClasificacion {
 	
-	private String sortType;
+	private String tipoclasificación;
 	
-	public FiltroClasificacion(String type) {
-		this.sortType = type;
+	public FiltroClasificacion(String tipo) {
+		this.tipoclasificación = tipo;
 	}
 	
-	public Sort getSortType() {
-		if (this.sortType == null) {
+	public Sort getTipoClasificación() {
+		if (this.tipoclasificación == null) {
 			return Sort.by("id").descending();
 		}		
-		switch(this.sortType) {
+		switch(this.tipoclasificación) {
 			case "priceasc":
 				return Sort.by("precio").ascending();
 			case "pricedesc":

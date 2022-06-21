@@ -27,7 +27,7 @@ public class TiendaController {
 		int numeropagina = (pagina == null || pagina <= 0) ? 0 : pagina - 1;
 		FiltroClasificacion filtroClasificacion = new FiltroClasificacion(filtros.getClasificacion());
 		Page<Producto> pageresult = productoService.findProductosPorCriterios(
-				PageRequest.of(numeropagina, 9, filtroClasificacion.getSortType()), filtros.getPrecioBajo(), filtros.getPrecioAlto(),
+				PageRequest.of(numeropagina, 9, filtroClasificacion.getTipoClasificación()), filtros.getPrecioBajo(), filtros.getPrecioAlto(),
 				filtros.getCategoria(),filtros.getIngrediente(), filtros.getBusqueda());
 		
 		model.addAttribute("allCategorias", productoService.getAllCategorias());

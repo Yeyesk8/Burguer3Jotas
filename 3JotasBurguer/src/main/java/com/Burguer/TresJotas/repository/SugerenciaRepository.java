@@ -8,8 +8,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import com.Burguer.TresJotas.entity.Sugerencia;
 
 
-
-
 public interface SugerenciaRepository extends JpaRepository<Sugerencia, Long>, JpaSpecificationExecutor<Sugerencia> {
 	
 	Sugerencia findByAsunto(String asunto);
