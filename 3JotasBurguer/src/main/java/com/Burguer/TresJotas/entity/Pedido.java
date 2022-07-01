@@ -26,7 +26,7 @@ public class Pedido {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "dd-MMM-yyyy")
 	@Temporal(TemporalType.DATE)
 	private Date fechaPedido;
 	private Date fechaEnvio;

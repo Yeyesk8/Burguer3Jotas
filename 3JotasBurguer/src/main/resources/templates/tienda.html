@@ -35,11 +35,11 @@
           <div class="accordion accordion-caret accordion-sidebar d-none d-md-block">
             <div class="card">
               <div class="card-header">
-                <a href="#filter-categories" data-toggle="collapse" aria-expanded="true" aria-controls="filter-categories" role="button" class="h6">
+                <a href="#filtro-categorias" data-toggle="collapse" aria-expanded="true" aria-controls="filtro-categorias" role="button" class="h6">
                   CATEGORIAS
                 </a>
               </div>
-              <div id="filter-categories" class="collapse show">
+              <div id="filtro-categorias" class="collapse show">
                 <div class="card-body">
                   <div th:each="item : ${allCategorias}" class="orm-checkbox">
                     <input type="checkbox" class="form-control-input" th:id="${item}" th:name="categoria" th:value="${item}"
@@ -52,11 +52,11 @@
             
             <div class="card">
               <div class="card-header">
-                <a href="#filter-ingredientes" data-toggle="collapse" aria-expanded="true" aria-controls="filter-ingredientes" role="button" class="h6">
+                <a href="#filtro-ingredientes" data-toggle="collapse" aria-expanded="true" aria-controls="filtro-ingredientes" role="button" class="h6">
                   INGREDIENTES
                 </a>
               </div>
-              <div id="filter-ingredientes" class="collapse show">
+              <div id="filtro-ingredientes" class="collapse show">
                 <div class="card-body">
                   <div th:each="item : ${allIngredientes}" class="orm-checkbox">
                     <input type="checkbox" class="form-control-input" th:id="${item}" th:name="ingrediente" th:value="${item}"
