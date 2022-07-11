@@ -59,7 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.anyRequest().authenticated();
 		
 		http
-			.csrf().disable().cors().disable()
+			//.csrf().disable().cors().disable()
 			.formLogin().failureUrl("/login?error")
 			.loginPage("/login").permitAll()
 			.and()
